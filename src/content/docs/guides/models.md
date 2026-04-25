@@ -3,7 +3,7 @@ title: Working with Models
 description: All supported image and video generation models, their strengths, costs, and capabilities.
 ---
 
-OpenCauldron supports 27 models across 9 providers through a unified interface. Each model has different strengths — choose the right one for each job.
+OpenCauldron supports 30 models across 10 providers through a unified interface. Each model has different strengths — choose the right one for each job.
 
 ## Selecting a model
 
@@ -79,6 +79,20 @@ Key capabilities: resolution (1K/2K), batch generation (up to 10). Note: does no
 
 **API key:** `XAI_API_KEY`
 
+### OpenAI
+
+| Variant | Cost | Speed | Best for |
+|---------|------|-------|----------|
+| **gpt-image-1.5** | $0.042/img | ~12s | Instruction-following, native transparent backgrounds |
+| **gpt-image-1** | $0.042/img | ~12s | Original GA model, stable production choice |
+| **gpt-image-1-mini** | $0.021/img | ~8s | Cost-optimized, ~½ the price for similar tasks |
+
+Key capabilities: batch generation (up to 10), quality control (Standard / High), aspect ratios (1:1, 2:3, 3:2). OpenAI models do not support negative prompts or seed.
+
+Pricing varies by quality level and resolution. The costs shown above are for medium quality at 1:1. See the [API Keys guide](/guides/api-keys) for the full price breakdown.
+
+**API key:** `OPENAI_API_KEY`
+
 ---
 
 ## Video models
@@ -153,15 +167,19 @@ Key capabilities: camera motion controls (pan, zoom, orbit), loop video, image-t
 | Recraft 20B | $0.02 |
 | Grok Imagine | $0.02 |
 | Imagen 4 Fast | $0.02 |
+| gpt-image-1-mini | $0.021 |
 | Flux Dev | $0.025 |
 | Flux 1.1 Pro | $0.04 |
 | Flux Kontext Pro | $0.04 |
 | Imagen 4 | $0.04 |
 | Recraft V3 / V4 | $0.04 |
+| gpt-image-1 / 1.5 | $0.042 |
 | Ideogram 3 | $0.06 |
 | Grok Imagine Pro | $0.07 |
 | Imagen 4 Ultra | $0.08 |
 | Recraft V4 Pro | $0.08 |
+
+> **Note:** OpenAI costs shown at medium quality, 1:1 size. High quality and larger sizes cost more — see the [API Keys guide](/guides/api-keys#openai--openai_api_key) for the full price table.
 
 ### Video models (per second)
 

@@ -43,6 +43,9 @@ IDEOGRAM_API_KEY=""
 # Recraft (design & vector art)
 RECRAFT_API_KEY=""
 
+# OpenAI (gpt-image-1.5, gpt-image-1, gpt-image-1-mini)
+OPENAI_API_KEY=""
+
 # Runway (Gen-4 Turbo video)
 RUNWAY_API_KEY=""
 
@@ -152,6 +155,26 @@ Recraft uses a credit system. Purchase credits and generate your API key from yo
 | Recraft V4 Pro | Image | $0.08/img |
 
 Recraft models excel at design work, vector art, icons, and brand-safe imagery.
+
+---
+
+### OpenAI — `OPENAI_API_KEY`
+
+**Get your key:** [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+
+Create an OpenAI account, add a payment method, and generate a key from the API Keys section of the platform dashboard.
+
+**Models unlocked:**
+
+| Model | Type | Cost (medium quality, 1:1) |
+|-------|------|---------------------------|
+| gpt-image-1.5 | Image | $0.042/img |
+| gpt-image-1 | Image | $0.042/img |
+| gpt-image-1-mini | Image | $0.021/img |
+
+> **Note:** OpenAI bills by token usage rather than flat per-image rates. Costs vary by quality level and output size. The values above reflect medium quality at 1:1 (1024×1024). High quality is roughly 4× the cost of low; the 2:3 and 3:2 sizes cost ~50% more than 1:1 at the same quality level.
+
+gpt-image-1.5 is the latest model with the strongest instruction-following. gpt-image-1-mini offers the same aspect ratios and quality controls at roughly half the cost — useful for high-volume or iteration workflows.
 
 ---
 

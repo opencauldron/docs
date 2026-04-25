@@ -102,6 +102,17 @@ Classifier-free guidance scale — similar to Guidance but used by different mod
 
 Controls the balance between prompt adherence and creative freedom. Range: 0.3–0.7 (default: 0.5).
 
+### Quality
+
+Controls the quality tier sent to the OpenAI API. Available on **OpenAI** (gpt-image-1.5, gpt-image-1, gpt-image-1-mini).
+
+| Option | API value | Notes |
+|--------|-----------|-------|
+| Standard | `medium` | Default. Balanced quality and cost. |
+| High | `high` | Slower, higher detail. Roughly 4× the cost of low. |
+
+OpenAI bills by token usage, so actual cost per image varies by quality level and size. Medium quality at 1:1 is $0.042 for gpt-image-1.5/1.0 and $0.021 for Mini.
+
 ### Person Generation
 
 Controls whether the model can generate images of people. Available on **Imagen 4** and **Gemini** models.
@@ -183,17 +194,19 @@ Useful for creating background animations, loading screens, or social media cont
 
 Quick reference for which image models support which parameters:
 
-| Parameter | Imagen 4 | Gemini Flash | Flux Pro | Flux Dev | Ideogram 3 | Recraft | Grok |
-|-----------|----------|--------------|----------|----------|-------------|---------|------|
-| Negative Prompt | Yes | Yes | — | — | Yes | Yes | — |
-| Resolution | Yes | Yes | — | — | — | — | Yes |
-| Seed | Yes | Yes | Yes | Yes | Yes | — | — |
-| Output Format | Yes | Yes | Yes | Yes | — | — | — |
-| Style | — | — | — | — | Yes | Yes | — |
-| Rendering Speed | — | — | — | — | Yes | — | — |
-| Guidance | — | — | — | Yes | — | — | — |
-| Steps | — | — | — | Yes | — | — | — |
-| CFG Scale | — | — | — | — | — | Yes | — |
-| Person Generation | Yes | Yes | — | — | — | — | — |
-| Watermark | Yes | Yes | — | — | — | — | — |
-| Prompt Enhance | Yes | Yes | — | — | — | — | — |
+| Parameter | Imagen 4 | Gemini Flash | Flux Pro | Flux Dev | Ideogram 3 | Recraft | Grok | OpenAI |
+|-----------|----------|--------------|----------|----------|-------------|---------|------|--------|
+| Negative Prompt | Yes | Yes | — | — | Yes | Yes | — | — |
+| Resolution | Yes | Yes | — | — | — | — | Yes | — |
+| Seed | Yes | Yes | Yes | Yes | Yes | — | — | — |
+| Output Format | Yes | Yes | Yes | Yes | — | — | — | — |
+| Style | — | — | — | — | Yes | Yes | — | — |
+| Rendering Speed | — | — | — | — | Yes | — | — | — |
+| Guidance | — | — | — | Yes | — | — | — | — |
+| Steps | — | — | — | Yes | — | — | — | — |
+| CFG Scale | — | — | — | — | — | Yes | — | — |
+| Quality | — | — | — | — | — | — | — | Yes |
+| Batch Generation | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Person Generation | Yes | Yes | — | — | — | — | — | — |
+| Watermark | Yes | Yes | — | — | — | — | — | — |
+| Prompt Enhance | Yes | Yes | — | — | — | — | — | — |
