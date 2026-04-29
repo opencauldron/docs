@@ -47,6 +47,13 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Prompting Guides',
+          items: [
+            { slug: 'guides/prompting' },
+            { slug: 'guides/prompting/flux' },
+          ],
+        },
+        {
           label: 'Team & Usage',
           items: [
             { slug: 'guides/teams' },

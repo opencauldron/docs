@@ -83,7 +83,8 @@ Key capabilities: resolution (1K/2K), batch generation (up to 10). Note: does no
 
 | Variant | Cost | Speed | Best for |
 |---------|------|-------|----------|
-| **gpt-image-1.5** | $0.042/img | ~12s | Instruction-following, native transparent backgrounds |
+| **gpt-image-2** | $0.042/img | ~12s | Latest model — sharper instruction-following, high-fidelity image inputs |
+| **gpt-image-1.5** | $0.042/img | ~12s | Previous flagship — choose this if you need transparent backgrounds (gpt-image-2 doesn't support them yet) |
 | **gpt-image-1** | $0.042/img | ~12s | Original GA model, stable production choice |
 | **gpt-image-1-mini** | $0.021/img | ~8s | Cost-optimized, ~½ the price for similar tasks |
 
@@ -173,7 +174,7 @@ Key capabilities: camera motion controls (pan, zoom, orbit), loop video, image-t
 | Flux Kontext Pro | $0.04 |
 | Imagen 4 | $0.04 |
 | Recraft V3 / V4 | $0.04 |
-| gpt-image-1 / 1.5 | $0.042 |
+| gpt-image-2 / 1.5 / 1 | $0.042 |
 | Ideogram 3 | $0.06 |
 | Grok Imagine Pro | $0.07 |
 | Imagen 4 Ultra | $0.08 |

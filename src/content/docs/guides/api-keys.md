@@ -43,7 +43,7 @@ IDEOGRAM_API_KEY=""
 # Recraft (design & vector art)
 RECRAFT_API_KEY=""
 
-# OpenAI (gpt-image-1.5, gpt-image-1, gpt-image-1-mini)
+# OpenAI (gpt-image-2, gpt-image-1.5, gpt-image-1, gpt-image-1-mini)
 OPENAI_API_KEY=""
 
 # Runway (Gen-4 Turbo video)
@@ -168,13 +168,14 @@ Create an OpenAI account, add a payment method, and generate a key from the API 
 
 | Model | Type | Cost (medium quality, 1:1) |
 |-------|------|---------------------------|
+| gpt-image-2 | Image | $0.042/img |
 | gpt-image-1.5 | Image | $0.042/img |
 | gpt-image-1 | Image | $0.042/img |
 | gpt-image-1-mini | Image | $0.021/img |
 
 > **Note:** OpenAI bills by token usage rather than flat per-image rates. Costs vary by quality level and output size. The values above reflect medium quality at 1:1 (1024×1024). High quality is roughly 4× the cost of low; the 2:3 and 3:2 sizes cost ~50% more than 1:1 at the same quality level.
 
-gpt-image-1.5 is the latest model with the strongest instruction-following. gpt-image-1-mini offers the same aspect ratios and quality controls at roughly half the cost — useful for high-volume or iteration workflows.
+gpt-image-2 is the latest model — sharper instruction-following and high-fidelity image inputs, but it doesn't support transparent backgrounds yet. Use gpt-image-1.5 if you need an alpha channel. gpt-image-1-mini offers the same aspect ratios and quality controls at roughly half the cost — useful for high-volume or iteration workflows.
 
 ---
 

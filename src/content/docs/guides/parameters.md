@@ -104,14 +104,14 @@ Controls the balance between prompt adherence and creative freedom. Range: 0.3â€
 
 ### Quality
 
-Controls the quality tier sent to the OpenAI API. Available on **OpenAI** (gpt-image-1.5, gpt-image-1, gpt-image-1-mini).
+Controls the quality tier sent to the OpenAI API. Available on **OpenAI** (gpt-image-2, gpt-image-1.5, gpt-image-1, gpt-image-1-mini).
 
 | Option | API value | Notes |
 |--------|-----------|-------|
 | Standard | `medium` | Default. Balanced quality and cost. |
 | High | `high` | Slower, higher detail. Roughly 4Ã— the cost of low. |
 
-OpenAI bills by token usage, so actual cost per image varies by quality level and size. Medium quality at 1:1 is $0.042 for gpt-image-1.5/1.0 and $0.021 for Mini.
+OpenAI bills by token usage, so actual cost per image varies by quality level and size. Medium quality at 1:1 is $0.042 for gpt-image-2/1.5/1.0 and $0.021 for Mini.
 
 ### Person Generation
 

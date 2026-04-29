@@ -39,13 +39,24 @@ You can also set the output size via aspect ratio and apply a Recraft style.
 
 **API key required:** `RECRAFT_API_KEY`
 
+### OpenAI (gpt-image edits)
+
+Uses the OpenAI `/v1/images/edits` endpoint. Accepts up to four reference images for compositing. Strong at instruction-following edits — describe what to change and what to keep, and gpt-image follows literally.
+
+- **Identity preservation:** gpt-image-1 and gpt-image-1.5 are sent with `input_fidelity: "high"` automatically, which is tuned to preserve faces, brand elements, and fine detail across edits. gpt-image-2 is high-fidelity by default and ignores the parameter.
+- **Multiple references:** if you supply more than one input image, OpenAI treats them as a compositing brief — describe how each should be used in the prompt (e.g. "place the product from Image 1 into the scene from Image 2, matching the lighting in Image 2").
+
+**API key required:** `OPENAI_API_KEY`
+
 ### Provider comparison
 
-| Feature | xAI | Ideogram | Recraft |
-|---------|-----|----------|---------|
-| Strength control | — | — | 0–1 |
-| Style options | — | 14 styles | 12 styles |
-| Aspect ratio control | Yes | Yes | Yes |
+| Feature | xAI | Ideogram | Recraft | OpenAI |
+|---------|-----|----------|---------|--------|
+| Strength control | — | — | 0–1 | — |
+| Style options | — | 14 styles | 12 styles | — |
+| Aspect ratio control | Yes | Yes | Yes | Yes (1:1, 2:3, 3:2) |
+| Multi-image input | — | — | — | Up to 4 |
+| Identity preservation | — | — | — | Yes (1.5/1.0) |
 
 ---
 
@@ -120,7 +131,7 @@ The following video models support image-to-video input: Veo 3, Veo 3.1, Veo 3 F
 
 | Feature | Provider | API key |
 |---------|----------|---------|
-| Image-to-image editing | xAI, Ideogram, Recraft | `XAI_API_KEY` / `IDEOGRAM_API_KEY` / `RECRAFT_API_KEY` |
+| Image-to-image editing | xAI, Ideogram, Recraft, OpenAI | `XAI_API_KEY` / `IDEOGRAM_API_KEY` / `RECRAFT_API_KEY` / `OPENAI_API_KEY` |
 | Upscale (resemblance + detail) | Ideogram | `IDEOGRAM_API_KEY` |
 | Upscale (crisp / creative) | Recraft | `RECRAFT_API_KEY` |
 | Remove background | Recraft | `RECRAFT_API_KEY` |
