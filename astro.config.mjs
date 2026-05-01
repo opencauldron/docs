@@ -28,7 +28,7 @@ export default defineConfig({
           items: [
             { slug: 'introduction' },
             { slug: 'installation' },
-            { slug: 'cli' },
+            { slug: 'setup-wizard' },
             { slug: 'configuration' },
             { slug: 'guides/api-keys' },
           ],
@@ -77,7 +77,6 @@ export default defineConfig({
             { slug: 'contributing' },
             { slug: 'contributing/development-setup' },
             { slug: 'contributing/contributing-to-docs' },
-            { slug: 'contributing/contributing-to-cli' },
             { slug: 'guides/adding-providers' },
             { slug: 'contributing/code-style' },
             { slug: 'contributing/issues-and-requests' },

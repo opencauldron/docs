@@ -1,9 +1,9 @@
 ---
 title: Contributing to OpenCauldron
-description: An overview of how to contribute to OpenCauldron across its three public repositories.
+description: An overview of how to contribute to OpenCauldron across its public repositories.
 ---
 
-OpenCauldron is an open-source project maintained across three public repositories. Contributions of all kinds are welcome — whether you are fixing a bug, adding a new AI provider, improving documentation, or building CLI features.
+OpenCauldron is an open-source project maintained across a handful of public repositories. Contributions of all kinds are welcome — whether you are fixing a bug, adding a new AI provider, or improving documentation.
 
 This section covers everything you need to get started as a contributor.
 
@@ -13,10 +13,9 @@ This section covers everything you need to get started as a contributor.
 
 | Repo | What it is | Where to start |
 |------|-----------|----------------|
-| [opencauldron/opencauldron](https://github.com/opencauldron/opencauldron) | The main Next.js application | [Development setup](/contributing/development-setup) |
+| [opencauldron/opencauldron](https://github.com/opencauldron/opencauldron) | The main Next.js application (also home to the `pnpm setup` fork wizard) | [Development setup](/contributing/development-setup) |
 | [opencauldron/docs](https://github.com/opencauldron/docs) | This docs site (Astro + Starlight) | [Contributing to docs](/contributing/contributing-to-docs) |
 | [opencauldron/opencauldron.ai](https://github.com/opencauldron/opencauldron.ai) | The marketing site at opencauldron.ai (Astro + Tailwind) | — |
-| [opencauldron/create-opencauldron](https://github.com/opencauldron/create-opencauldron) | The `create-opencauldron` CLI scaffolding tool | [Contributing to the CLI](/contributing/contributing-to-cli) |
 
 Each repo has its own setup instructions. Most contributors will spend their time in the main app repo.
 
@@ -36,9 +35,9 @@ Browse open issues on [GitHub](https://github.com/opencauldron/opencauldron/issu
 
 If you find a doc that is wrong, incomplete, or hard to follow, the fix belongs in the website repo. See [Contributing to Docs](/contributing/contributing-to-docs) for how the site is structured and how to preview changes locally.
 
-### Improve the CLI
+### Improve the setup wizard
 
-The `create-opencauldron` scaffolding wizard is a separate package. If you want to add a new provider prompt, fix a wizard step, or improve the non-interactive mode, see [Contributing to the CLI](/contributing/contributing-to-cli).
+The fork-setup wizard lives at `scripts/setup.mjs` in the main app repo. Adding a new provider prompt or improving the wizard is a normal main-repo PR — see [Development Setup](/contributing/development-setup) to get the repo running locally.
 
 ### Report a bug or request a feature
 

@@ -5,9 +5,8 @@ description: How to file a useful bug report or feature request for OpenCauldron
 
 Issues are tracked on GitHub for each repo:
 
-- **Main app bugs and features:** [github.com/opencauldron/opencauldron/issues](https://github.com/opencauldron/opencauldron/issues)
+- **Main app bugs and features (including the `pnpm setup` wizard):** [github.com/opencauldron/opencauldron/issues](https://github.com/opencauldron/opencauldron/issues)
 - **Docs site issues:** [github.com/opencauldron/docs/issues](https://github.com/opencauldron/docs/issues)
-- **CLI issues:** [github.com/opencauldron/create-opencauldron/issues](https://github.com/opencauldron/create-opencauldron/issues)
 
 Before opening a new issue, search existing open and closed issues to see if it has already been reported or discussed.
 

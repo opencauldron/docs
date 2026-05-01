@@ -93,23 +93,20 @@ See the [contributing guide](/contributing/) for code style, testing conventions
 
 ## Scaffold your own fork
 
-If you want to build a custom studio *on top of* OpenCauldron — your own branding, your own features, your own deploy — there's an interactive scaffolding wizard.
+If you want to build a custom studio *on top of* OpenCauldron — your own branding, your own features, your own deploy — clone the repo and run the setup wizard:
 
 ```bash
-npx create-opencauldron@latest
+git clone https://github.com/opencauldron/opencauldron.git my-studio
+cd my-studio
+pnpm install
+pnpm setup
 ```
 
 This is **not** the right path for running OpenCauldron as-is. Use Docker for that. The wizard is for developers who want to take the codebase, modify it, and ship their own version.
 
-The wizard walks you through database, storage, and AI provider setup, then:
+The wizard walks you through database, storage, and AI provider setup, then writes a configured `.env.local`. It does not clone, install, or detach git history — those are your call. To start from a clean slate after cloning: `rm -rf .git && git init`.
 
-1. Shallow-clones the OpenCauldron repository into your project directory.
-2. **Removes the `.git` history** so you start from a clean slate.
-3. Generates `.env.local` with your choices filled in.
-4. Installs dependencies with your preferred package manager.
-5. Initializes a fresh git repository for your fork.
-
-See the [CLI Wizard reference](/cli/) for the full walkthrough and non-interactive mode.
+See the [Setup Wizard reference](/setup-wizard/) for the full walkthrough.
 
 ---
 
