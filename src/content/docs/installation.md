@@ -1,64 +1,121 @@
 ---
 title: Installation
-description: Get OpenCauldron running locally or deploy to production.
+description: Get OpenCauldron running with Docker, develop on it as a contributor, or scaffold your own fork.
 ---
 
-## Quick start
+There are three ways to run OpenCauldron, depending on what you're trying to do.
 
-### Option 1: CLI Wizard (Recommended)
+| You want to… | Use |
+|---|---|
+| Run OpenCauldron for your team | **Docker self-host** (below) — the default for almost everyone |
+| Contribute to OpenCauldron itself | [Contributor setup](#contributor-setup) |
+| Build a custom studio on top of OpenCauldron | [Scaffold your own fork](#scaffold-your-own-fork) |
 
-The fastest way to get started. The interactive wizard walks you through database, storage, and AI provider setup:
+---
+
+## Self-host with Docker
+
+The recommended path for anyone running OpenCauldron as-is. No clone, no Node, no package manager — just Docker.
+
+### Prerequisites
+
+- [Docker](https://docker.com) and Docker Compose
+- A [Google Cloud](https://console.cloud.google.com/apis/credentials) project with an OAuth 2.0 client ID (see [Setting up Google OAuth](/guides/api-keys/#google-oauth))
+- API keys for whichever AI providers you want to enable (all optional — models without keys are hidden)
+
+### Install
+
+```bash
+curl -O https://raw.githubusercontent.com/opencauldron/opencauldron/main/docker-compose.yml
+curl -o .env https://raw.githubusercontent.com/opencauldron/opencauldron/main/.env.example
+# Edit .env: set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, WORKSPACE_NAME, ADMIN_EMAIL
+docker compose up -d
+open http://localhost:3000
+```
+
+That's the whole install. On first boot the container:
+
+1. Auto-generates a persistent `NEXTAUTH_SECRET` and stores it in a named volume (so it survives upgrades).
+2. Waits for Postgres to be ready, then applies all database migrations.
+3. Bootstraps the admin workspace from `WORKSPACE_NAME` and `ADMIN_EMAIL` if both are set.
+4. Starts the Next.js server.
+
+Sign in with the Google account you put in `ADMIN_EMAIL` and you'll land on the dashboard as `owner`.
+
+### Upgrading
+
+```bash
+docker compose pull && docker compose up -d
+```
+
+Migrations run automatically on container start. Your data, uploads, and the persisted auth secret all live in named volumes and survive image upgrades. See the [GHCR releases page](https://github.com/opencauldron/opencauldron/pkgs/container/opencauldron) for the changelog.
+
+### What's bundled
+
+The default `docker-compose.yml` ships:
+
+- The OpenCauldron app (pulled from `ghcr.io/opencauldron/opencauldron:latest`, multi-arch)
+- A Postgres 16 + pgvector container
+- Named volumes for the database, uploaded media, and the auth secret
+
+If you'd rather use [Neon](https://neon.tech) for the database or [Cloudflare R2](/guides/storage/) for storage, set the relevant variables in `.env` — the app auto-detects them. See [Configuration](/configuration/) for the full list.
+
+---
+
+## Contributor setup
+
+For day-to-day work *on OpenCauldron itself*. HMR works, host tooling (psql, drizzle-kit studio, IDE plugins) connects directly to the DB, no rebuild loop.
+
+### Prerequisites
+
+- [Node.js 20+](https://nodejs.org) and [pnpm](https://pnpm.io)
+- [Docker](https://docker.com) (for the local Postgres) — or any reachable Postgres with pgvector
+
+### Install
+
+```bash
+git clone https://github.com/opencauldron/opencauldron
+cd opencauldron
+pnpm install
+cp .env.example .env.local                       # then edit with your keys
+docker compose -f docker-compose.dev.yml up -d   # local Postgres on :5432
+pnpm exec drizzle-kit migrate                    # apply the SQL migrations
+pnpm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+To validate the production Docker path (entrypoint, migration runner, healthcheck) before opening a PR, uncomment the `app` service block at the bottom of `docker-compose.dev.yml` and re-run the same command.
+
+See the [contributing guide](/contributing/) for code style, testing conventions, and how to add new AI providers.
+
+---
+
+## Scaffold your own fork
+
+If you want to build a custom studio *on top of* OpenCauldron — your own branding, your own features, your own deploy — there's an interactive scaffolding wizard.
 
 ```bash
 npx create-opencauldron@latest
 ```
 
-It clones the repo, generates your `.env.local` with the values you provide, installs dependencies, and initializes git. Follow the printed next steps to start your dev server.
+This is **not** the right path for running OpenCauldron as-is. Use Docker for that. The wizard is for developers who want to take the codebase, modify it, and ship their own version.
 
-See the [CLI Wizard](/cli/) docs for the full walkthrough.
+The wizard walks you through database, storage, and AI provider setup, then:
 
-### Option 2: Git Clone
+1. Shallow-clones the OpenCauldron repository into your project directory.
+2. **Removes the `.git` history** so you start from a clean slate.
+3. Generates `.env.local` with your choices filled in.
+4. Installs dependencies with your preferred package manager.
+5. Initializes a fresh git repository for your fork.
 
-For manual setup or if you prefer to configure `.env.local` yourself:
+See the [CLI Wizard reference](/cli/) for the full walkthrough and non-interactive mode.
 
-```bash
-git clone https://github.com/opencauldron/opencauldron
-cd opencauldron
-bun install
-cp .env.example .env.local
-```
-
-Edit `.env.local` with your keys, then:
-
-```bash
-docker compose up db -d   # start local Postgres
-bun run db:push           # create tables
-bun tsx src/lib/db/seed-badges.ts  # seed feats
-bun run dev
-```
-
-OpenCauldron will be available at `http://localhost:3000`.
-
-### Option 3: Docker
-
-```bash
-git clone https://github.com/opencauldron/opencauldron
-cd opencauldron
-cp .env.example .env.local    # edit with your keys
-docker compose up
-```
-
-## Prerequisites
-
-Both the CLI wizard and manual setup require:
-
-- Node.js 20+ or [Bun](https://bun.sh) 1.0+
-- [Docker](https://docker.com) (for local Postgres) or a [Neon](https://neon.tech) database
-- A Google Cloud project for OAuth ([setup guide](/api-keys/))
-- At least one AI model API key
+---
 
 ## Next steps
 
-- [CLI Wizard](/cli/) — Detailed guide for the interactive setup wizard
 - [Configuration](/configuration/) — All environment variables and options
-- [API Keys](/api-keys/) — How to get keys for each AI provider
+- [API Keys](/guides/api-keys/) — How to get keys for each AI provider
+- [Storage](/guides/storage/) — Configure local filesystem or Cloudflare R2
+- [Database](/guides/database/) — Migrations, schema, and Neon vs Postgres

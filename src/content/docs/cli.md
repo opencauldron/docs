@@ -1,9 +1,15 @@
 ---
 title: CLI Wizard
-description: Scaffold a new OpenCauldron studio with a single command using create-opencauldron.
+description: Scaffold your own fork of OpenCauldron with a single command.
 ---
 
-`create-opencauldron` is a command-line wizard that scaffolds a fully configured OpenCauldron project. It clones the repo, walks you through database, storage, and AI provider setup, generates your `.env.local`, installs dependencies, and initializes a git repository — all in one step.
+`create-opencauldron` is the scaffolding wizard for **forking** OpenCauldron — building your own studio on top of the codebase. It clones the repo, removes git history so you start fresh, walks you through database, storage, and AI provider setup, generates your `.env.local`, installs dependencies, and initializes a new git repository — all in one step.
+
+:::caution
+This is **not** the right path if you just want to run OpenCauldron for your team. For that, use the [Docker self-host install](/installation/#self-host-with-docker) — it's faster, doesn't require Node, and ships pre-built multi-arch images.
+
+Use the wizard when you want to *modify* OpenCauldron and ship your own version.
+:::
 
 ## Usage
 
@@ -133,9 +139,9 @@ The CLI prints these for you, but for reference:
 
 ```bash
 cd my-studio
-docker compose up db -d    # start local Postgres (skip if using Neon)
-bun run db:push            # create database tables
-bun run dev                # start dev server
+docker compose -f docker-compose.dev.yml up -d   # start local Postgres
+pnpm exec drizzle-kit migrate                    # apply schema migrations
+pnpm run dev                                     # start dev server
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to access your studio.

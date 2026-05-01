@@ -109,32 +109,38 @@ See [XP, Levels, and Feats](/guides/xp-and-feats) for details on how the gamific
 
 Drizzle Kit manages schema migrations. The config lives in `drizzle.config.ts` and reads `DATABASE_URL` from `.env.local`.
 
-### Development: push
+### Self-host: automatic
 
-During active development, `db:push` introspects your schema and applies changes directly without generating migration files. It is fast and convenient for iterating on schema changes locally.
+The Docker self-host path runs migrations on container start — no manual command is required. The bundled migration runner uses `drizzle-orm/node-postgres/migrator` against the migration files in `drizzle/`. Idempotent — already-applied migrations are skipped.
 
-```bash
-bun run db:push
-```
+### Contributor / fork: manual
 
-> Use `db:push` for local development only. It does not create migration files and is not safe to run against a production database.
-
-### Production: migrate
-
-For production deployments, generate and apply versioned migration files. Migration files are stored in `drizzle/` and should be committed to version control.
+For the contributor and fork workflows, apply migrations explicitly with:
 
 ```bash
-bun run db:migrate
+pnpm exec drizzle-kit migrate
 ```
 
-This applies any pending migrations in `drizzle/` in order. It is idempotent — already-applied migrations are skipped.
+This applies any pending migrations in `drizzle/` in order. Use this command for both initial setup and subsequent schema changes.
+
+### Generating new migrations
+
+After editing `src/lib/db/schema.ts`, generate a new migration file:
+
+```bash
+pnpm exec drizzle-kit generate
+```
+
+Commit the generated SQL file alongside your schema change. The Docker self-host path will pick it up automatically on the next image upgrade.
+
+> Avoid `drizzle-kit push`. It bypasses the migration history, creates no SQL file, and fails on a fresh database that needs the `pgvector` extension (migration `0016`). Always use `drizzle-kit migrate`.
 
 ### Visual browser: studio
 
 Drizzle Studio opens a browser-based UI for inspecting and editing your database.
 
 ```bash
-bun run db:studio
+pnpm run db:studio
 ```
 
 Studio connects to the database specified by `DATABASE_URL` in `.env.local` and opens at `https://local.drizzle.studio`.
@@ -146,10 +152,16 @@ Studio connects to the database specified by `DATABASE_URL` in `.env.local` and 
 After your first migration, run the badge seed script to populate the `badges` table. The app will not award feats until these rows exist.
 
 ```bash
-bunx tsx src/lib/db/seed-badges.ts
+# Contributor / fork (host)
+pnpm exec tsx src/lib/db/seed-badges.ts
+
+# Docker self-host (inside the container)
+docker compose exec app pnpm exec tsx src/lib/db/seed-badges.ts
 ```
 
 The script is safe to run multiple times — it uses `INSERT ... ON CONFLICT DO UPDATE`, so it updates existing records and adds any new ones. It also removes any legacy badge IDs that are no longer in the current definition list.
+
+> The seed script currently uses a Neon-specific driver and only reads `.env.local`. If you're on the Docker self-host path with the bundled Postgres, the command above won't work as written — flagged for follow-up. The badge system being empty doesn't break anything else; the app continues to function.
 
 The following badges are seeded:
 
@@ -172,10 +184,18 @@ The following badges are seeded:
 
 ## First-time setup checklist
 
-1. Set `DATABASE_URL` in your `.env` file.
-2. Run `bun run db:migrate` (production) or `bun run db:push` (development).
-3. Run `bunx tsx src/lib/db/seed-badges.ts` to populate badge definitions.
-4. Start the app — `bun run dev` or `bun run start`.
+**Self-host with Docker:**
+
+1. Set `DATABASE_URL` in `.env` (or leave the default to use the bundled Postgres).
+2. `docker compose up -d` — migrations run automatically.
+3. (Optional) Seed badge definitions: `docker compose exec app pnpm exec tsx src/lib/db/seed-badges.ts`. The badge system is empty until this runs.
+
+**Contributor / fork:**
+
+1. Set `DATABASE_URL` in `.env.local`.
+2. Run `pnpm exec drizzle-kit migrate`.
+3. (Optional) Run `pnpm exec tsx src/lib/db/seed-badges.ts` to populate badge definitions.
+4. Start the app — `pnpm run dev` or `pnpm run start`.
 
 ---
 
