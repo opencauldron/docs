@@ -11,18 +11,24 @@ Only users with the `admin` role can reach this page. Any other user gets a `403
 
 ## Setting up the first admin
 
-There is no automatic first-admin promotion. All accounts are created with the `member` role by default — including the very first user to sign in.
+### Docker self-host (automatic)
 
-To create your first admin, run a direct SQL update against the database after the account exists:
+If you set `ADMIN_EMAIL` in `.env` before first boot, the entrypoint creates the admin user and grants `owner` role on the new workspace automatically. Sign in with that exact Google account and you'll land on the dashboard with full admin access. No SQL required.
+
+Re-running `docker compose up -d` is idempotent — once a workspace exists, the bootstrap step is skipped.
+
+### Contributor / fork (manual)
+
+For the contributor or fork workflows, accounts are created with the `member` role by default — including the very first user to sign in. Promote yourself with a direct SQL update after your account exists:
 
 ```sql
 UPDATE users SET role = 'admin' WHERE email = 'you@example.com';
 ```
 
-Using the Docker Compose setup from the project root:
+Using the local dev compose:
 
 ```bash
-docker compose exec db psql -U cauldron -d cauldron \
+docker compose -f docker-compose.dev.yml exec db psql -U cauldron -d cauldron \
   -c "UPDATE users SET role = 'admin' WHERE email = 'you@example.com';"
 ```
 

@@ -3,7 +3,7 @@ title: Deploying
 description: Deploy OpenCauldron to production using Docker Compose, a standalone Docker container, or Vercel.
 ---
 
-This guide covers three production deployment paths. For local development setup, see [Installation](/installation).
+This guide covers three production deployment paths. For local development setup, see [Installation](/installation/).
 
 ---
 
@@ -15,11 +15,11 @@ Every deployment needs the same core environment variables regardless of path:
 |----------|-------------|
 | `DATABASE_URL` | PostgreSQL connection string |
 | `NEXTAUTH_URL` | Full public URL of your deployment |
-| `NEXTAUTH_SECRET` | Random secret — generate with `openssl rand -base64 32` |
+| `NEXTAUTH_SECRET` | Random secret. Auto-generated for Docker Compose; generate manually for the other paths with `openssl rand -base64 32` |
 | `GOOGLE_CLIENT_ID` | Google OAuth client ID |
 | `GOOGLE_CLIENT_SECRET` | Google OAuth client secret |
 
-See [Configuration](/configuration) for the full variable reference, including AI provider keys and storage options.
+See [Configuration](/configuration/) for the full variable reference, including AI provider keys and storage options.
 
 ### Google OAuth setup
 
@@ -33,10 +33,11 @@ Update your Google OAuth credentials to include your production domain:
 
 ## Auth middleware
 
-Every route in OpenCauldron requires authentication except two:
+Every route in OpenCauldron requires authentication except three:
 
 - `/api/auth/*` — NextAuth sign-in and callback endpoints
 - `/api/uploads/*` — Local file serving for the local storage backend
+- `/api/health` — Liveness probe consumed by the Docker healthcheck and external orchestrators
 
 Unauthenticated requests to any other route are redirected to `/login`. This applies to the API and to all page routes.
 
@@ -52,91 +53,85 @@ Leave this unset to allow any Google account to sign in.
 
 ## Docker Compose
 
-Docker Compose is the simplest self-hosted path. The included `docker-compose.yml` starts the app and a Postgres 16 database together, with a health check so the app waits for the database to be ready.
+The simplest production path. The published `docker-compose.yml` pulls the multi-arch `ghcr.io/opencauldron/opencauldron:latest` image alongside a Postgres 16 + pgvector container, and the entrypoint handles every first-boot concern automatically.
 
-### 1. Create your environment file
+### What the entrypoint does on first boot
 
-Docker Compose reads from `.env.local` — not `.env`. Copy the example and fill in your values:
+1. Generates a persistent `NEXTAUTH_SECRET` if one isn't set, and writes it to a named volume so it survives upgrades.
+2. Waits for Postgres to become reachable.
+3. Applies all SQL migrations using the bundled migration runner (no `drizzle-kit` needed in the runtime image).
+4. Bootstraps the admin workspace from `WORKSPACE_NAME` and `ADMIN_EMAIL` if both are set and no workspace exists yet. Idempotent — re-running with the same values is a no-op.
+5. Starts the Next.js server.
 
-```bash
-cp .env.example .env.local
-```
+If `WORKSPACE_NAME` or `ADMIN_EMAIL` is missing on first boot, the container exits with code 2 and prints actionable instructions. Nothing partial is written to the database.
 
-Set at minimum:
-
-```bash
-DATABASE_URL="postgresql://cauldron:cauldron@db:5432/cauldron"
-NEXTAUTH_URL="https://your-domain.com"
-NEXTAUTH_SECRET=""   # openssl rand -base64 32
-GOOGLE_CLIENT_ID=""
-GOOGLE_CLIENT_SECRET=""
-STORAGE_PROVIDER="local"
-```
-
-The `DATABASE_URL` host must be `db` (the Compose service name), not `localhost`.
-
-### 2. Start the stack
+### Install
 
 ```bash
+curl -O https://raw.githubusercontent.com/opencauldron/opencauldron/main/docker-compose.yml
+curl -o .env https://raw.githubusercontent.com/opencauldron/opencauldron/main/.env.example
+# Edit .env: set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, WORKSPACE_NAME, ADMIN_EMAIL
 docker compose up -d
 ```
 
-This builds the app image, starts Postgres, waits for it to be healthy, then starts the app on port 3000.
-
-### 3. Run migrations
-
-On first deploy, apply the database schema:
+The compose file reads `.env` (not `.env.local`). Set at minimum:
 
 ```bash
-docker compose exec app bun run db:migrate
+NEXTAUTH_URL="https://your-domain.com"
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+WORKSPACE_NAME="My Studio"
+ADMIN_EMAIL="admin@yourdomain.com"
 ```
 
-### 4. Seed badge definitions
+Everything else has sensible defaults — `DATABASE_URL` points to the bundled `db` service, `NEXTAUTH_SECRET` is auto-generated, `STORAGE_PROVIDER` defaults to local with a mounted `uploads` volume.
 
-Badge definitions (feats) must be inserted into the database before they appear in the UI. The seed script reads from `.env.local` and requires a Neon connection string — if you are running a plain Postgres database, run the seed command from a separate environment that has a Neon `DATABASE_URL`, or skip this step and the feats system will simply be empty until you can run it.
+### Health check
 
-To seed from a machine with a Neon `DATABASE_URL` in `.env.local`:
+The app container ships a Docker `HEALTHCHECK` that hits `/api/health`. It returns `{ ok: true, version }` when the database is reachable and `{ ok: false }` otherwise. Errors are logged server-side; the public response never leaks connection details.
 
 ```bash
-bun src/lib/db/seed-badges.ts
+docker compose ps           # shows healthy/unhealthy status
+curl http://localhost:3000/api/health
 ```
-
-Re-run this after upgrades to pick up any new or renamed badges.
 
 ### Persistent storage
 
-The `docker-compose.yml` defines two named volumes:
+The compose file defines three named volumes:
 
-- `pgdata` — Postgres data directory, persists database across container restarts
-- `uploads` — mounted at `/app/uploads` in the app container, persists locally stored files
+- `pgdata` — Postgres data directory
+- `uploads` — mounted at `/app/uploads`, persists locally stored media
+- `app-state` — mounted at `/app/.state`, holds the auto-generated auth secret
 
-As long as you do not remove these volumes, your data survives container rebuilds and restarts.
+As long as you don't remove these volumes, your data and identity survive upgrades and restarts.
 
-### Updating
-
-To deploy a new version:
+### Upgrading
 
 ```bash
-docker compose build
-docker compose up -d
-docker compose exec app bun run db:migrate
+docker compose pull && docker compose up -d
 ```
+
+The new image's entrypoint applies any new migrations on start. No manual `db:migrate` step is needed. The auto-generated `NEXTAUTH_SECRET` is reused (same volume), so existing sessions continue to work.
+
+### Custom port
+
+If port 3000 is already taken on the host, set `APP_PORT=8080` (or any free port) in `.env` before `docker compose up -d`. The app inside the container always listens on 3000; only the host mapping changes.
 
 ---
 
 ## Docker (standalone container)
 
-Use this path when you want to manage the database externally (Neon, Supabase, RDS, or any hosted Postgres) and run only the app container.
+Use this path when you want to manage the database externally (Neon, Supabase, RDS, or any hosted Postgres with pgvector) and run only the app container — typically behind your own reverse proxy or orchestrator (Kubernetes, Nomad, ECS, Fly.io).
 
 ### How the image is built
 
 The `Dockerfile` uses a three-stage build:
 
-1. **deps** — installs dependencies with `bun install --frozen-lockfile`
-2. **builder** — runs `bun run build`, which produces a Next.js standalone output at `.next/standalone`
-3. **runner** — copies only the standalone bundle, static files, and `public/` into a slim image
+1. **deps** — installs dependencies with `pnpm install --frozen-lockfile`
+2. **builder** — runs `pnpm run build`, which produces a Next.js standalone output at `.next/standalone`
+3. **runner** — copies only the standalone bundle, the migration runner, the bootstrap runner, the entrypoint script, and the `drizzle/` migrations directory into a slim image
 
-The production container starts with `bun server.js`, not `next start`. The standalone output bundles the Node server directly, so `next` does not need to be installed in the final image.
+The runtime image runs as the non-root `node` user (uid 1000) and is ~320 MB uncompressed.
 
 ### Running the container
 
@@ -144,8 +139,15 @@ The production container starts with `bun server.js`, not `next start`. The stan
 docker run -d \
   -p 3000:3000 \
   --env-file .env \
+  -v opencauldron-state:/app/.state \
+  -v opencauldron-uploads:/app/uploads \
   ghcr.io/opencauldron/opencauldron:latest
 ```
+
+The two volumes are important:
+
+- `/app/.state` — holds the auto-generated `NEXTAUTH_SECRET`. Without a persistent volume here, every restart invalidates all sessions.
+- `/app/uploads` — only needed if you use `STORAGE_PROVIDER=local`. For Cloudflare R2, omit this volume.
 
 Or pass variables individually:
 
@@ -154,7 +156,7 @@ docker run -d \
   -p 3000:3000 \
   -e DATABASE_URL="postgresql://user:pass@host/db?sslmode=require" \
   -e NEXTAUTH_URL="https://your-domain.com" \
-  -e NEXTAUTH_SECRET="your-secret" \
+  -e NEXTAUTH_SECRET="your-secret-or-leave-empty-for-auto" \
   -e GOOGLE_CLIENT_ID="your-client-id" \
   -e GOOGLE_CLIENT_SECRET="your-client-secret" \
   -e STORAGE_PROVIDER="r2" \
@@ -163,6 +165,7 @@ docker run -d \
   -e R2_SECRET_ACCESS_KEY="your-secret-key" \
   -e R2_BUCKET_NAME="cauldron" \
   -e R2_PUBLIC_URL="https://your-bucket.your-domain.com" \
+  -v opencauldron-state:/app/.state \
   ghcr.io/opencauldron/opencauldron:latest
 ```
 
@@ -170,46 +173,44 @@ The app listens on port 3000. Map it to whichever port your reverse proxy expect
 
 ### Database and migrations
 
-Provide `DATABASE_URL` pointing to your external Postgres instance. Run migrations before starting the container (or as a separate init step):
+Provide `DATABASE_URL` pointing to your external Postgres instance. Migrations run automatically when the container starts — the same entrypoint as the Compose path. No separate `db:migrate` step is required.
 
-```bash
-DATABASE_URL="postgresql://..." bun run db:migrate
-```
+The database must have the `vector` extension available (used by migration `0016`). Most managed Postgres providers (Neon, Supabase, RDS with `rds.force_ssl`) include pgvector by default; check your provider's docs if you're unsure.
 
 ### Storage
 
-The local filesystem backend does not work well with standalone containers — the `/app/uploads` directory is ephemeral unless you mount a volume. For containerized deployments without Compose, use R2:
+The local filesystem backend works with standalone containers only when `/app/uploads` is mounted as a persistent volume — otherwise written files disappear with the container. For most cloud deployments without Compose, use R2:
 
 ```bash
 STORAGE_PROVIDER="r2"
 ```
 
-See the [Storage guide](/guides/storage) for full R2 configuration.
+See the [Storage guide](/guides/storage/) for full R2 configuration.
 
 ---
 
 ## Vercel
 
-Vercel is the easiest path if you do not need self-hosting. The app deploys as a serverless Next.js application.
+Vercel is the easiest path if you don't want to manage infrastructure. The app deploys as a serverless Next.js application.
 
 ### Requirements
 
 Before deploying to Vercel you need:
 
-- A [Neon](https://neon.tech) database (or another serverless-compatible Postgres)
+- A [Neon](https://neon.tech) database (or another serverless-compatible Postgres with pgvector)
 - A [Cloudflare R2](https://developers.cloudflare.com/r2/) bucket with public access enabled
 
 Both are required. Read on for why.
 
 ### Why Neon is required
 
-OpenCauldron auto-detects the database driver at startup. If `DATABASE_URL` contains `neon.tech` or `neon.db`, it uses the `@neondatabase/serverless` HTTP driver, which is compatible with Vercel's edge and serverless runtime. Standard `pg` connections use long-lived TCP connections that do not work in serverless environments. Use a Neon connection string for Vercel deployments.
+OpenCauldron auto-detects the database driver at startup. If `DATABASE_URL` contains `neon.tech` or `neon.db`, it uses the `@neondatabase/serverless` HTTP driver, which is compatible with Vercel's edge and serverless runtime. Standard `pg` connections use long-lived TCP connections that don't work well in serverless environments. Use a Neon connection string for Vercel deployments.
 
 ### Why R2 is required
 
-Vercel's serverless functions have an ephemeral filesystem — any files written to disk disappear when the function exits. The local storage backend writes to disk and will not work on Vercel. Set `STORAGE_PROVIDER="r2"` and configure your R2 credentials.
+Vercel's serverless functions have an ephemeral filesystem — any files written to disk disappear when the function exits. The local storage backend writes to disk and won't work on Vercel. Set `STORAGE_PROVIDER="r2"` and configure your R2 credentials.
 
-Additionally, image-to-video generation requires a publicly accessible URL for the reference image. R2 with a public bucket satisfies this requirement; local storage does not.
+Additionally, image-to-video generation requires a publicly accessible URL for the reference image. R2 with a public bucket satisfies this requirement; local storage doesn't.
 
 ### Deploy
 
@@ -224,7 +225,7 @@ NEXTAUTH_URL="https://your-project.vercel.app"   # or your custom domain
 STORAGE_PROVIDER="r2"
 ```
 
-Vercel automatically runs `bun run build` (or `next build`) during deployment. No extra build command is needed.
+Vercel automatically runs `pnpm run build` during deployment. No extra build command is needed.
 
 ### Environment variables on Vercel
 
@@ -234,22 +235,16 @@ Add every variable from `.env.example` that applies to your deployment. Key ones
 |----------|-----------------|
 | `DATABASE_URL` | Neon connection string (must contain `neon.tech`) |
 | `NEXTAUTH_URL` | Your production URL — must match the deployed domain exactly |
+| `NEXTAUTH_SECRET` | A real secret value — Vercel doesn't have the persistent volume that Docker uses for auto-generation |
 | `STORAGE_PROVIDER` | `r2` |
 | `R2_PUBLIC_URL` | Public base URL for your R2 bucket |
 
 ### Running migrations on Vercel
 
-Vercel does not run migrations automatically. Run them from your local machine against your Neon database before or after the first deploy:
+Vercel doesn't run migrations automatically. Run them from your local machine against your Neon database before or after the first deploy:
 
 ```bash
-DATABASE_URL="postgresql://..." bun run db:migrate
-```
-
-Then seed badge definitions:
-
-```bash
-# .env.local must contain your Neon DATABASE_URL
-bun src/lib/db/seed-badges.ts
+DATABASE_URL="postgresql://..." pnpm exec drizzle-kit migrate
 ```
 
 ### Custom domain
@@ -260,6 +255,6 @@ After deploying, update `NEXTAUTH_URL` in Vercel's environment variables to matc
 
 ## Related
 
-- [Configuration](/configuration) — Full environment variable reference
-- [Storage](/guides/storage) — R2 setup and storage backend details
-- [API Keys](/guides/api-keys) — Configure AI provider keys
+- [Configuration](/configuration/) — Full environment variable reference
+- [Storage](/guides/storage/) — R2 setup and storage backend details
+- [API Keys](/guides/api-keys/) — Configure AI provider keys

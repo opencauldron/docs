@@ -23,23 +23,29 @@ OpenCauldron uses PostgreSQL via Drizzle ORM. Set `DATABASE_URL` to a valid Post
 DATABASE_URL="postgresql://cauldron:cauldron@localhost:5432/cauldron"
 ```
 
-For local development, the included `docker-compose.yml` spins up a Postgres 16 instance with these exact credentials. Run it with:
+For local development on the contributor flow, the bundled `docker-compose.dev.yml` spins up a Postgres 16 + pgvector instance with these exact credentials. Run it with:
 
 ```bash
-docker compose up db
+docker compose -f docker-compose.dev.yml up -d
 ```
 
-For production, [Neon](https://neon.tech) is a solid serverless Postgres option. Add `?sslmode=require` to the connection string when connecting to Neon or any hosted provider that requires SSL:
+For the Docker self-host path, `docker-compose.yml` includes a Postgres service automatically — `DATABASE_URL` is preset to point at it.
+
+For production without Compose (Vercel, your own Kubernetes, etc.), [Neon](https://neon.tech) is a solid serverless Postgres option. Add `?sslmode=require` to the connection string when connecting to Neon or any hosted provider that requires SSL:
 
 ```bash
 DATABASE_URL="postgresql://user:password@host/database?sslmode=require"
 ```
 
-After setting `DATABASE_URL`, run migrations before starting the app:
+The database must have the `vector` extension available (used by migration `0016`). The bundled compose images include it; check your provider's docs if you're using external Postgres.
+
+After setting `DATABASE_URL`, apply migrations:
 
 ```bash
-npx drizzle-kit push
+pnpm exec drizzle-kit migrate
 ```
+
+The Docker self-host path runs migrations automatically on container start — you don't need to invoke this command yourself.
 
 ### Authentication
 
@@ -129,23 +135,27 @@ See the [API Keys guide](/guides/api-keys) for instructions on obtaining each ke
 
 ## Docker deployment
 
-The repo includes a `docker-compose.yml` that runs the app and a Postgres database together. It reads environment variables from `.env.local`:
+The published `docker-compose.yml` pulls the multi-arch image from GHCR and runs it alongside a `pgvector/pgvector:pg16` database. It reads environment variables from `.env`:
 
 ```bash
-cp .env.example .env.local
+curl -O https://raw.githubusercontent.com/opencauldron/opencauldron/main/docker-compose.yml
+curl -o .env https://raw.githubusercontent.com/opencauldron/opencauldron/main/.env.example
 # Fill in values, then:
-docker compose up
+docker compose up -d
 ```
 
-The app container is built from the included `Dockerfile` and uses Next.js standalone output. The database container uses `postgres:16-alpine` with a health check so the app only starts once Postgres is ready.
+The app container's entrypoint auto-generates a persistent `NEXTAUTH_SECRET`, applies migrations, and bootstraps the admin workspace on first boot. See the [Deploying guide](/guides/deploying/#docker-compose) for details.
 
-For a production Docker deployment without Compose, pass variables at runtime:
+For a production Docker deployment without Compose (your own Kubernetes, ECS, Fly.io, etc.), pass variables at runtime:
 
 ```bash
 docker run -p 3000:3000 \
   --env-file .env \
+  -v opencauldron-state:/app/.state \
   ghcr.io/opencauldron/opencauldron:latest
 ```
+
+The `/app/.state` volume holds the auto-generated auth secret — without it, every restart invalidates all sessions.
 
 ---
 
