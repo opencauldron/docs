@@ -118,12 +118,6 @@ If you skipped the AI provider step, add API keys to `.env.local` before generat
 
 ---
 
-## Migrating from `create-opencauldron`
-
-If you used `npx create-opencauldron` before, the standalone npm package is now deprecated — it has been replaced by `pnpm setup` inside the repo. Running the old command prints a redirect message pointing at the flow above. Existing forks created by the old wizard continue to work; nothing about the generated `.env.local` shape has changed.
-
----
-
 ## Related
 
 - [Installation](/installation/) — Manual setup walkthrough
