@@ -10,9 +10,12 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: 'Docs',
+      title: 'OpenCauldron',
       logo: {
         src: './public/favicon.svg',
+      },
+      components: {
+        SiteTitle: './src/components/SiteTitle.astro',
       },
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/opencauldron/opencauldron' },
