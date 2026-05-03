@@ -7,7 +7,7 @@ This guide walks you through getting the main OpenCauldron Next.js application r
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) 20+ or [Bun](https://bun.sh) 1.0+ (Bun is recommended — all scripts use it)
+- [Node.js](https://nodejs.org) 20+ and [pnpm](https://pnpm.io) (the project's package manager)
 - [Docker](https://docker.com) for local Postgres, or a [Neon](https://neon.tech) connection string
 - A Google Cloud project with OAuth credentials configured for `http://localhost:3000`
 - At least one AI provider API key (for testing generation)
@@ -35,7 +35,7 @@ git remote add upstream https://github.com/opencauldron/opencauldron
 ## 2. Install dependencies
 
 ```bash
-bun install
+pnpm install
 ```
 
 ---
@@ -107,13 +107,13 @@ If you are using Neon, skip this step and set `DATABASE_URL` to your Neon connec
 
 ## 5. Apply the schema
 
-Push the schema to your database:
+Apply the SQL migrations to your database:
 
 ```bash
-bun run db:push
+pnpm exec drizzle-kit migrate
 ```
 
-Use `db:push` for local development. It applies schema changes directly without generating migration files, which is faster when iterating.
+This applies all pending migrations in order. Use `drizzle-kit migrate` — not `db:push`. The `db:push` command bypasses migration history and fails on a fresh database that needs the `pgvector` extension.
 
 ---
 
@@ -122,7 +122,7 @@ Use `db:push` for local development. It applies schema changes directly without 
 The feats (achievement badges) system requires a seeded `badges` table. Without it, no badges will be awarded and the feats UI will be empty.
 
 ```bash
-bun tsx src/lib/db/seed-badges.ts
+pnpm exec tsx src/lib/db/seed-badges.ts
 ```
 
 You only need to run this once (and again after upgrades that add new badges).
@@ -132,7 +132,7 @@ You only need to run this once (and again after upgrades that add new badges).
 ## 7. Start the dev server
 
 ```bash
-bun run dev
+pnpm run dev
 ```
 
 The app starts at [http://localhost:3000](http://localhost:3000). Sign in with Google to create your account.
@@ -143,12 +143,12 @@ The app starts at [http://localhost:3000](http://localhost:3000). Sign in with G
 
 | Command | What it does |
 |---------|-------------|
-| `bun run dev` | Start Next.js dev server with hot reload |
-| `bun run build` | Production build — run this before opening a PR |
-| `bun run lint` | Run ESLint across the codebase |
-| `bun run db:push` | Push schema changes to the local database |
-| `bun run db:migrate` | Apply versioned migrations (production workflow) |
-| `bun run db:studio` | Open Drizzle Studio in the browser |
+| `pnpm run dev` | Start Next.js dev server with hot reload |
+| `pnpm run build` | Production build — run this before opening a PR |
+| `pnpm run lint` | Run ESLint across the codebase |
+| `pnpm exec drizzle-kit migrate` | Apply versioned migrations |
+| `pnpm exec drizzle-kit generate` | Generate a migration after editing the schema |
+| `pnpm run db:studio` | Open Drizzle Studio in the browser |
 
 ---
 
@@ -157,7 +157,7 @@ The app starts at [http://localhost:3000](http://localhost:3000). Sign in with G
 After signing in for the first time, your account is created with the `member` role. To access admin features (user management, usage dashboards), promote yourself in Drizzle Studio:
 
 ```bash
-bun run db:studio
+pnpm run db:studio
 ```
 
 Open `https://local.drizzle.studio`, find your row in the `users` table, and set `role` to `admin`.
@@ -202,8 +202,8 @@ The provider system — where most new integrations live — is in `src/provider
 Before pushing a branch, run:
 
 ```bash
-bun run lint
-bun run build
+pnpm run lint
+pnpm run build
 ```
 
 Both must pass cleanly. The build step catches type errors that the dev server may not surface.

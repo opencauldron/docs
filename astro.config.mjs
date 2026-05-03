@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://docs.opencauldron.ai',
   redirects: {
     '/': '/introduction/',
+    '/guides/teams': '/getting-started/',
   },
   integrations: [
     starlight({
@@ -27,13 +28,25 @@ export default defineConfig({
       customCss: ['./src/styles/starlight.css'],
       sidebar: [
         {
-          label: 'Getting Started',
+          label: 'Introduction',
           items: [
             { slug: 'introduction' },
-            { slug: 'installation' },
-            { slug: 'setup-wizard' },
-            { slug: 'configuration' },
-            { slug: 'guides/api-keys' },
+          ],
+        },
+        {
+          label: 'Using OpenCauldron',
+          items: [
+            { slug: 'getting-started' },
+            { slug: 'guides/brands' },
+            { slug: 'guides/campaigns' },
+            { slug: 'guides/activity' },
+            { slug: 'guides/library' },
+            { slug: 'guides/review' },
+            { slug: 'guides/threads' },
+            { slug: 'guides/gallery' },
+            { slug: 'guides/xp-and-feats' },
+            { slug: 'guides/usage-and-limits' },
+            { slug: 'guides/admin' },
           ],
         },
         {
@@ -45,7 +58,6 @@ export default defineConfig({
             { slug: 'guides/image-editing' },
             { slug: 'guides/loras' },
             { slug: 'guides/brews' },
-            { slug: 'guides/gallery' },
             { slug: 'guides/references' },
           ],
         },
@@ -57,18 +69,12 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Team & Usage',
+          label: 'Self-hosting',
           items: [
-            { slug: 'guides/teams' },
-            { slug: 'guides/brands' },
-            { slug: 'guides/usage-and-limits' },
-            { slug: 'guides/xp-and-feats' },
-            { slug: 'guides/admin' },
-          ],
-        },
-        {
-          label: 'Infrastructure',
-          items: [
+            { slug: 'installation' },
+            { slug: 'setup-wizard' },
+            { slug: 'configuration' },
+            { slug: 'guides/api-keys' },
             { slug: 'guides/storage' },
             { slug: 'guides/database' },
             { slug: 'guides/deploying' },

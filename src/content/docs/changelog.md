@@ -3,6 +3,35 @@ title: Changelog
 description: Release history and notable changes for OpenCauldron.
 ---
 
+## 2026-05-02
+
+### Activity feed
+
+- New **Activity** page in the sidebar — a real-time log of everything happening across your workspace.
+- Three tabs: **For You** (events relevant to you — your submissions, approvals, rejections, XP, badges), **My Brands** (all events on brands you belong to), and **Workspace** (every event across the studio, admins only).
+- Filter chips narrow the feed to specific event types: approvals, drafts, feats, or level-ups.
+- Time filter lets you scope to today, the past 7 days, 30 days, or all time.
+- Infinite scroll with cursor-based pagination — the feed stays fast as history grows.
+
+### Campaign tagging across the full workflow
+
+- Tag assets with brand campaigns at two entry points: the Generate page (at creation time) and the Library detail panel (after the fact). The Review modal shows campaign assignments read-only.
+- Campaign chips appear on asset cards in the Library so you can scan which initiative an asset belongs to without opening it.
+- Workspace teammates can now edit tags and campaign assignments on any shared asset — previously limited to the asset's creator.
+
+### Public campaign galleries
+
+- Share a campaign's approved assets with anyone — no login required.
+- Each campaign gets a shareable public URL at `/brands/[slug]/campaigns/[campaign-slug]/public`.
+- Only approved assets are visible. Draft, in-review, rejected, and archived assets stay private.
+- Brand managers control which campaigns have a public gallery.
+
+### Threads everywhere
+
+- Threads (introduced in Library on 2026-05-01) are now available in the **Gallery** and **Review** modal as well — the Thread tab appears on any asset wherever you open it.
+
+---
+
 ## 2026-05-01
 
 ### Now called OpenCauldron
