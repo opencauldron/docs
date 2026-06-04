@@ -1,113 +1,82 @@
 ---
-title: LoRAs
-description: Browse, favorite, and apply Civitai LoRAs to Flux generations for fine-grained style, character, and concept control.
+title: Styles & LoRAs
+description: Browse and favorite add-on styles, then stack them in the composer to push a look, character, or concept
 ---
 
-LoRA (Low-Rank Adaptation) is a technique for applying small, targeted modifications to a base model without retraining it. LoRA files are typically a few hundred megabytes and encode a specific style, character, concept, or subject. Stacking multiple LoRAs lets you combine their effects in a single generation.
+A style (also called a LoRA) is an add-on you apply on top of a model to push a generation toward a specific look, character, or concept. Pick one for a painterly finish, a recurring character, a product mockup style, or any other recognizable treatment. You browse styles, favorite the ones you like, and add them in the composer when you [create images](/guides/creating-images/).
 
-OpenCauldron sources LoRAs from [Civitai](https://civitai.com), the largest community hub for community-trained models.
+Styles depend on the model. Only styles that work with the model you've chosen show up in the composer, so you can't add one that won't apply.
 
----
+## Browse styles
 
-## The /loras exploration page
+Open **LoRAs** in the sidebar to browse the catalog.
 
-Navigate to **LoRAs** in the sidebar to open the exploration page. It searches the Civitai catalog directly and shows results as a browsable grid.
+- **Search** — type to find styles by name. Results update as you type.
+- **Base model** — filter to styles built for a given model family. A green dot marks the families you can generate with today.
+- **Sort** — order results by **Most Downloaded**, **Highest Rated**, or **Newest**.
+- **All** / **Favorites** — switch between every result and just the ones you've saved.
 
-### Filtering and sorting
+Each result is a card with a preview image or short clip, the name, and how many people have used and liked it. Scroll to the bottom and select **Load more** to pull in the next page.
 
-The toolbar at the top of the page provides four controls:
+If your studio admin has enabled mature content, you'll see an optional toggle.
 
-| Control | Options |
-|---------|---------|
-| **Search** | Free-text search against Civitai's LoRA catalog |
-| **Base model** | Flux, SDXL, Pony, Illustrious, SD 1.5, Hunyuan Video, Wan Video |
-| **Sort** | Most Downloaded, Highest Rated, Newest |
-| **NSFW** | Toggle to include adult-rated content (off by default, preference is saved in your browser) |
+### Ready to generate vs. browse only
 
-Results update as you type. Click **Load more** at the bottom of the grid to fetch the next page.
+Not every style can be used in the composer yet. Cards carry one of two badges:
 
-### Base model support
+| Badge | What it means |
+|---|---|
+| **Ready to generate** | You can add this style in the composer right now |
+| **Browse only** | You can preview and favorite it, but it isn't available for generation yet |
 
-The base model filter determines which LoRAs appear in the search results. Not all base models can be used for generation yet:
+You can favorite a **Browse only** style to keep it on hand for when support arrives.
 
-| Base model | Status |
-|------------|--------|
-| Flux | Ready to generate |
-| SDXL, Pony, Illustrious, SD 1.5 | Browse only |
-| Hunyuan Video, Wan Video | Browse only |
+### View a style's details
 
-Cards for Flux LoRAs show a **Ready to generate** badge. Cards for all other base models show a **Browse only** badge. You can still favorite browse-only LoRAs for future use as more base models are added.
+Select any card to open its detail view. The preview gallery is on the left; if there's more than one image or clip, step through them with the arrows or the thumbnail strip below. Silent preview clips loop on their own.
 
-### Viewing LoRA details
+The right side shows:
 
-Click any card to open the detail modal. The left side shows a full-size image or video gallery; the right panel shows:
+- The name and who made it
+- Use and like counts
+- The base model and file details
+- **Trigger Words** — keywords the style responds to (more on these below)
+- **Tags** describing the look
 
-- Name and creator
-- Download count and like count
-- Base model and file format/size
-- Trigger words — the keywords the LoRA was trained with
-- Tags
+## Favorite the styles you use
 
-If the LoRA has multiple preview images or videos, use the left/right arrows to step through them, or click any thumbnail in the strip below the main image. Video previews play as silent, looping clips.
+Select the heart on any card to save a style. Favorites are tied to your account, so they're ready in the composer without searching again. In a style's detail view, the action button reads **Favorite**, and switches to **Favorited** once it's saved.
 
-### Favorites
+To see only your saved styles, switch to the **Favorites** view. A count next to it shows how many you have. To remove one, select the heart again on the card or in the detail view.
 
-Click the heart button on any card to save a LoRA to your favorites. Favorited LoRAs sync to your account so they're available on the Generate page without searching again.
+## Add styles in the composer
 
-To see only your saved LoRAs, click the **Favorites** toggle button at the top of the page. The favorites count is shown next to the button when you have any saved.
+When you [create images](/guides/creating-images/) with a model that supports styles, a **User LoRAs** section appears in the composer. Models that don't support styles don't show it.
 
-To remove a favorite, click the heart again on any favorited card or in the detail modal.
+1. Expand the **User LoRAs** section.
+2. Use the **Browse** tab to search, or the **Favorites** tab to pull from your saved styles.
+3. Hover a card and select **Add**.
 
----
+You can stack up to five styles on one generation. The badge on the section header tracks the count (for example, `2/5`). When you reach the limit, the **Add** button reads **Limit reached** until you remove one.
 
-## Using LoRAs on the Generate page
+### Adjust how strongly each style applies
 
-LoRAs are only available when a **Flux** model is selected. When you pick any Flux variant, a LoRA section appears in the left panel below the model selector.
+Added styles appear in an **Active LoRAs** list. Each one has its own strength slider, running from 0 to 4 and defaulting to 1.0:
 
-### Adding LoRAs
+- Lower values blend the style in lightly.
+- 1.0 applies it at full strength.
+- Higher values make its effect more dominant.
 
-Click the **LoRA** header (or the toggle switch next to it) to expand the browser. It has two tabs:
-
-- **Browse** — search Civitai directly from inside the Generate page
-- **Favorites** — your saved LoRAs, ready to add instantly
-
-Hover any card and click **Add** to apply it to the current generation. You can add up to **5 LoRAs** at a time. The badge next to the LoRA header shows the current count (e.g., `2/5`).
-
-### Adjusting weight
-
-Each active LoRA appears in an **Active LoRAs** list below the browser. For each one you can:
-
-- **Adjust weight** — drag the slider from 0 to 4. A weight of `1.0` applies the LoRA at full strength. Lower values blend it in more subtly; higher values make its effect more dominant. Default is `1.0`.
-- **Remove** — click the X button to deactivate the LoRA.
+Select the X next to a style to remove it from the generation.
 
 ### Trigger words
 
-If a LoRA was trained with trigger words, they appear as badges under its name in the Active LoRAs list. The system automatically inserts these trigger words into your prompt when you generate. You will see them appear in the prompt field.
+Some styles respond to specific keywords, shown as **Trigger Words** badges under the style's name in the **Active LoRAs** list. Include these in your prompt — without them, the style's effect can be weak or missing. The badges are there so you know which words to add as you write.
 
-Including trigger words in your prompt is important — without them, the LoRA's effect may be weak or absent.
+## Set a default style for a brand
 
-### NSFW content
+A brand can carry a default style so its work stays consistent. A brand Manager sets this in the brand kit, and it applies to generations made under that brand. For how brand kits work, see [Brands](/guides/brands/).
 
-The NSFW toggle appears inside the LoRA browser on the Generate page and is shared with the setting on the /loras exploration page. Enabling it allows adult-rated LoRAs to appear in search results.
+## Save a style setup as a Brew
 
----
-
-## How generation works with LoRAs
-
-When you generate with one or more active LoRAs, OpenCauldron automatically routes the request to the **fal.ai `flux-lora` endpoint** instead of the standard Flux provider. This is transparent — you do not need to configure anything differently.
-
-The fal.ai endpoint requires a `FAL_KEY` environment variable. If this key is not configured, LoRA-enabled generation will fail. See the [Environment Variables](/reference/environment-variables) reference and [API Keys](/guides/api-keys) guide.
-
----
-
-## Civitai integration
-
-LoRA search is powered by the Civitai API. No account is needed to browse, but unauthenticated requests are subject to stricter rate limits.
-
-To increase rate limits, set a `CIVITAI_API_KEY` in your environment:
-
-```bash
-CIVITAI_API_KEY=your_civitai_api_token
-```
-
-You can generate a Civitai API key from your account settings on [civitai.com](https://civitai.com). When this key is set, all Civitai API calls from your OpenCauldron instance include it as a Bearer token.
+Once you have a model, a prompt, and a stack of styles you like, save the whole setup as a reusable recipe. See [Brews](/guides/brews/) to keep a working combination and reuse it later.

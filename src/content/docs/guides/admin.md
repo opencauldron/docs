@@ -1,161 +1,97 @@
 ---
-title: Admin Panel
-description: Manage users, view team-wide usage, set daily limits, grant XP, and award badges from the admin panel.
+title: Admin tools
+description: Curate the studio Styles catalog, set default styles per brand, and run the prompt safety blocklist
 ---
 
-The admin panel gives administrators a full view of team activity and direct control over user accounts. Navigate to `/admin` in the sidebar to access it.
+The **Admin** area is for studio Owners and Admins. It covers two jobs: curating the **Styles** catalog your team can generate with, and running the safety rules that screen prompts before anything is created.
 
-Only users with the `admin` role can reach this page. Any other user gets a `403 Forbidden` response from the underlying APIs and will see an error message instead of the dashboard.
+This is separate from people management. To invite teammates, change studio roles, or manage who belongs to a brand, use [Members & roles](/settings/members/). To rename your studio or set studio-wide defaults, use [Studio settings](/settings/studio/).
 
----
+Open **Admin** from the sidebar. The landing page shows three sections:
 
-## Setting up the first admin
+| Section | What it does |
+|---|---|
+| **LoRAs** | The full Styles catalog — every style your studio knows about. |
+| **Brand LoRAs** | Attach catalog styles to specific brands as defaults. |
+| **Blocklist** | Prompt safety rules, plus a log of recent blocked prompts. |
 
-### Docker self-host (automatic)
+If you are not an Owner or Admin, these pages are not available to you.
 
-If you set `ADMIN_EMAIL` in `.env` before first boot, the entrypoint creates the admin user and grants `owner` role on the new workspace automatically. Sign in with that exact Google account and you'll land on the dashboard with full admin access. No SQL required.
+## Styles catalog
 
-Re-running `docker compose up -d` is idempotent — once a workspace exists, the bootstrap step is skipped.
+Open the **LoRAs** section to reach the **LoRA Catalog**. A style (also called a LoRA) is a reusable look your team can apply when creating images — a house aesthetic, a product treatment, a signature finish. The catalog is the master list of every style available across the studio.
 
-### Contributor / fork (manual)
+Styles are grouped by how they reach your team:
 
-For the contributor or fork workflows, accounts are created with the `member` role by default — including the very first user to sign in. Promote yourself with a direct SQL update after your account exists:
+- **System LoRAs** apply to every generation automatically. Use these for a look you always want on, studio-wide.
+- **Brand LoRAs** are available to attach to specific brands. They are not on by default — you choose which brands get them in the **Brand LoRAs** section.
+- **User LoRAs** show up in the style picker when a teammate is creating an image, so they can opt in per generation.
 
-```sql
-UPDATE users SET role = 'admin' WHERE email = 'you@example.com';
-```
+### Add or edit a style
 
-Using the local dev compose:
+1. Click **New LoRA** to add one, or the pencil icon on any row to edit an existing style.
+2. Give it a **Display name** — this is what your team sees.
+3. Set its **Scope** to System, Brand, or User, depending on how broadly it should reach.
+4. Add **Trigger words** if the style responds to specific terms in a prompt.
+5. Leave **Enabled** on to make it available, or turn it off to retire it without deleting.
+6. Click **Save changes** (or **Create LoRA** for a new one).
 
-```bash
-docker compose -f docker-compose.dev.yml exec db psql -U cauldron -d cauldron \
-  -c "UPDATE users SET role = 'admin' WHERE email = 'you@example.com';"
-```
+The **Enabled** switch on each row lets you turn a style on or off in place. Deleting a style removes it from the catalog and detaches it from every brand. Work your team already created stays exactly as it was — past results are not affected.
 
-Once you have at least one admin, you can promote additional users through the admin panel UI without touching the database again.
+For how teammates pick and apply styles while creating, see [Styles & LoRAs](/guides/loras/).
 
----
+## Default styles per brand
 
-## Team overview
+Open the **Brand LoRAs** section to set which styles a brand gets by default. This is how you give each brand a consistent on-brand look without asking every teammate to remember which style to pick.
 
-The top of the admin panel shows three summary cards:
+1. Pick a brand from the **Brand** menu at the top.
+2. The **Attached LoRAs** card lists the styles already attached to that brand.
+3. Click **Add LoRA** to open the catalog, then click **Attach** next to a style to add it.
+4. Adjust the **Sort** order to control which style takes priority, and **Scale** to control how strongly a style is applied.
+5. To remove a style from a brand, click the trash icon on its row.
 
-| Card | What it shows |
-|------|---------------|
-| Today (Team) | Total completed generations across all users today, and estimated cost |
-| This Month (Team) | Total completed generations and estimated cost for the last 30 days |
-| Team Members | Total number of user accounts |
+Only Brand and User styles can be attached here. System styles already apply everywhere, so they do not appear in this list.
 
-"Today" resets at midnight UTC. "This Month" is a rolling 30-day window, not a calendar month.
+Brands you manage are set up on the brand's own page. For brand settings, members, and the brand kit, see [Brands](/guides/brands/).
 
-Only generations with a `completed` status are counted in these totals. Failed and in-progress generations are excluded.
+## Prompt blocklist
 
----
+Open the **Blocklist** section to manage the **Prompt Blocklist** — the safety rules that screen every prompt before a generation runs. When a prompt matches the rules, the generation is blocked and the attempt is logged.
 
-## Usage by model
+The page has two panels: **Rules** on top, **Recent violations** below.
 
-Below the summary cards, a **Usage by Model (30 days)** section shows a breakdown of the last 30 days of completed generations grouped by model. Each row displays:
+### Rules
 
-- The model name
-- Number of generations
-- Estimated cost
+Each rule is a word or phrase to watch for, matched case-insensitively as plain text (no patterns or wildcards). Every rule has a **Kind** that controls when it blocks:
 
-This section only appears if there is at least one completed generation in the window. It covers all users collectively — it is not filtered per user.
+| Kind | When it blocks |
+|---|---|
+| **absolute** | On any match, on its own. Use this for terms that are never allowed. |
+| **minor** | Only when an **explicit** rule also matches the same prompt. |
+| **explicit** | Only when a **minor** rule also matches the same prompt. |
 
----
+The **minor** and **explicit** kinds work as a pair: neither blocks alone, but together in one prompt they do. Use them for terms that are fine on their own but not in combination.
 
-## User management table
+To manage rules:
 
-The **Team Members** table lists every account with the following columns:
+1. Click **New rule** to add one, or the pencil icon to edit an existing rule.
+2. Enter the **Pattern** — the word or phrase to watch for.
+3. Choose the **Kind** (absolute, minor, or explicit).
+4. Add **Notes** if you want to record why the rule exists. Notes are admin-only and never shown to your team.
+5. Leave **Enabled** on so the rule is checked against every prompt, or turn it off to pause it.
+6. Click **Create rule** or **Save**.
 
-| Column | Description |
-|--------|-------------|
-| User | Avatar, display name, and email address |
-| Role | `admin` or `member`, shown as a badge |
-| Daily Limit | The user's current per-day generation cap |
-| Monthly Gens | Completed generations in the last 30 days |
-| Monthly Cost | Estimated cost for those generations |
+The **Enabled** switch on each row pauses or resumes a rule without deleting it.
 
-The table is ordered by account creation date (oldest first).
+### Recent violations
 
----
+The **Recent violations** panel lists prompts that were recently blocked, newest first. Each row shows when it happened, which teammate submitted the prompt, an excerpt of the prompt, and which rules it matched. Click **Load more** to page back through older entries.
 
-## Editing a user
-
-Click the pencil icon on any row to open the edit dialog for that user. Two fields are editable:
-
-**Role** — Toggle between `member` and `admin` using the button pair. Promoting a user to admin gives them full access to the admin panel and all admin APIs immediately (role is checked from the database on every request, not from the session).
-
-**Daily Limit** — Enter any integer from `1` to `10,000`. The new limit takes effect on the next generation request — there is no cooldown or delay.
-
-Click **Save** to apply changes. The table updates in place without a full page reload.
-
-> **Note:** You can change your own role. If you demote yourself from admin to member, you will lose access to the admin panel immediately. Make sure at least one other admin account exists before doing this.
-
----
-
-## Granting XP
-
-Admins can award XP to any user directly, bypassing normal generation-based earning. This is done via the API:
-
-```bash
-POST /api/credits/topup
-Content-Type: application/json
-
-{
-  "userId": "<target-user-uuid>",
-  "amount": 100
-}
-```
-
-The `amount` must be a positive integer. The XP is recorded as an `admin_grant` transaction in the `xp_transactions` table, so it appears in the user's XP history. The response includes the user's new level if the grant caused a level-up:
-
-```json
-{
-  "success": true,
-  "userId": "...",
-  "xpAwarded": 100,
-  "newLevel": 4
-}
-```
-
-There is no UI for this in the admin panel — use the API directly (for example, with `curl` or a REST client).
-
----
-
-## Granting badges
-
-Admins can manually award any badge to any user regardless of whether they have met the normal unlock conditions:
-
-```bash
-POST /api/badges/grant
-Content-Type: application/json
-
-{
-  "userId": "<target-user-uuid>",
-  "badgeId": "first-spark"
-}
-```
-
-Both the `userId` (a UUID) and `badgeId` (a text identifier such as `"early-adopter"`) must refer to existing records. The API returns `404` if either is not found. If the user already holds the badge, the request is a no-op — duplicate badge grants are not created.
-
-Like XP grants, there is no UI for this — use the API directly.
-
----
-
-## Access control details
-
-Every admin endpoint checks the caller's role by reading the `users` table on each request — it does not rely on the session token alone. This means:
-
-- Role changes take effect instantly with no need to sign out and back in.
-- Demoting a user blocks their access to admin APIs on the next request even if they still hold a valid session.
-
-All admin routes return `401 Unauthorized` for unauthenticated requests and `403 Forbidden` for authenticated non-admin users.
-
----
+Use this to spot patterns — a teammate repeatedly hitting the same rule, or a rule that is too broad and catching ordinary work.
 
 ## Related
 
-- [Usage and Limits](/guides/usage-and-limits) — Per-user generation limits and cost tracking detail
-- [XP, Levels, and Feats](/guides/xp-and-feats) — How the XP system works and what badges exist
-- [Team Collaboration](/guides/teams) — Overview of roles and shared gallery
+- [Members & roles](/settings/members/) — invite teammates and set studio and brand roles
+- [Studio settings](/settings/studio/) — studio name and studio-wide defaults
+- [Styles & LoRAs](/guides/loras/) — how teammates pick and apply styles when creating
+- [Usage & limits](/guides/usage-and-limits/) — generation limits and what counts against them

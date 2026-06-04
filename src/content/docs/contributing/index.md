@@ -3,7 +3,11 @@ title: Contributing to OpenCauldron
 description: An overview of how to contribute to OpenCauldron across its public repositories.
 ---
 
-OpenCauldron is an open-source project maintained across a handful of public repositories. Contributions of all kinds are welcome — whether you are fixing a bug, adding a new AI provider, or improving documentation.
+:::note
+You don't need any of this to **use** OpenCauldron — if you're here to work in the product, start at [Introduction](/introduction/). This section is for people who want to contribute to the open-source project.
+:::
+
+OpenCauldron is open source (open core), maintained across a handful of public repositories. Contributions of all kinds are welcome — whether you are fixing a bug, adding a new AI provider, or improving documentation.
 
 This section covers everything you need to get started as a contributor.
 

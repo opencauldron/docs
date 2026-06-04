@@ -1,119 +1,83 @@
 ---
 title: Campaigns
-description: Group brand assets by initiative, track date ranges, and share approved work via a public campaign gallery
+description: Group a brand's assets by initiative, filter the Library by campaign, and share approved work with a public link
 ---
 
-A Campaign is an optional grouping of assets within a [Brand](/guides/brands/). Use campaigns to organize work by project, launch, or initiative — a product launch, a seasonal push, a specific client deliverable. Campaigns live entirely inside one brand and can be made public for sharing outside your workspace.
+A campaign groups a brand's assets around one initiative — a launch, a season, a client project. Campaigns belong to a single [brand](/guides/brands/), so each campaign lives inside the brand it was created for. Tag assets to a campaign as you generate them or later from the [Library](/guides/library/), filter the Library by campaign, and — when work is approved — share it through a public link.
 
-## What campaigns track
+## Where campaigns live
 
-Each campaign has:
+Open a brand and go to its **Campaigns** tab. You'll see every campaign on that brand. Click one to open its page, where you manage its assets and its public link.
 
-- **Name** — required; must be unique within the brand (up to 120 characters)
-- **Description** — optional free-text summary (up to 1,000 characters)
-- **Date range** — optional `startsAt` and `endsAt` timestamps; useful for scheduling and retrospective filtering
-- **Visibility** — `"private"` (default) or `"public"` (generates a shareable URL)
-
-Assets are associated with campaigns through a many-to-many join. One asset can belong to multiple campaigns, and a campaign can hold any number of assets regardless of their `status`.
+Each campaign shows its name and an optional description. One asset can belong to more than one campaign, and a campaign can hold any number of assets at any stage of [review](/guides/review/).
 
 ## Creating a campaign
 
-Only brand managers (`brand_manager` role) — and workspace owners and admins — can create campaigns.
+On the brand's **Campaigns** tab, click **New campaign**. Enter:
 
-To create a campaign:
+- **Name** — required.
+- **Description (optional)** — a short summary of the initiative.
 
-1. Navigate to the brand in the sidebar.
-2. Open the brand's **Campaigns** tab.
-3. Click **New Campaign**.
-4. Enter a name, optional description, and optional date range.
-5. Click **Create**.
+Click **Create**. The campaign starts private — no public link exists until you turn one on.
 
-The campaign starts with `visibility: "private"`. No public URL exists until you publish it.
+Names must be unique within a brand. If you reuse a name, you'll see a message that a campaign with that name already exists.
 
-Campaign names must be unique within a brand. If a name is already taken, the form returns an error.
+Anyone with the **Creator** role on the brand (or **Manager**) can create campaigns. Studio Owners and Admins can too. Brand **Managers** can also delete a campaign — deleting it removes the grouping but leaves every asset, its review status, and its brand tag untouched.
 
-## Editing and deleting a campaign
+## Adding assets to a campaign
 
-Brand managers (and workspace owners/admins) can edit or delete any campaign in the brand.
+There are three ways to put assets in a campaign.
 
-To edit a campaign, open it from the **Campaigns** tab and update the name, description, or date range. Click **Save**.
+### As you generate
 
-To delete a campaign, open it and click **Delete**. Deleting a campaign removes the grouping but does not delete the assets themselves — their `status`, brand tag, and other metadata are unchanged.
+Open a campaign and click **Generate for campaign**. This takes you to the create surface with the campaign already selected, so anything you make there is tagged to the campaign automatically. You can also pick a campaign by hand on the create surface after you choose a brand.
 
-## Tagging assets with a campaign
+### From the campaign page
 
-There are two entry points for tagging an asset with a campaign: at generate time or from the Library detail panel.
+On the campaign page, click **Add assets**. Pick assets from the brand, then click **Add to campaign**. Assets already on the campaign are skipped, and any asset that isn't on this brand can't be added.
 
-Any brand member with `creator` or `brand_manager` role — and workspace owners/admins — can assign campaign tags on assets within their brand.
+### From the Library
 
-### At generate time
+Open any asset in the [Library](/guides/library/) and find the **Campaigns** section in its detail panel. Click **Add to campaign…** to attach a campaign, or remove one by clicking its chip. Changes save right away.
 
-On the **Generate** page, select a brand first. A **Campaign** field appears populated with the campaigns belonging to that brand. Select one before submitting. The generated asset is tagged with the campaign when the asset row is created.
+The **Campaigns** section appears for brand **Creators** and **Managers** (and Studio Owners and Admins). Assets on a Personal brand can't be tagged to a campaign.
 
-Personal brand assets cannot be tagged with campaigns.
+## Filtering the Library by campaign
 
-### In Library
+In the [Library](/guides/library/), the filter bar includes a **Campaign** filter. Pick a campaign to show only the assets tagged to it. This pulls up everything tied to one initiative, across every stage of review.
 
-Open any asset in [Library](/guides/library/) to see its detail panel. In the **Campaigns** section, check or uncheck campaigns to add or remove the asset from them. Changes take effect immediately.
+## Sharing a campaign with a public link
 
-This is a full replace — the panel sends the complete desired list of campaign IDs, so you can add, remove, or reorganize all at once.
+Turn a campaign public to get a link anyone can open — no sign-in, no brand membership. The page shows only the campaign's **approved** assets, with no prompts or other behind-the-scenes details.
 
-> **Note:** Campaign assignments can be edited by any brand `creator` or `brand_manager` on the asset's brand, and by workspace owners/admins. The assignment is not restricted to the asset's original creator.
+Brand **Managers** (and Studio Owners and Admins) control the public link. On the campaign page, find the **Visibility** section and flip the toggle from **Private** to **Public**. The public link appears in a read-only field — click **Copy** to grab it, then share it.
 
-### In Review
+While a campaign is private, the page reads "Only studio members can view this campaign." Once it's public, it reads "Anyone with the link can view this campaign's approved assets."
 
-The Review modal shows a read-only **Campaign** field on the **Info** tab. It displays which campaigns the asset belongs to at the time of review. To change campaign assignments, open the asset in [Library](/guides/library/) instead.
+### What people see on the public page
 
-## Public campaign galleries
+The public page is a read-only grid. It shows:
 
-A campaign can be made public, generating a shareable URL that anyone — including people outside your workspace — can visit to browse the campaign's approved assets.
+- Only assets that are tagged to the campaign **and** approved through [review](/guides/review/).
+- The brand name, the campaign name, and each asset's creator.
+- A download button on each asset.
 
-Only brand managers (and workspace owners/admins) can publish, unpublish, or regenerate a campaign's public link.
+It never shows prompts, model details, parameters, tags, comments, or review status. Drafts, in-review, rejected, and archived assets stay hidden. If nothing is approved yet, the page stays live and shows an empty state rather than breaking — so you can share the link before the work is signed off.
 
-### Publishing a campaign
+### Rotating or turning off the link
 
-Open the campaign and click **Publish**. OpenCauldron generates a unique slug and sets `visibility` to `"public"`. The public URL takes the form:
+Renaming a campaign doesn't change its public link. To retire a link you've already shared, open the campaign and click **Regenerate** — the old link stops working at once, and the new one is copied to your clipboard. To take the campaign offline entirely, switch **Visibility** back to **Private** (or click **Make private**); the public link goes dead and your approved assets are unaffected.
 
-```
-/c/<brand-slug>/<campaign-slug>
-```
+If you don't see the option to turn on public sharing, it isn't set up for your studio yet — ask your studio admin.
 
-For example: `/c/acme/q4-launch-2026`
-
-Copy the URL from the campaign detail page and share it externally.
-
-> **Self-host note:** Publishing requires `R2_PUBLIC_URL` to be configured on the instance. If it is unset, the publish action returns an error. Unpublishing is always permitted even when `R2_PUBLIC_URL` is absent.
-
-### What visitors see
-
-The public gallery is a read-only grid. It shows only assets that are both:
-
-- Tagged with the campaign, **and**
-- Have `status: "approved"`
-
-Draft, in-review, rejected, and archived assets do not appear. The gallery loads up to 200 approved assets, ordered by creation date (newest first).
-
-The page carries `noindex, nofollow` robots metadata — it will not be indexed by search engines. Distribute the URL directly rather than relying on search discovery.
-
-### Regenerating or revoking the link
-
-To rotate the public slug (for example, after sharing it somewhere you want to revoke access), open the campaign and click **Regenerate link**. The old URL stops working immediately and a new one is issued.
-
-To make the campaign private again, click **Unpublish**. The public URL returns a not-found page. Assets and their `approved` status are not affected.
-
-## Permissions reference
+## Who can do what
 
 | Action | Who can do it |
 |---|---|
-| View campaigns in a brand | Any brand member (`viewer`, `creator`, `brand_manager`) |
-| Create a campaign | `brand_manager` on the brand, or workspace `owner`/`admin` |
-| Edit campaign metadata | `brand_manager` on the brand, or workspace `owner`/`admin` |
-| Delete a campaign | `brand_manager` on the brand, or workspace `owner`/`admin` |
-| Tag / untag an asset | `creator` or `brand_manager` on the brand, or workspace `owner`/`admin` |
-| Publish / unpublish / regenerate link | `brand_manager` on the brand, or workspace `owner`/`admin` |
+| View a brand's campaigns | Any brand member (Viewer, Creator, Manager) |
+| Create a campaign | Brand Creator or Manager; Studio Owner or Admin |
+| Delete a campaign | Brand Manager; Studio Owner or Admin |
+| Tag or untag an asset | Brand Creator or Manager; Studio Owner or Admin |
+| Turn the public link on or off, or regenerate it | Brand Manager; Studio Owner or Admin |
 
-Brand member roles are managed on the brand itself. See [Brands](/guides/brands/) for how to add members and assign roles.
-
-The public campaign gallery at `/c/<brand-slug>/<campaign-slug>` requires no authentication and no brand membership. Anyone with the URL can view it.
-
-For details on what happens after an asset is approved and appears in a public gallery, see [Gallery](/guides/gallery/).
+Brand roles are set on the brand itself — see [Brands](/guides/brands/) for adding members and assigning roles. For how an asset becomes approved and eligible for a public campaign, see [Review](/guides/review/).

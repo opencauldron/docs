@@ -10,3 +10,6 @@ dist/
 
 # Internal docs writing brief
 .docs-brief.md
+
+# Internal docs rewrite plan
+.docs-rewrite-plan.md

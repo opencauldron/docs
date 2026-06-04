@@ -1,212 +1,80 @@
 ---
-title: Generation Parameters
-description: Reference for all image and video generation parameters.
+title: Generation settings
+description: A plain-language tour of the generation settings that shape your images and video — and why you rarely need them
 ---
 
-Every model in OpenCauldron supports a different set of parameters. The interface adapts automatically — you'll only see the parameters that apply to your selected model.
+Generation settings shape what comes back: the shape of the frame, how many results you get, and how closely the output follows your words. You rarely have to touch them. The **Auto** model picker chooses a model for you, and every setting starts on a sensible default. Open them when you want more control.
 
-## Common parameters
+## Where the settings live
 
-These parameters appear for most or all models.
+A few settings sit right in the composer, above the **Generate** button:
 
-### Aspect Ratio
+- **Aspect Ratio** — the shape of the frame.
+- **Images** — how many results to make in one run (1 to 4).
 
-The width-to-height ratio of the generated output. Available for all models.
+Everything else lives behind **Advanced settings**, a panel that stays collapsed until you open it. The label on the right shows the model the settings apply to, or **Select a model** if you haven't picked one.
 
-Common ratios and their typical use cases:
+The panel adapts to the model you're using. A model that doesn't support a setting won't show it, so you only see controls that do something. See [Choosing a model](/guides/models/) for how the **Auto** picker works and how to pin a specific model.
 
-| Ratio | Use case |
-|-------|----------|
-| 1:1 | Social media posts, profile images |
-| 16:9 | Landscape, presentations, desktop wallpapers |
-| 9:16 | Stories, Reels, TikTok, mobile wallpapers |
+## Aspect Ratio
+
+The shape of the frame — square, landscape, or portrait. Pick a tile to set it. The options change with the model, but the common ones are:
+
+| Ratio | Use it for |
+|---|---|
+| 1:1 | Social posts, profile images |
+| 16:9 | Landscape, slides, banners |
+| 9:16 | Stories, Reels, mobile screens |
 | 4:3 | Traditional photo, print |
 | 3:4 | Portrait photography, posters |
 
-Some models support additional ratios like 2:1, 3:2, 21:9, and more. The available options update based on your selected model.
+Some models offer more, like 2:1 or 3:2. The tiles show a small preview of each shape so you can scan them quickly.
 
-### Seed
+## Images
 
-A number that controls the random generation process. Available on most image models and some video models.
+The **Images** stepper sets how many results to make in one run, from 1 to 4. Use the **+** and **-** buttons to change the count. More images mean more options to choose from in a single run.
 
-- Leave empty for a random result each time
-- Use the **same seed** with the **same prompt and settings** to reproduce an identical result
-- Useful for iterating on a composition — change the prompt slightly while keeping the seed fixed
+The **Generate** button updates to match — it reads **Generate 3 images** when the count is above one.
 
-### Output Format
+## Style
 
-Choose between **PNG** (lossless, larger files) and **JPEG** (compressed, smaller files). Available on Flux, Imagen, and Gemini models.
+Some models apply a built-in look to the output — realistic, illustration, and others, depending on the model. When the model supports styles, a **Style** menu appears in **Advanced settings**. Choose one, or leave it unset to let the model decide.
 
-Use PNG when you need transparency or will edit the image further. Use JPEG for faster downloads and sharing.
+## Seed
 
----
+A **Seed** is a number that fixes the random part of generation. Leave it blank for a fresh result every time. Set a seed to get repeatable output:
 
-## Image parameters
+- The **same seed** with the **same prompt and settings** gives you the same result again.
+- Keep the seed fixed and change the prompt slightly to iterate on one composition.
 
-### Negative Prompt
+The field reads **Random** when it's empty.
 
-Describe what you want to **exclude** from the generated image. The model will actively try to avoid these elements.
+## Guidance
 
-**Available on:** Imagen 4, Gemini Flash, Ideogram 3, Recraft, Kling, Veo
+**Guidance** controls how closely the output follows your prompt. It shows on models that support it, as a slider in **Advanced settings**.
 
-Examples:
+- Lower values give the model more room to interpret — looser, more creative.
+- Higher values stick more literally to what you wrote.
+
+The default is tuned for the model, so move it only when a result feels too loose or too rigid.
+
+## Negative Prompt
+
+A **Negative Prompt** lists what you want to leave out. The model tries to avoid anything you name here. The field reads **What to avoid in the generation...** and appears on the models that support it.
+
+Use it for cleanup, like:
+
 - `blurry, low quality, watermark` — general quality control
-- `text, letters, words` — avoid unwanted text
-- `people, faces, hands` — exclude human figures
+- `text, letters, words` — keep out unwanted text
 
-### Resolution
+## Resolution
 
-Controls the output image dimensions. Higher resolution means more detail but slower generation.
+On models that support it, **Resolution** sets the output size. Higher resolution means more detail and a longer wait. Pick an option to set it; click it again to clear it and fall back to the model's default. The choices depend on the model.
 
-| Model | Options |
-|-------|---------|
-| Imagen 4 | 1K, 2K |
-| Gemini Flash / Lite | 512, 1K, 2K, 4K |
-| Grok Imagine | 1K, 2K |
+## Mature content
 
-### Style
+If your Studio admin has enabled mature content, you see an optional toggle.
 
-Apply a predefined artistic style to the output. Available on **Ideogram 3** and **Recraft**.
+## You rarely need any of this
 
-Ideogram styles include realistic, cinematic, anime, watercolor, sketch, 3D, and more. Recraft offers realistic image, digital illustration, vector illustration, and icon styles with additional sub-style options.
-
-### Rendering Speed
-
-Trade off between speed and quality. Available on **Ideogram 3**.
-
-| Option | Description |
-|--------|-------------|
-| Turbo | Fastest generation, slightly lower detail |
-| Default | Balanced speed and quality |
-| Quality | Slowest, highest detail and coherence |
-
-### Guidance
-
-Controls how strictly the model follows your prompt. Available on **Flux Dev**.
-
-- **Low values** (1.5–2.5) — more creative, looser interpretation
-- **High values** (3.5–5.0) — more literal, closely follows the prompt
-- Default: 3.0
-
-### Steps
-
-Number of diffusion steps during generation. Available on **Flux Dev**.
-
-- **Fewer steps** (1–15) — faster, rougher output
-- **More steps** (25–50) — slower, finer detail
-- Default: 28
-
-### CFG Scale
-
-Classifier-free guidance scale — similar to Guidance but used by different models. Available on **Recraft** (as artistic level).
-
-Controls the balance between prompt adherence and creative freedom. Range: 0.3–0.7 (default: 0.5).
-
-### Quality
-
-Controls the quality tier sent to the OpenAI API. Available on **OpenAI** (gpt-image-2, gpt-image-1.5, gpt-image-1, gpt-image-1-mini).
-
-| Option | API value | Notes |
-|--------|-----------|-------|
-| Standard | `medium` | Default. Balanced quality and cost. |
-| High | `high` | Slower, higher detail. Roughly 4× the cost of low. |
-
-OpenAI bills by token usage, so actual cost per image varies by quality level and size. Medium quality at 1:1 is $0.042 for gpt-image-2/1.5/1.0 and $0.021 for Mini.
-
-### Person Generation
-
-Controls whether the model can generate images of people. Available on **Imagen 4** and **Gemini** models.
-
-| Option | Description |
-|--------|-------------|
-| Allow All | Generate people of any age |
-| Allow Adults | Only generate adults (default) |
-| Don't Allow | No people in the output |
-
-This is a Google safety requirement. If your prompt mentions people and this is set to "Don't Allow," the generation may fail.
-
----
-
-## Video parameters
-
-### Duration
-
-Length of the generated video clip in seconds. Available options depend on the model:
-
-| Model | Durations |
-|-------|-----------|
-| Veo 3 | 5s, 8s |
-| Veo 3.1 | 4s, 6s, 8s |
-| Runway Gen-4 | 5s, 10s |
-| Kling 2.1 | 5s, 10s |
-| Hailuo 2.3 | 6s, 10s |
-| Ray 2 | 5s, 10s |
-| Ray Flash 2 | 5s, 9s |
-
-### Generate Audio
-
-When enabled, the model produces a synchronized audio track with the video. Available on **Veo 3/3.1** and **Hailuo 2.3**.
-
-Audio is generated natively — the model creates sounds that match the visual content (footsteps, speech, ambient noise, etc.).
-
-### Camera Motion
-
-Apply a predefined camera movement to the video. Available on **Ray 2** and **Ray Flash 2**.
-
-| Option | Description |
-|--------|-------------|
-| None (auto) | Model decides camera behavior |
-| Pan Left / Right | Horizontal camera slide |
-| Zoom In / Out | Move toward or away from subject |
-| Orbit Left / Right | Circle around the subject |
-
----
-
-## Toggle parameters
-
-These are on/off switches that appear at the bottom of the parameters panel.
-
-### Watermark
-
-Adds a provider watermark to the output. **On by default.** Available on **Imagen 4** and **Gemini** models.
-
-Disabling the watermark may affect your usage terms with the provider — check your API agreement.
-
-### Provider Prompt Enhance
-
-Lets the AI provider automatically rewrite your prompt before generation to improve results. Available on **Imagen 4** and **Gemini** models.
-
-When enabled, the provider may add detail, improve grammar, or restructure your prompt. The original prompt is preserved — enhancement happens behind the scenes.
-
-### Prompt Optimizer
-
-Similar to Provider Prompt Enhance, but used by **Hailuo/MiniMax**. Optimizes your prompt on the provider side for better video generation results.
-
-### Loop Video
-
-Makes the generated video seamlessly loop back to its first frame. Available on **Ray 2** and **Ray Flash 2**.
-
-Useful for creating background animations, loading screens, or social media content that plays on repeat.
-
----
-
-## Parameter support by model
-
-Quick reference for which image models support which parameters:
-
-| Parameter | Imagen 4 | Gemini Flash | Flux Pro | Flux Dev | Ideogram 3 | Recraft | Grok | OpenAI |
-|-----------|----------|--------------|----------|----------|-------------|---------|------|--------|
-| Negative Prompt | Yes | Yes | — | — | Yes | Yes | — | — |
-| Resolution | Yes | Yes | — | — | — | — | Yes | — |
-| Seed | Yes | Yes | Yes | Yes | Yes | — | — | — |
-| Output Format | Yes | Yes | Yes | Yes | — | — | — | — |
-| Style | — | — | — | — | Yes | Yes | — | — |
-| Rendering Speed | — | — | — | — | Yes | — | — | — |
-| Guidance | — | — | — | Yes | — | — | — | — |
-| Steps | — | — | — | Yes | — | — | — | — |
-| CFG Scale | — | — | — | — | — | Yes | — | — |
-| Quality | — | — | — | — | — | — | — | Yes |
-| Batch Generation | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Person Generation | Yes | Yes | — | — | — | — | — | — |
-| Watermark | Yes | Yes | — | — | — | — | — | — |
-| Prompt Enhance | Yes | Yes | — | — | — | — | — | — |
+The defaults are chosen to give good results without setup. Write your prompt, leave the model on **Auto**, and press **Generate**. Reach for these settings when you want a specific frame shape, a repeatable result, or tighter control over the output. For a walkthrough of the full create flow, see [Creating images](/guides/creating-images/).

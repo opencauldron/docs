@@ -1,96 +1,82 @@
 ---
-title: Activity
-description: Track generations, submissions, approvals, feats, and level-ups across your brands and workspace in one chronological feed
+title: Activity feed
+description: Track creations, submissions, approvals, feats, and level-ups across your brands and Studio in one live feed
 ---
 
-Navigate to **Activity** in the top navigation. The feed shows a chronological log of lifecycle events — assets created, submitted for review, approved or rejected, feats earned, and level-ups — scoped to what you are entitled to see.
+The Activity feed is your team's running log of what's happening. Open **Activity** in the navigation to see it. Each row is one event — an image or video created, an asset submitted for review, an approval or rejection, a feat earned, or a level-up — newest first. You only see events you're entitled to see, so the feed stays scoped to your work, your brands, and your Studio.
 
-## Tabs
+## Three lenses
 
-Three tabs control whose events appear in the feed.
+A row of tabs at the top of the feed switches whose events you're looking at.
 
 | Tab | What it shows |
 |---|---|
-| **For you** | Events where you are the actor, workspace-scoped events visible to everyone, and events on assets you created (even if you are not a member of the brand that acted on them) |
-| **My brands** | Brand-scoped events on [Brands](/guides/brands/) you are a member of (personal brands are excluded — those surface in **For you**) |
-| **Workspace** | All workspace-scoped events across the entire workspace — visible to every workspace member |
+| **For you** | Your own events, events on assets you created, and Studio-wide milestones visible to everyone |
+| **My brands** | Brand events — submissions, approvals, rejections — for the [brands](/guides/brands/) you belong to |
+| **Studio** | Studio-wide milestones, such as feats earned and level-ups across your whole team |
 
-The active tab is preserved in the URL (`?tab=for-you|my-brands|workspace`) so refreshing the page or sharing a link returns to the same view.
-
-## Event types
-
-Each row in the feed represents one of the following event types:
-
-| Event | What happened |
-|---|---|
-| `generation.created` | An asset was generated |
-| `generation.submitted` | A creator submitted an asset for review |
-| `generation.approved` | A brand manager approved an asset |
-| `generation.rejected` | A brand manager rejected an asset |
-| `generation.completed` | A generation job finished (deduplicated with `generation.created` when both appear on the same page) |
-| `member.earned_feat` | A workspace member earned a feat |
-| `member.leveled_up` | A workspace member reached a new level |
-
-For approvals and rejections, see [Review](/guides/review/). For feats and level-ups, see [XP and Feats](/guides/xp-and-feats/).
+Your active tab is kept in the page link, so a refresh or a shared link reopens the same view.
 
 ## Filter chips
 
-Four chips appear above the feed. Select one or more to narrow the event types shown.
+Above the feed sit four chips. Click one or more to narrow the feed to those event types. Click a chip again to turn it off. With no chips selected, every event type shows.
 
-| Chip label | Events included |
+| Chip | What it surfaces |
 |---|---|
-| **Reviews** | `generation.submitted`, `generation.approved`, `generation.rejected` |
-| **Drafts** | `generation.created`, `generation.completed` |
-| **Feats** | `member.earned_feat` |
-| **Level-ups** | `member.leveled_up` |
+| **Reviews** | Assets submitted for review, plus approvals and rejections |
+| **Drafts** | New images and videos as they're created |
+| **Feats** | Feats your teammates earn |
+| **Level-ups** | Teammates reaching a new level |
 
-Chips are multi-select — you can combine them. Selecting no chips shows all event types. Active chips are reflected in the URL so filtered views are shareable.
+Chips combine, so you can show **Reviews** and **Feats** together. For how approvals and rejections work, see [the review process](/guides/review/). For what feats and levels mean, see [XP, levels & feats](/guides/xp-and-feats/).
 
-## Time range
+## Time window
 
-A dropdown to the right of the chips limits events by age.
+To the right of the chips, a dropdown limits the feed by age.
 
-| Option | Scope |
+| Option | What it covers |
 |---|---|
-| **Today** | Events since UTC midnight today |
-| **Last 7 days** | Events from the past 7 days |
-| **Last 30 days** | Events from the past 30 days |
-| **All time** | No lower bound (default) |
+| **Today** | Events from today |
+| **Last 7 days** | The past week |
+| **Last 30 days** | The past month |
+| **All time** | Everything, with no cutoff — the default |
 
-Changing the time range resets the feed to the first page.
+Changing the window reloads the feed from the top.
 
-## Clearing filters
+When any chip or a narrower time window is active, a **Clear** button appears to the right of the dropdown. Use it to drop every filter at once.
 
-When any chip or a non-default time range is active, a **Clear** button appears to the right of the time range dropdown. Click it to remove all active filters at once.
+## Reading a row
 
-## Loading more events
+Each row reads like a short sentence: who did it, what they did, and what they did it to. A row shows:
 
-The feed loads 50 events at a time. When more events exist, a **Load more** button appears at the bottom of the list. Click it to append the next page. Switching tabs or changing a filter resets pagination to the first page.
+- The teammate's avatar with a small icon marking the event type
+- Their name, the action, and a short summary — a trimmed prompt, a feat name, or a level title
+- The brand name, shown as "in Brand Name", for brand events
+- The rejection note, when one was left on a rejected asset
+- A thumbnail of the asset, when there is one
+- How long ago it happened
 
-The feed also checks for new events each time the browser tab regains focus. New events prepend to the top of the list without disrupting your scroll position.
+Click a row to jump to what it's about:
 
-## Event cards
+- Asset events open that asset in your [Library](/guides/library/)
+- Feats and level-ups open the teammate's profile
 
-Each row shows:
+## A live feed
 
-- The actor's avatar with a small verb icon overlaid
-- The actor's name, the action taken, and a summary of the target (truncated prompt text, feat name, or level title)
-- For brand-scoped events, the brand name appended as "in Brand Name"
-- For rejected assets, the rejection note (if one was left) shown below the main line
-- A thumbnail of the asset, when available
-- A relative timestamp
+The feed loads 50 events at a time. When there's more, a **Load more** button appears at the bottom — click it to add the next batch. Switching tabs or changing a filter starts the list over from the top.
 
-Clicking a row navigates to the relevant detail surface:
+The feed also refreshes on its own. When you return to the browser tab, it checks for anything new and slides those events in at the top without losing your place in the list.
 
-- Asset events open the asset in [Library](/guides/library/)
-- Feat events and level-up events open the actor's profile page
+## A glance from Home
 
-## Visibility
+Your Home screen carries a short version of the feed under **Fresh from the cauldron**. It shows the most recent events you're entitled to see. Click **View all** to open the full Activity feed.
 
-Not every event is visible to every member. The feed enforces visibility at query time:
+## Who sees what
 
-- `private` events are visible only to the actor
-- `brand` events are visible to members of that brand
-- `workspace` events are visible to all workspace members
+Not every event reaches every teammate. The feed enforces this for you:
 
-The **My brands** tab shows only `brand`-scoped events on brands you belong to. The **Workspace** tab shows only `workspace`-scoped events.
+- Private events stay with the person who did them
+- Brand events reach the members of that brand
+- Studio events reach everyone in your Studio
+
+That's why the **My brands** tab only carries events from brands you belong to, and the **Studio** tab only carries Studio-wide milestones.

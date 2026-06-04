@@ -1,87 +1,115 @@
 ---
-title: Library
-description: Your working asset workspace — filter, tag, assign campaigns, collaborate, and submit assets for review
+title: The Library
+description: Your brand's digital asset manager — upload shoots, logos, and kits, organize with collections, and find any asset fast
 ---
 
-**Library** is your working asset workspace. It holds every generated, uploaded, and imported file associated with your account, unified in one view. Unlike [Gallery](/guides/gallery/), which is a discovery surface showing public assets across the workspace, Library shows your own assets plus any workspace assets you have access to through a brand. It is where you organize, tag, assign, and move assets through the review pipeline.
+The **Library** is your studio's digital asset manager — the system of record for every visual asset a brand owns. Uploaded photo shoots, logos, brand kits, finished deliverables, reference libraries, and the images and videos you generate all live here in one place. Uploads and brand assets are the heart of it; your AI generations are a first-class part of the collection, but a smaller slice.
 
-## Library vs. Gallery
+Think of the Library as the place where assets are kept, organized, and approved over the long term. It is different from the [Gallery](/guides/gallery/), which is a generations-only view for browsing what your studio has created.
 
-| Surface | What it shows | Primary actions |
+Open it from **Library** in the sidebar.
+
+## How the screen is laid out
+
+The Library has two working areas:
+
+- **The left rail** is for navigating. It holds quick buckets, a nested collections tree, and an upload button.
+- **The toolbar** above the grid is for refining. It holds search and filters that narrow down whatever the rail is showing.
+
+Between them sits the asset grid. Assets show newest first and the grid loads more as you scroll.
+
+## Navigating with the rail
+
+### Quick buckets
+
+Three buckets sit at the top of the rail, each with a live count:
+
+- **All assets** — everything you can see.
+- **Recently added** — assets added in the last few days.
+- **Unfiled** — assets that aren't in any collection yet. This is your filing backlog; the count is highlighted when there's work to do.
+
+### Collections
+
+A collection is a folder-like group you build to organize assets — for example a photo shoot, a product line, or a seasonal set. Collections can nest, so you can break a large set into sub-collections.
+
+- Click a collection name to show only its assets.
+- Turn on **Include nested** to roll up assets from its sub-collections too.
+- Use the **Search collections** box to jump to a collection by name.
+- Click **New** to create a collection. Use the menu on any collection to rename, move, or delete it. Deleting a collection removes the grouping, not the assets inside.
+
+Each collection shows a count of how many assets it holds. You can drag assets from the grid straight onto a collection to file them.
+
+Which brand a collection belongs to follows the active brand in the top bar. Switch brands there and the rail reloads to that brand's collections.
+
+### Uploading
+
+The **Upload to library** button is pinned to the bottom of the rail, so adding assets is always one click away. You can also drag files anywhere onto the page to upload them. For supported file types, batch uploads, and how to file assets as you go, see [Uploading and organizing](/guides/uploading/).
+
+## Refining with the toolbar
+
+The toolbar narrows down whatever the rail is showing. Filters combine, and the results update as you go.
+
+### Search
+
+Type in the search box to find assets by name, prompt, or tag. Results lead with the closest matches.
+
+### Filters
+
+| Filter | Where it lives | What it does |
 |---|---|---|
-| **Library** | Your assets + workspace-accessible assets | Filter, tag, assign campaigns, submit for review, open Thread |
-| **Gallery** | All public assets across the workspace | Browse, download, lightbox view, animate, use as reference |
+| **Campaign** | Toolbar | Show only assets tagged with one [campaign](/guides/campaigns/) |
+| **Tag** | Toolbar | Show assets with the tags you pick. Toggle **Any (OR)** to match any tag, or **All (AND)** to require every tag |
+| **Source** | **More** | Filter by how the asset arrived — **Uploaded**, **Generated**, or **Imported** |
+| **Rating** | **More** | Show assets with a chosen star rating (1 to 5) |
+| **Status** | **More** | Filter by review status — **Draft**, **In review**, **Approved**, **Rejected**, or **Archived** |
 
-Features like the lightbox, download, delete, animate, and reference flows are covered in the [Gallery guide](/guides/gallery/).
+The **More** button opens the extra filters and shows a count when any are active. When filters are on, a line below the toolbar summarizes what you're filtering by and how many results match. Click **Clear all** to reset.
 
-## Browsing your assets
+The brand you're viewing is set by the brand switcher in the top bar, not the toolbar — so it stays consistent across the whole app. See [Brands](/guides/brands/) for how brands work.
 
-Navigate to **Library** in the sidebar. Assets appear in reverse chronological order — newest first. The list loads 50 assets at a time and advances automatically as you scroll.
+For search tips and ways to track down a specific asset, see [Finding assets](/guides/finding-assets/).
 
-Each card shows the asset thumbnail, file name (if set), `source`, `status`, assigned brand, and creation date.
+## Reading an asset card
 
-Workspace `owner` and `admin` roles see all assets in the workspace, scoped to brands in that workspace. All other members see only assets they created.
+Each card shows the asset's thumbnail and a small stack of badges in the corner — its source, status, brand, and (for video) a duration marker — plus the creator. Hover a card to see its name and dimensions, or to use **Find similar**. Cards are selectable: pick several to act on them together (see [Working with several assets at once](#working-with-several-assets-at-once)).
 
-## Filters
+## Opening an asset
 
-The filter bar sits above the asset list. Filters apply immediately and can be combined.
+Click any card to open it in a large lightbox viewer.
 
-| Filter | Values | Behavior |
-|---|---|---|
-| **Search** (`q`) | Any text | Full-text search across prompt, file name, and tags. Results are ranked by relevance; cursor pagination is replaced with a hard limit of 200 results when a search query is active. |
-| **Brand** | Single brand | Limits results to assets tagged with that brand |
-| **Campaign** | Single campaign | Limits results to assets assigned to that campaign |
-| **Tag** | One or more tags | See tag operator below |
-| **Tag operator** | `or` (default) / `and` | `or` — returns assets matching any of the selected tags. `and` — returns only assets that have all selected tags. |
-| **Source** | `generated`, `uploaded`, `imported` (repeatable) | Filters by how the asset was created. Select multiple to combine. |
-| **Status** | `draft`, `in_review`, `approved`, `rejected`, `archived` (repeatable) | Filters by the asset's current status in the review pipeline. Select multiple to combine. |
+- The asset fills a dark stage so its colors read true.
+- For images, click the picture to toggle between fit and zoom, scroll to zoom, and drag to pan.
+- Use the on-screen arrows or your keyboard's left and right arrow keys to move between assets. A counter shows your place, like "3 of 40".
+- Press **Esc** or the close button to exit.
 
-## Tags
+### The Info tab
 
-Tags are free-form text labels you attach to an asset. They help you organize assets outside of the brand and campaign hierarchy.
+The viewer's **Info** tab is where you describe and organize a single asset:
 
-To add or edit tags on an asset, open the detail panel and edit the **Tags** field. The change replaces the full tag set on the asset — add all desired tags at once. Tags are stored as plain strings; there is no global tag registry.
+- **File name** — rename the asset.
+- **Rating** — set a 1-to-5 star rating, or click the active rating to clear it.
+- **Tags** — add free-form labels to describe the asset. Tags power the toolbar's Tag filter and search.
+- **Collections** — add the asset to one or more collections.
+- **Campaigns** — assign the asset to a [campaign](/guides/campaigns/). This appears for brand creators and managers, not viewers.
+- **Pin to brand** — pin the asset as an anchor on a brand's kit so it guides future generations. See [Brands](/guides/brands/).
 
-You can filter the Library by one or more tags using the **Tag** filter. Use the `and` operator when you need assets that carry every selected tag; use `or` (the default) to cast a wider net.
+Along the bottom you'll find:
 
-## Campaign assignment
+- **Find similar** — show assets that look visually close to this one. Useful for spotting near-duplicate shots or finding more of the same style.
+- **Use as input** — send the asset into a new generation as a starting image.
+- **Download** — download the asset.
+- **Delete** — remove the asset.
 
-Assets can belong to one or more [campaigns](/guides/campaigns/). Open the asset detail panel and edit the **Campaigns** field to add or remove campaign assignments. Each campaign must belong to the same brand as the asset.
+### The Thread tab
 
-Campaign assignment is available to any workspace member who can access the asset. The change takes effect immediately.
+Every asset has a **Thread** tab for discussing the work in place. Leave a note, ask a question, or @-mention a teammate right next to the asset. For replies, reactions, attachments, and notifications, see [Threads and comments](/guides/threads/).
 
-## Brand tagging
+## Working with several assets at once
 
-Each asset has a single brand. To change which brand an asset belongs to, use the **Brand** field in the detail panel. A brand-tagged asset becomes visible to all members of that brand.
+Select multiple cards to act on them together. With a selection active, a bar appears with bulk actions — among them adding tags, adding to a collection or campaign, moving assets to a different brand, changing status, downloading, and deleting. Bulk download packages the selected assets into a single zip.
 
-Brand tagging and tag editing are workspace-collaborative: any workspace member with access to the asset's brand can edit tags, campaigns, and the file name — not only the asset creator. For details on brand membership and roles, see [Brands](/guides/brands/).
+## Moving assets through review
 
-## Sharing with the workspace
+The Library is where assets are organized; approval happens through the review pipeline. Assets begin as **Draft** and move to **In review**, then to **Approved** or **Rejected**. You can filter by any of these states with the toolbar's **Status** filter to see where things stand.
 
-An asset becomes accessible to your workspace teammates when it has a brand assigned. Any workspace member who belongs to that brand can view the asset. Workspace `admin` and `owner` roles can view all assets in the workspace regardless of brand membership.
-
-Editing tags, campaigns, and the file name on a teammate's asset is permitted for all workspace members who can access that brand.
-
-## Threads
-
-Every asset has a **Thread** tab in the detail panel. Open it to leave a note, @-mention a teammate, or ask a question directly alongside the work.
-
-Threads are scoped to workspace members — anyone in the asset's workspace can read and post. For the full collaboration model — replies, reactions, mentions, attachments, and notifications — see [Threads](/guides/threads/).
-
-## Submitting for review
-
-Assets start with `status: "draft"`. To move an asset into the approval workflow, open it in [Gallery](/guides/gallery/) and click **Submit for review** in the lightbox footer. The `status` changes to `in_review` and the asset enters the review queue for the brand's managers.
-
-Once submitted, the asset status can only be changed by a `brand_manager`. You cannot modify the asset while it is `in_review`.
-
-For the complete review pipeline — approve, reject, re-submit, and self-approval settings — see [Review](/guides/review/).
-
-## Asset status reference
-
-| Status | Meaning |
-|---|---|
-| `draft` | Default state. Visible to creator and brand managers. |
-| `in_review` | Submitted for approval. Awaiting a brand manager decision. |
-| `approved` | Approved by a brand manager. |
-| `rejected` | Rejected by a brand manager. Asset returns to the creator. |
-| `archived` | Manually archived. Excluded from active views unless filtered by `archived`. |
+For who can approve, how to submit, and what each status means, see [Review](/guides/review/).

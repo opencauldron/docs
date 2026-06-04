@@ -1,102 +1,61 @@
 ---
-title: Getting Started
-description: A first-time walkthrough — sign in, set up your workspace, invite teammates, create a brand, and generate your first asset
+title: Getting started
+description: Your first ten minutes — find your way around Home, finish the Getting Started board, and make your first piece
 ---
 
-OpenCauldron is an AI media generation studio for teams. This guide walks you through the first things to do after the app is running: confirming your workspace, bringing in teammates, organizing work into brands, and generating your first asset.
+You're signed in and inside your Studio — the top-level account your team works in. This walks you through the first ten minutes: getting your bearings on Home, working through the Getting Started board, making your first image, and finding it in your Library.
 
-If OpenCauldron isn't running yet, start with [Installation](/installation/) first.
+## You're in — Home
 
-## Sign in
+Home is your launchpad. It opens on a greeting — "What are we creating today?" — with your active Studio named just below it. Home asks one question: what do you want to make. The work surfaces (activity, the review queue, your assets) each live on their own pages.
 
-Navigate to your OpenCauldron instance and click **Sign in with Google**. Authentication is handled by Google OAuth — you'll need a Google account that matches any domain restriction your admin has configured.
+Two things drive everything from here.
 
-After signing in, you land on **Home** (`/overview`). The workspace name appears at the top of the sidebar. If you see "No studio yet," you aren't a member of any workspace — ask an admin to invite you.
+- **The search bar.** The bar reads **Search or describe what to create…**. Click it, or press `⌘K` anywhere in the studio, to open the command palette. Search across your brands, chats, brews, and assets, or type a description and pick **Create an image of "…"** to jump straight into making it. There's a mic to dictate your search and a paperclip to attach an image.
+- **The tool row.** Under the bar sits a row of starting points: **Create image**, **Edit image**, **Create video**, **Animate**, and **Assistant**. **All tools** expands the full set. Each tile drops you into the right place with the work already framed.
 
-## Your workspace
+## The Getting Started board
 
-A workspace is the top-level boundary for your team. Everyone you invite, every brand you create, and every asset generated lives inside one workspace. The workspace name is shown in the sidebar header.
+Until you've made or reviewed your first piece, Home shows a **Finish setting up your studio** card. Open it — or visit it any time — to reach the Getting Started board.
 
-Workspace roles control what members can do:
+The board is a set of optional achievements, done in any order. A tally at the top reads **N of N unlocked**, and a **Studio Ready** goal lights up once you finish all four essentials. Nothing here is required, and you can dismiss the board whenever you like.
 
-| Role | What they can do |
+### The four essentials
+
+| Achievement | What you do |
 |---|---|
-| `owner` | Full control: manage members, delete the workspace, grant any role |
-| `admin` | Manage members and brands; invite teammates |
-| `member` | Generate assets and view shared content |
+| Complete your profile | Add a display name and avatar so your work has a face on it |
+| Create a brand | Set up a [brand](/guides/brands/) to organize assets and define its colors, voice, and references |
+| Upload an asset | Bring in an existing image or video to restyle, animate, or use as a reference |
+| Make or review your first piece | Generate something — or approve a teammate's piece in [Review](/guides/review/). This one wraps up setup |
 
-You are the `owner` of any workspace you created. Teammates you invite are `member` by default unless you assign a different role.
+Each card has a button straight to where the work happens. Finish all four and the board shows **Studio Ready**.
 
-## Invite teammates
+### Bonus tasks
 
-Only `owner` and `admin` members can invite teammates.
+Below the essentials is a **Bonus — go further** list — optional extras that don't count toward setup. These cover things like leaving a note on a piece, creating a collection, running a Workflow, and inviting a teammate. Work through them whenever you want.
 
-Workspace member management is available via the API at `POST /api/workspaces/{id}/members`. Pass the teammate's email and the desired role (`member` or `admin`). If the email belongs to an existing user they gain access immediately; if not, a user record is created for that email and they gain access when they sign in.
+## Create your first image
 
-:::note
-A dedicated **Members** settings page is in development. Until it ships, use the API or ask your instance administrator.
-:::
+The fastest path is the **Generate your first piece** button on the board, or **Create image** in the tool row on Home. Both open the image studio.
 
-:::note
-Brand-level roles — `brand_manager`, `creator`, and `viewer` — are separate from workspace roles. You assign those when adding teammates to a specific brand. See [Brands](/guides/brands/) for details.
-:::
-
-## Create a brand
-
-A [brand](/guides/brands/) is how you organize work within your workspace. Each brand has its own member list, generation settings (Brand Kit), and approval workflow. You must be `owner` or `admin` to create one.
-
-1. Click **Add brand** at the bottom of the sidebar's brand list, or navigate to **Brands** and click **New brand**.
-2. Enter a name (required) and choose a color for the brand label.
-3. Confirm. The brand is created and you become its first `brand_manager`.
-
-The brand now appears in your sidebar. Other workspace members won't see it until you add them as brand members.
-
-:::note
-Your **Personal** brand is created automatically when you first sign in. It's private to you and works as a personal scratch space. It doesn't have an approval workflow or shared members.
-:::
-
-## Generate your first asset
-
-Click **Create** at the top of the sidebar — this navigates to the **Generate** page (`/generate`).
-
-On the Generate page:
-
-1. Choose a model from the model selector. Image models (Flux, Imagen, Ideogram, Recraft, etc.) and video models (Veo, Runway, Kling, etc.) are listed separately.
-2. Type a prompt in the text field.
-3. Select a brand from the **Brand** selector. Choose the brand you created, or leave it on **Personal** to keep the asset in your private space.
+1. Leave the model on **Auto**. Auto reads your prompt and picks the best model for it, so you don't have to choose. You can browse and pin a specific model later.
+2. Type what you want to see in the prompt box — it reads **Describe your vision…**.
+3. Set the aspect ratio and how many images to make (up to four) if you want; the defaults are fine for a first run.
 4. Click **Generate**.
 
-Image generations complete synchronously — you see the result in seconds. Video generations are submitted as background jobs; the status updates when the job finishes.
+Images come back in seconds, right in the studio. Your new piece is saved as a `draft` — visible to you, and to brand managers if you tagged it with a brand, but not yet submitted for approval.
 
-When generation completes, the asset is saved with `status: "draft"`. It's visible to you (and brand managers if you tagged it with a brand) but not yet submitted for approval.
+For prompt tips, aspect ratios, and other settings, see [Creating images](/guides/creating-images/). To pick a specific model instead of Auto, see [Models](/guides/models/).
 
-For more on model options, aspect ratios, negative prompts, and advanced parameters, see [Generation Parameters](/guides/parameters/).
+## Find it in your Library
 
-## Find your asset in Library
+Click **Library** in the sidebar. Your [Library](/guides/library/) holds everything you've generated or uploaded, newest first — your new image is at the top.
 
-Navigate to **Library** in the sidebar. [Library](/guides/library/) shows every asset you've generated or uploaded, in reverse chronological order.
+From here you can filter by brand, source, or status, and search by prompt. Click any piece to open its detail panel, where you can tag it with a brand, add notes on its thread, download it, or submit it for approval.
 
-Your new asset appears at the top of the grid. Each card shows a thumbnail, the brand it belongs to, and its current `status`.
+## Where to go next
 
-To filter what you see:
-
-- Use the **Brand** filter to show only assets from a specific brand.
-- Use the **Status** filter to show only `draft` assets.
-- Use the search field to match against the original prompt.
-
-Click any asset to open the detail panel. The panel shows the prompt, model, parameters, and metadata. From here you can:
-
-- Edit brand tags
-- Add freeform tags
-- Open the **Thread** tab to leave a note or start a conversation with your team (see [Threads](/guides/threads/))
-- Open the asset in Gallery and click **Submit for review** if it's tagged with a brand that has an approval workflow (see [Review](/guides/review/))
-- Download or delete the asset
-
-## Next steps
-
-Once you have your first asset, here's where to go next:
-
-- **Set up your brand kit** — Add a prompt prefix/suffix, banned terms, and a default LoRA to shape every generation in the brand. See [Brands](/guides/brands/).
-- **Organize with campaigns** — Group assets for a specific project or launch. See [Campaigns](/guides/campaigns/).
-- **Review and approve** — Submit assets for approval and manage the review queue. See [Review](/guides/review/).
-- **Explore the Activity feed** — Track generations, approvals, and team events. See [Activity](/guides/activity/).
+- **Build a brand kit** — Give a brand its own colors, voice, references, and review settings so every piece stays on-brand. See [Brands](/guides/brands/).
+- **Organize your assets** — Filter, search, tag, and group everything in one place. See [Library](/guides/library/).
+- **Run a piece through approval** — Submit work for review and manage the queue. See [Review](/guides/review/).

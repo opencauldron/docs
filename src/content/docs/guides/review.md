@@ -1,115 +1,102 @@
 ---
-title: Review
-description: Submit assets for brand approval, walk the review queue, and approve or reject with keyboard shortcuts
+title: The review process
+description: How work moves from draft to approved on a team brand — submit, walk the queue, approve or reject with notes
 ---
 
-The review pipeline is how your team moves assets from a creator's working drafts into approved brand content. Assets follow a fixed lifecycle: `draft` → `in_review` → `approved` or `rejected`. Brand managers control the approve/reject step; creators submit.
+Review is how your team keeps brand work on-brand. Work on a team brand starts as a private draft. When it's ready, someone submits it. A brand Manager opens the queue, steps through the pending items, and approves or rejects each one. Approved work is locked as final; rejected work goes back for another pass.
 
-Navigate to **Review** in the sidebar to access the queue.
+The status words you'll see are plain: **Draft**, **In review**, **Approved**, **Rejected**, and **Archived**.
 
-## Asset lifecycle
+## The flow at a glance
 
-Every asset starts as `draft` when it is generated or uploaded. From there:
+1. A Creator makes an image or video on a team brand. It starts as **Draft** — visible to the team but not yet final.
+2. The Creator submits it for review. The status becomes **In review** and the brand's Managers are notified.
+3. A Manager opens the **Review queue**, steps through the pending work, and either approves or rejects each item.
+4. **Approved** work is final and locked. **Rejected** work returns to the Creator, who can revise and resubmit.
 
-| Status | What it means | Who can trigger it |
-|---|---|---|
-| `draft` | Created but not submitted | — (default) |
-| `in_review` | Submitted and awaiting decision | Creator or brand manager (submit action) |
-| `approved` | Accepted by a brand manager | Brand manager (`brand_manager` role or workspace owner/admin) |
-| `rejected` | Declined by a brand manager | Brand manager (`brand_manager` role or workspace owner/admin) |
-| `archived` | Manually archived from any non-approved status | Brand manager or workspace owner/admin |
+Roles decide who does what: Creators submit, Managers approve or reject. See [Members & roles](/settings/members/) for what each brand role can do, and [Brands](/guides/brands/) for how brands are set up.
 
-Transitions are enforced strictly — no skipping. An `in_review` asset can only move to `approved` or `rejected`, not back to `draft` directly. Approved assets are immutable; to make changes, fork the asset into a new draft.
+## Submitting work for review
 
-> Assets on your Personal brand cannot enter the review pipeline. Only assets tagged to a non-personal brand can be submitted.
+Open the item you want reviewed. While its status is **Draft**, you'll see **Submit for review**. Click it.
 
-## Submitting an asset for review
+The status changes to **In review**, and every Manager on that brand gets a notification. While an item is **In review**, it's waiting on a decision — you don't need to do anything else.
 
-Open the asset in [Gallery](/guides/gallery/). In the lightbox footer, click **Submit for review**. This button is visible only when the asset's status is `draft`.
-
-The asset's status changes to `in_review`. Every brand manager on that brand — plus workspace owners and admins — receives a notification with a link to the review queue.
-
-Once submitted, the creator cannot edit or re-submit the asset while it is `in_review`. If a brand manager rejects it, the asset moves to `rejected` and the creator receives a notification. At that point the creator can regenerate or create a new draft asset.
+Work on your **Personal** brand skips review entirely. There's no submit step and no queue; Personal-brand items are yours alone. Review only applies to team brands.
 
 ## The Review queue
 
-Navigate to **Review** in the sidebar. The page shows a card for every brand you have approval rights on, with a count of pending assets.
+Open **Review** in the sidebar. The page is titled **Review queue**.
 
-You see a brand card if:
-- You hold the `brand_manager` role on that brand, **or**
-- You are a workspace owner or admin (you inherit review rights on every non-personal brand)
+You see a card for each brand you can review, with a count of items waiting. A brand with nothing pending reads **All clear**. Click **Open queue** on a brand to load its pending work into a gallery below — a grid of every item awaiting a decision, oldest first.
 
-Each card shows the brand name, its color, and the number of `in_review` assets. Cards with no pending assets are dimmed and show **Empty**.
+If you don't manage any brands, the queue tells you so and points you to your studio admin.
 
-Click **Open queue** on a brand card to load that brand's pending assets into a responsive grid below. Assets are ordered oldest-first (FIFO) so the longest-waiting submissions surface at the top.
+The queue opens brand-first on purpose: you pick a brand, then focus on that brand's pending work without other brands in the way.
 
-For details on brand roles and how to assign them, see [Brands](/guides/brands/).
+## Reviewing an item
 
-## The Review modal
+Click any item in the gallery to open the focused viewer. It fills the screen with two panes.
 
-Click any asset tile in the grid to open the Review modal. The modal is split into two panes.
+On the left is the media — the full image or a video player — with a filmstrip of the whole queue along the bottom. Click any thumbnail to jump to it, or use the arrows to step forward and back. As you decide on items, the filmstrip marks them so you can see what's left at a glance.
 
-**Left pane — media:**
+On the right are two tabs:
 
-- Full image or video player
-- Filmstrip rail along the bottom showing all pending assets in the current session; decisioned tiles are dimmed with an approved/rejected marker
-- Chevron buttons to step forward and back (also: `j` / `k` on keyboard)
+- **Info** — the details of the item: the model used, any campaigns it's tagged with, the prompt, and a **Note (optional)** field for feedback.
+- **Thread** — the item's conversation. Leave a note, ask the Creator a question, or read earlier feedback before you decide. See [Threads & comments](/guides/threads/) for how mentions and replies work.
 
-**Right pane — Info and Thread tabs:**
+### Approve or reject
 
-The **Info** tab shows:
+At the bottom of the **Info** tab:
 
-| Field | What it contains |
-|---|---|
-| Model | The model that generated the asset |
-| Campaign | Any campaigns the asset is tagged with (read-only) |
-| Prompt | The original prompt text |
-| Brand-kit prompt | The brand-enhanced prompt, if prompt enhancement was used |
-| Brand kit overridden | A warning badge if the creator disabled the brand kit for this generation |
-| Note | An optional free-text field for rejection feedback or reviewer notes |
+- **Approve** marks the item **Approved** and final.
+- **Reject** sends it back to the Creator. Add feedback in the **Note (optional)** field first — the Creator sees your note.
 
-The **Thread** tab opens the asset's conversation thread. Use it to leave notes, ask the creator a question, or check prior feedback before deciding. See [Threads](/guides/threads/) for message and mention mechanics.
-
-## Approving and rejecting
-
-With an asset open in the modal, use the buttons at the bottom of the right pane:
-
-- **Reject** — moves the asset to `rejected`. You can add an optional note before clicking. The creator receives a notification with your note if you included one.
-- **Approve** — moves the asset to `approved`.
-
-> If you submitted the asset yourself, you can only approve it when the brand's **self-approval** setting is enabled. When self-approval is off, the **Approve** button is disabled for your own submissions and a notice appears. A different brand manager must approve in that case.
-
-Each brand's self-approval setting is configured in brand settings. See [Brands](/guides/brands/) for how to change it.
+The viewer keeps you moving: after each decision it advances to the next item that still needs one, so you can clear a queue without leaving your seat.
 
 ### Keyboard shortcuts
 
-When the **Info** tab is active, keyboard shortcuts are available:
+The viewer is built for fast, hands-on-keyboard review. While the **Info** tab is open:
 
 | Key | Action |
 |---|---|
-| `j` | Next asset (skips already-decisioned tiles) |
-| `k` | Previous asset (skips already-decisioned tiles) |
-| `a` | Approve (only if self-approval is permitted for this asset) |
+| `j` | Next item |
+| `k` | Previous item |
+| `a` | Approve |
 | `r` | Reject |
-| `n` | Focus the note field |
-| `Esc` | Close the modal |
+| `n` | Jump to the note field |
+| `Esc` | Close the viewer |
 
-Shortcuts are suspended while the **Thread** tab is active so that typing in the composer does not trigger queue navigation.
+Shortcuts pause while the **Thread** tab is open, so typing a comment never triggers a decision by accident.
+
+## What the statuses mean
+
+| Status | What it means |
+|---|---|
+| **Draft** | Created on a team brand, not yet submitted. Visible to the team, not final. |
+| **In review** | Submitted and waiting on a Manager's decision. |
+| **Approved** | Accepted and locked as final. |
+| **Rejected** | Sent back to the Creator to revise and resubmit. |
+| **Archived** | Set aside out of the active flow. |
 
 ## After a decision
 
-**After approval:** The asset's status is `approved`. Approved assets are eligible to appear in public campaign galleries if their campaign's visibility is set to `"public"`. See [Campaigns](/guides/campaigns/) for how campaign visibility works.
+**Approved work is final and locked.** You can't edit an approved item in place. To change it, open it and choose **Edit / Fork** — this makes a fresh draft copy you can rework and submit for review on its own. The original approved version stays untouched as a record.
 
-**After rejection:** The asset's status is `rejected`. The creator receives a notification. The rejected asset remains in the creator's Library where they can view any rejection note, then generate a new draft.
+**Rejected work goes back to the Creator.** They'll see your note, make changes, and submit the revised version for review again. There's no limit on revisions.
 
-**Audit trail:** Every status transition writes a row to the review log — actor, from-status, to-status, timestamp, and any note — giving a full history of every asset's review path.
+## Self-approval
 
-## Notification behavior
+By default, you can't approve your own submission — a different Manager has to sign off. When you open one of your own items, the **Approve** button is off and a notice explains why.
 
-| Event | Who is notified |
-|---|---|
-| Asset submitted | All brand managers on the brand + workspace owners/admins |
-| Asset approved | The asset's creator (if they are not the approver) |
-| Asset rejected | The asset's creator (if they are not the rejecter) |
+A brand can turn on self-approval. With it on, a Manager's own work is approved automatically and skips the wait. A studio admin or brand Manager sets this in the brand's settings. See [Brands](/guides/brands/) for where to find it.
 
-Notifications appear in the bell icon in the top bar. The notification links back to the brand's review queue. Review-related events also appear in the [Activity](/guides/activity/) feed under the **My Brands** tab.
+## Notifications and history
+
+Review keeps your team in the loop:
+
+- Submitting work notifies the brand's Managers.
+- Approving or rejecting notifies the Creator, with your note attached.
+- @-mentioning someone in a [Thread](/guides/threads/) notifies them directly.
+
+Every submission, approval, and rejection also shows up in the [Activity feed](/guides/activity/), so anyone on the brand can follow how work is moving. If items belong to a [Campaign](/guides/campaigns/), you'll see that tag right in the viewer while you review.

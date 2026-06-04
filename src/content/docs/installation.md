@@ -3,11 +3,15 @@ title: Installation
 description: Get OpenCauldron running with Docker, develop on it as a contributor, or scaffold your own fork.
 ---
 
-There are three ways to run OpenCauldron, depending on what you're trying to do.
+:::note
+Most teams use the **hosted studio** at [studio.opencauldron.ai](/sign-up/) or a fully managed [Enterprise](/enterprise/) instance — no setup to run. This section is for technical teams who want to run their own copy. Not sure which path fits? Start with [Open source & self-hosting](/self-hosting/).
+:::
+
+There are three ways to run OpenCauldron yourself, depending on what you're trying to do.
 
 | You want to… | Use |
 |---|---|
-| Run OpenCauldron for your team | **Docker self-host** (below) — the default for almost everyone |
+| Run your own copy of OpenCauldron | **Docker self-host** (below) — the simplest self-hosted path |
 | Contribute to OpenCauldron itself | [Contributor setup](#contributor-setup) |
 | Build a custom studio on top of OpenCauldron | [Scaffold your own fork](#scaffold-your-own-fork) |
 

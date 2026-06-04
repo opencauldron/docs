@@ -1,81 +1,39 @@
 ---
-title: Usage and Limits
-description: Understand daily generation limits, cost tracking, and how admins manage per-user quotas.
+title: Usage & limits
+description: See how many images and videos you've created, track your daily limit, and learn how admins adjust per-person limits
 ---
 
-Every user in OpenCauldron has a daily generation limit. This page explains how limits work, what the usage dashboard shows, and how admins can adjust quotas.
+Each person in your Studio has a daily limit on how many images and videos they can create. This page shows where to check your usage and how admins change the limit for your team.
 
-## Daily generation limits
+## Your daily limit
 
-Each user can run a set number of generations per day. The default limit is **50 generations per day**.
+Everyone starts with a limit of **50** creations per day. Each image or video you generate counts as one, no matter which model or media type you pick. The count resets each day.
 
-The limit resets at midnight UTC. It applies to all generation attempts regardless of model, media type, or whether the generation succeeded.
+When you reach your limit, you can't create until the count resets. If you hit it often, ask your Studio admin to raise it.
 
-When you reach your limit, the generate API returns a `429` response:
+## Check your usage
 
-```json
-{
-  "error": "Daily generation limit reached",
-  "limit": 50
-}
-```
-
-No generation is created or charged when this response is returned.
-
-## Usage dashboard
-
-Navigate to **Usage** in the sidebar to see your personal usage statistics.
-
-The dashboard shows four summary cards:
+Open the menu under your avatar and choose **Usage**. The page opens with four cards:
 
 | Card | What it shows |
-|------|---------------|
-| Today | Generations used today with a progress bar against your daily limit |
-| Today Cost | Estimated cost of today's generations |
-| This Week | Generation count and cost for the last 7 days |
-| This Month | Generation count and cost for the last 30 days |
+|---|---|
+| **Today** | How many creations you've made today, with a bar showing progress toward your daily limit |
+| **Today Cost** | The estimated cost of today's creations |
+| **This Week** | Your creation count over the last 7 days |
+| **This Month** | Your creation count over the last 30 days |
 
-Below the summary cards, a **Usage by Model** section breaks down your generation count and estimated cost per model for the last 30 days.
+Below the cards, **Usage by Model (30 days)** breaks your activity down by model, and **Recent Generations** lists your last 20 creations with the prompt, model, status, how long each took, and an estimated cost.
 
-A **Recent Generations** table shows your last 20 generations with the prompt, model, status, generation duration, and estimated cost per generation.
+The cost figures are estimates to help you gauge activity. They are informational only.
 
-Only completed generations are counted in cost and stat totals. Failed or in-progress generations are included in the recent table but excluded from the cost and count aggregates.
+To manage your own account details, see [Your profile](/guides/profile/).
 
-## Cost tracking
+## How admins adjust limits
 
-Each generation has a `costEstimate` stored in the database. Costs are calculated as follows:
+A Studio admin can raise or lower the daily limit for any person. Admins open the menu under their avatar, choose **Admin**, and find the team table that lists every member with their role and current daily limit.
 
-- **Image generations:** cost per image as defined by the provider
-- **Video generations:** cost per second × requested duration
+To change someone's limit, an admin clicks the edit icon on their row, sets a new **Daily Limit** (any number from **1** to **10,000**), and clicks **Save**. The change takes effect right away.
 
-These are estimates based on provider pricing at the time the generation is submitted. Actual charges from your provider may differ slightly. OpenCauldron does not bill you directly — the cost estimates are informational and help you track spend against provider accounts you control.
+The same dialog lets an admin switch a person between the **Member** and **Admin** roles.
 
-Cost estimates are stored on both the generation record and the resulting asset record.
-
-## Admin usage view
-
-Admins can view team-wide usage from the **Admin** panel.
-
-The admin view shows three top-level cards:
-
-| Card | What it shows |
-|------|---------------|
-| Today (Team) | Total generations and estimated cost across all users today |
-| This Month (Team) | Total generations and estimated cost across all users in the last 30 days |
-| Team Members | Total number of users |
-
-A **Usage by Model (30 days)** section shows the generation count and estimated cost for each model across all users.
-
-A **Team Members** table lists every user with their role, current daily limit, monthly generation count, and monthly estimated cost.
-
-## Adjusting limits
-
-Admins can change any user's daily limit from the Team Members table in the Admin panel. Click the edit icon on any row to open the edit dialog, update the **Daily Limit** field, and save.
-
-The valid range for a daily limit is **1 to 10,000** generations per day. Changes take effect immediately — the new limit is checked on the next generation request.
-
-You can also change a user's role (member or admin) from the same dialog.
-
-## What limits don't cover
-
-There are no per-brand spending limits and no monthly generation caps. The only enforced limit is the per-user daily generation count. If you need tighter cost controls, adjust daily limits downward for high-volume users or set a low limit across the board and raise it for specific users as needed.
+For the full set of admin controls, see [Admin tools](/guides/admin/).

@@ -1,34 +1,43 @@
 ---
 title: Introduction
-description: What is OpenCauldron and why you should use it.
+description: A collaborative AI media studio for teams — create on-brand images and video, organize assets, and route work for approval
 ---
 
-OpenCauldron is an open-source AI media generation studio. It gives your team one interface for every AI media model — with brand management, prompt tools, cost tracking, and team collaboration built in.
+OpenCauldron is a collaborative AI media studio for teams and agencies. You create on-brand images and video, organize every brand asset in one place, and route work through brand approval — all from a single account your whole team shares.
 
-## Why OpenCauldron?
+## What you do here
 
-- **Multi-model** — Flux Pro, Imagen 4, Ideogram 3, Recraft V3, and more from a single interface
-- **Self-hostable** — Deploy on your infrastructure. Your data stays yours
-- **Bring your own everything** — Swap in your own API keys, database, storage, and auth provider. Ships with sensible defaults; nothing is locked in
-- **Team-ready** — Shared galleries, per-user usage tracking, and brand-scoped generation
-- **Cost-aware** — Track API spend per user, model, and brand in real time
+Three jobs, one place:
 
-## How it works
+- **Create on-brand images and video.** Describe what you want and generate it. The default **Auto** model picker chooses the right model for the job, so you don't have to know one from another. Pick a brand and your prompt rules, banned terms, and look are applied for you. See [Creating images](/guides/creating-images/) and [Creating video](/guides/creating-video/).
+- **Organize every asset in the Library.** The [Library](/guides/library/) is your team's digital asset manager — a shared home for brand uploads (shoots, logos, kits) alongside everything you generate. Sort assets into collections, filter by brand or campaign, and search across the lot. See [Finding assets](/guides/finding-assets/).
+- **Route work through review.** Send a piece for approval and a brand Manager approves or rejects it on the [Review](/guides/review/) queue. Nothing goes out before it's signed off. See [Brand review](/guides/review/).
 
-OpenCauldron is a Next.js application that connects to AI media generation APIs on your behalf. You bring your own API keys, database, storage, and auth — deploy the app, and your team generates through a unified interface. It ships with sensible defaults (Neon for database, Cloudflare R2 for storage, Google OAuth for auth), but every layer is swappable.
+Work doesn't sit in silos. Leave notes and @-mention teammates right next to any asset in its [thread](/guides/threads/), and watch what's happening across the team in [Activity](/guides/activity/).
 
-```
-┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
-│  Your Team  │────▶│ OpenCauldron │────▶│  AI Model APIs  │
-└─────────────┘     └──────────────┘     └─────────────────┘
-                           │
-                    ┌──────┴──────┐
-                    │  Your DB &  │
-                    │  Storage    │
-                    └─────────────┘
-```
+## Who it's for
 
-## Next steps
+OpenCauldron is built for teams that produce a lot of on-brand visual work:
 
-- [Installation](/installation/) — Get OpenCauldron running locally or in production
-- [Configuration](/configuration/) — Set up API keys, database, and storage
+- **Agencies** managing creative across multiple clients and brands
+- **Brand and marketing teams** producing campaign images and video at volume
+- **Solo creators** working out of a single Personal brand
+
+## How the pieces fit together
+
+Your team's account is a **Studio**. Inside it you set up one or more **Brands** — each with its own kit, members, and campaigns. Every image, video, and upload is an **asset**, stored and organized in the [Library](/guides/library/). When a piece is ready, it moves through [Review](/guides/review/) for a brand Manager to approve. Roles control who does what: studio Owner, Admin, and Member at the top level; brand Manager, Creator, and Viewer within each brand.
+
+For a full tour of these terms and how they relate, see [Concepts](/concepts/).
+
+## Open core and Enterprise
+
+OpenCauldron is open source. You can read the code, contribute, and run your own copy — see [Open source and self-hosting](/self-hosting/).
+
+For teams that want OpenCauldron without managing anything themselves, it's also available as a fully managed private instance. See [Enterprise](/enterprise/).
+
+## Get started
+
+You're already signed in to the hosted studio. From here:
+
+1. Read [Sign up and sign in](/sign-up/) if you need to add teammates or switch accounts.
+2. Follow [Getting started](/getting-started/) to set up your first brand and make your first piece.

@@ -1,42 +1,106 @@
 ---
-title: Prompt Tools
-description: Use template modifiers and AI enhancement to write better prompts.
+title: Writing better prompts
+description: Write clear prompts, use Enhance and voice dictation, and learn the few details that change every result
 ---
 
-OpenCauldron includes two client-side tools that help you build richer prompts, plus an optional provider-side enhancement toggle on supported models.
+A prompt is what you type to describe the image or video you want. A vague prompt gives you something different every time. A specific one gives you what you pictured. This page covers the in-app helpers first, then the writing technique that works across every model.
 
-## Template mode
+For where prompts fit in the wider flow, see [Creating images](/guides/creating-images/) and [Choosing a model](/guides/models/).
 
-Template mode lets you build a prompt by selecting values from five modifier categories. Your selections are appended to whatever you type in the prompt field.
+## Where you write a prompt
 
-| Category | What it controls |
-|----------|-----------------|
-| Style | Overall visual style (e.g. Photorealistic, Cinematic, Anime, Oil Painting) |
-| Lighting | Lighting setup (e.g. Studio, Dramatic, Golden Hour, Neon) |
-| Composition | Shot framing (e.g. Close-up, Wide Angle, Bird's Eye, Macro) |
-| Mood | Color and atmosphere (e.g. Vibrant, Moody, Ethereal, Nostalgic) |
-| Quality | Resolution and quality descriptors (e.g. 4K Ultra HD, Masterpiece) |
+The prompt box sits at the top of the composer. Type your description, then generate. Two helpers sit at the bottom-left corner of the box: the **Enhance** button and the microphone for voice dictation. A character counter sits in the bottom-right.
 
-Each category has a **None** option if you want to omit it. When you generate, the selected values are joined with commas and appended to your prompt automatically.
+You don't have to pick a model first. Left on **Auto**, the studio reads your prompt and chooses a model for you, so a clear prompt matters more than the model name.
 
-Template mode is client-side only. Selections are not saved between sessions and are not shared with other team members.
+## Enhance: let the studio rewrite your prompt
 
-## LLM mode
+**Enhance** takes your rough prompt and rewrites it into a fuller one — adding detail about composition, lighting, style, and quality while keeping your subject and intent. It tunes the rewrite to the model you're generating with, so the same starting prompt comes out worded for photos on a photo model and for motion on a video model.
 
-LLM mode rewrites your prompt using Mistral's API. It keeps the core intent of your original prompt and adds detail about composition, lighting, style, and quality that tends to produce better results.
+To use it:
 
-**Requirements:** Set `MISTRAL_API_KEY` in your environment. If the key is missing, LLM mode is unavailable.
+1. Type a short prompt — even a few words.
+2. Click **Enhance** (or press **⌘E** on Mac, **Ctrl+E** elsewhere).
+3. The button reads **Enhancing** while it works, then drops the rewritten prompt into the box.
 
-The enhancer uses `mistral-small-latest` and is tuned per model — it applies different guidance depending on which AI model you are generating with. For example, when generating with Ideogram 3, the enhancer knows to emphasize text rendering; when generating with Veo 3, it focuses on scene motion and audio description.
+A **Prompt enhanced** chip appears with an **Undo** button. Click **Undo** to restore your original wording. The chip clears itself after a few seconds, so undo while it's showing.
 
-The original prompt and the enhanced prompt are both stored with each generation so you can compare them.
+When to reach for it:
 
-## Provider prompt enhancement
+- You have an idea but aren't sure how to phrase it.
+- Your prompt is short and the result feels generic.
+- You want a richer starting point to edit by hand.
 
-Some models expose their own server-side prompt enhancement, separate from the LLM mode described above. When a model supports this, a **Provider Prompt Enhance** toggle appears in the generation settings panel. This is distinct from LLM mode — it uses the AI provider's own enhancement pipeline rather than Mistral.
+When to skip it: if your prompt is already long and specific, Enhance can soften details you chose on purpose. Write it yourself and generate.
 
-Currently, Imagen models (Imagen 4, Ultra, Fast, Flash, Flash Lite) support provider prompt enhancement.
+## Voice dictation: speak your prompt
 
-## Prompt history
+Click the microphone in the prompt box to dictate instead of type. Speak your description and the words drop into the box; click again to stop. Edit the text afterward like anything you typed. Dictation pauses Enhance while it's running, so finish dictating before you enhance.
 
-Every generation saves its prompt — and enhanced prompt if one was used — alongside the output. Browse the gallery to find what worked and iterate on successful approaches.
+## Anatomy of a strong prompt
+
+Most prompts that work name five things. Order matters less than making sure each is present.
+
+| Lever | What it answers | Example phrase |
+|---|---|---|
+| Subject | What is in the frame | a weathered fisherman mending a net |
+| Action or state | What the subject is doing | hands working in the foreground |
+| Setting | Where it happens | on a wooden dock at dawn |
+| Style | What it looks like | 35mm film, muted palette, shallow depth of field |
+| Framing | How it's shot | medium close-up, eye-level, soft natural light |
+
+A prompt that names all five rarely produces something unusable. A prompt that names only the subject ("a fisherman") produces a different image every time.
+
+## Be specific
+
+The single biggest improvement to any prompt is concrete detail.
+
+- **Use concrete nouns.** "A border collie" beats "a dog." "A burgundy wool coat" beats "a jacket."
+- **Name the light and where it comes from.** "Side-lit by a single window" beats "good lighting." Most models render light convincingly when you tell them the direction and source.
+- **Name materials and texture.** `weathered`, `matte`, `polished brass`, `linen`, `worn leather`. Cheap to add and they change the result.
+- **Use photographic vocabulary for photos.** `35mm film`, `shallow depth of field`, `golden hour`, `softbox lighting`, `wide angle`. Models trained on photos respond to these.
+- **Commit to your descriptors.** "A red car" gives you a red car. "A car, maybe red, in a kind of moody way" gives you something hedged and bland.
+
+## What rarely helps
+
+- **Quality-booster soup.** "Masterpiece, 8K, ultra-detailed, award-winning" is mostly noise on current models. Describe the conditions that make an image good — the lighting, the lens, the palette — instead of asking for "quality."
+- **Stacking adjectives.** "Beautiful, gorgeous, stunning, breathtaking" dilutes rather than compounds. Pick the most specific word and stop.
+- **Negating by hoping.** "Without weird hands" rarely works and can make the unwanted thing more likely. Describe the desired state instead — "hands resting in her lap, fingers interlaced." If you need to exclude something, use the **Negative Prompt** field on models that have one (see [Generation settings](/guides/parameters/)).
+- **Conflicting styles.** "Oil painting, photorealistic, anime, watercolor" averages into something muddled. Choose one and reinforce it.
+
+## How references change a prompt
+
+When you attach a reference image, your prompt's job shifts from describing the whole scene to describing how the reference should influence the result. Say what to keep and what to change. "Keep the subject and pose; change the background to a sunlit courtyard" works better than restating the entire scene from scratch.
+
+Reference images, brand assets, and how to attach them are covered in [Reference images](/guides/references/).
+
+## Prompts for editing an image
+
+When you're editing an existing image, the prompt box reads **Describe the edit you want to make**. Describe the change, not the whole picture:
+
+- **Good:** "Change the wall behind her to exposed red brick. Keep everything else the same."
+- **Less good:** "A woman in a burgundy coat in front of a red brick wall" — this re-describes the image and invites the model to redraw parts you wanted left alone.
+
+Be explicit about what stays put. Editing models leave the rest of the image alone when you tell them to. See [Editing images](/guides/image-editing/) for the full flow.
+
+## A note on aspect ratio
+
+The aspect ratio you choose changes the content of the image, not just its frame. A "portrait of a fisherman" at a square ratio tends to be a head-and-shoulders shot; the same prompt at a wide ratio often pulls in the boat and the dock. For a tight close-up in a wide frame, say so: "extreme close-up, only the face filling the frame." Aspect ratio and the other controls live in [Generation settings](/guides/parameters/).
+
+## Iterating when a result is almost right
+
+1. **Find the one thing that's wrong** — flat lighting, wrong style, off pose. Don't rewrite the whole prompt.
+2. **Add the most specific phrase that fixes it.** "Side-lit by a single window" beats "better lighting."
+3. **Lock the seed** (on models that support it) so changing one phrase shows you the effect of that change alone.
+4. **If three tries don't converge,** the model may be wrong for the job. Switch models — see [Choosing a model](/guides/models/).
+
+## Quick tips by goal
+
+| If you want… | Lean on… |
+|---|---|
+| Photoreal images | Photographic vocabulary, named light direction, a lens and palette |
+| Readable text or signage | Put the exact words in quotes; name the typeface era and the sign material |
+| Illustration over photos | Commit hard to the style — "watercolor and ink, visible paper texture, hand-drawn linework" |
+| A specific look | Concrete art or period references — "1980s neo-noir," "Dutch Golden Age painting" |
+
+Every generation saves its prompt — and the enhanced version, if you used one — alongside the result, so you can revisit what worked and build on it. See [Finding assets](/guides/finding-assets/) to search past prompts.

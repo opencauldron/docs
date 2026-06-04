@@ -1,141 +1,87 @@
 ---
-title: Image Editing
-description: Edit, enhance, and transform existing images using image-to-image editing, upscaling, background removal, vectorization, and animation.
+title: Editing images
+description: Start from an existing image and describe the change you want — swap a background, restyle, upscale, or animate
 ---
 
-OpenCauldron provides several ways to work with images beyond initial generation. You can edit an image by prompting against it, increase its resolution, remove its background, convert it to an SVG, or send it directly to a video model for animation.
+Editing starts from an image you already have and a plain-English description of the change you want. You don't pick a tool or a model — you say what to change ("add soft shadows", "make it look like an oil painting", "swap the background to a beach at sunset") and the studio handles the rest.
 
-All editing tools work on images already in your gallery. Open an image in the gallery lightbox to access the available actions.
+This is different from making an image from scratch. For a blank-canvas start, see [Creating images](/guides/creating-images/).
 
----
+## Open the edit studio
 
-## Image-to-image editing
+There are two ways in:
 
-Image-to-image editing takes an existing image and a text prompt, then produces a new image that reflects your prompt while drawing from the original. Use it to change style, modify content, adjust composition, or restyle an image in a new direction.
+- In the sidebar, click **Create**, then **Edit image**. This opens the edit studio with an empty source slot.
+- From an image you already have, open it and use its actions to send it into editing with the source already attached.
 
-Three providers support image-to-image editing, each with a different approach:
+The edit studio looks like the create composer, but it's framed around one source image and the change you describe.
 
-### xAI (Grok)
+## Pick the image to edit
 
-Uses the `grok-imagine-image` model via the xAI images edits API. The model interprets your prompt alongside the source image and produces a modified result. Aspect ratio is preserved from the original or can be changed.
+The edit studio works on a **Source image**. Until you add one, you'll see the hint **Add a reference to pick what to edit**.
 
-**API key required:** `XAI_API_KEY`
+Click **Add reference** to open the picker. From there you can:
 
-### Ideogram (Remix)
+- **Upload** a file from your computer, or drop one onto the picker.
+- Choose from **History** — the images you generated most recently.
+- Choose from **Uploads** — files your team has uploaded.
+- Choose from **Gallery** — images across your studio.
 
-Uses the Ideogram v3 remix endpoint. The source image is blended with your prompt at a fixed image weight of 50, meaning the output balances the original composition with your new instructions equally. You can also set a style type.
+Use the search box to find a specific image by its prompt or file name. Click an image to attach it, then click **Done**.
 
-**API key required:** `IDEOGRAM_API_KEY`
+Uploads and saved assets live in your digital asset manager. To bring brand files in first, see [Library](/guides/library/) and [Uploading files](/guides/uploading/).
 
-### Recraft (Image-to-Image)
+## Describe the change
 
-Uses the Recraft v3 image-to-image endpoint. Supports a **strength** parameter (0–1) that controls how much the output deviates from the source image.
+With a source attached, type what you want in the prompt box. The placeholder reads **Describe the edit you want to make…**
 
-- **0.0** — output is nearly identical to the source; only subtle changes from the prompt
-- **0.5** — balanced blend of the source image and prompt (default)
-- **1.0** — prompt dominates; the source image has minimal influence
+Be specific about what changes and what stays:
 
-You can also set the output size via aspect ratio and apply a Recraft style.
+- "Replace the gray background with a warm studio backdrop, keep the product centered."
+- "Make the jacket red instead of blue."
+- "Turn this photo into a watercolor painting."
+- "Remove the people in the background."
 
-**API key required:** `RECRAFT_API_KEY`
+The model named **Auto** chooses an editing-specialist model that keeps the parts you didn't mention and applies only the change you asked for. You can pin a specific model from the picker if you want a particular look, but **Auto** is the default and the right starting point.
 
-### OpenAI (gpt-image edits)
+Set the **aspect ratio** if you want to reframe, and the number of **Images** (1 to 4) if you want a few variations to compare. Then click **Generate**.
 
-Uses the OpenAI `/v1/images/edits` endpoint. Accepts up to four reference images for compositing. Strong at instruction-following edits — describe what to change and what to keep, and gpt-image follows literally.
+## Combine more than one image
 
-- **Identity preservation:** gpt-image-1 and gpt-image-1.5 are sent with `input_fidelity: "high"` automatically, which is tuned to preserve faces, brand elements, and fine detail across edits. gpt-image-2 is high-fidelity by default and ignores the parameter.
-- **Multiple references:** if you supply more than one input image, OpenAI treats them as a compositing brief — describe how each should be used in the prompt (e.g. "place the product from Image 1 into the scene from Image 2, matching the lighting in Image 2").
+Some edits need more than one reference — for example, putting a product from one shot into a scene from another, or matching the lighting of a second image.
 
-**API key required:** `OPENAI_API_KEY`
+In the **Add reference** picker, attach more than one image (up to four). Then describe how each should be used in your prompt:
 
-### Provider comparison
+> Place the bottle from the first image into the kitchen scene from the second image, matching the warm light from the second image.
 
-| Feature | xAI | Ideogram | Recraft | OpenAI |
-|---------|-----|----------|---------|--------|
-| Strength control | — | — | 0–1 | — |
-| Style options | — | 14 styles | 12 styles | — |
-| Aspect ratio control | Yes | Yes | Yes | Yes (1:1, 2:3, 3:2) |
-| Multi-image input | — | — | — | Up to 4 |
-| Identity preservation | — | — | — | Yes (1.5/1.0) |
+The studio uses every attached image as guidance and follows your description for how to combine them.
 
----
+To learn more about guiding a generation with images, see [References](/guides/references/).
 
-## Upscale
+## Other ways to transform an image
 
-Upscaling increases image resolution beyond the original output size. OpenCauldron supports two upscale providers with different controls.
+When you open a finished image, a **Tools** panel gives you quick transforms that don't need a prompt:
 
-### Ideogram upscale
+| Tool | What it does |
+|---|---|
+| **Upscale** | Increases resolution and sharpens detail, so the image holds up at larger sizes. |
+| **Remove BG** | Cuts out the subject and returns it on a transparent background — ready to drop onto other layouts. |
+| **Vectorize** | Converts a flat graphic (logo, icon, illustration) into a scalable file for print and design work. |
+| **Edit** | Loads the image back into the source slot so you can describe another change. |
 
-Upscales an image using Ideogram's upscale API with two numeric controls:
+You can also **Download** the result or **Regenerate** to try the same prompt again.
 
-- **Resemblance** (0–100) — how closely the upscaled output matches the original. Higher values stay closer to the source; lower values allow more reinterpretation. Default: 50.
-- **Detail** (0–100) — how much fine detail the model adds during upscaling. Higher values produce sharper, more textured results. Default: 50.
+Background removal works best when the subject stands clearly apart from the background. Vectorize works best on flat, limited-color graphics, not photographs.
 
-Start with both at 50 and adjust from there. Raising resemblance is useful when you need the upscaled version to look exactly like the original. Raising detail helps when the source image looks soft or lacks definition.
+## Turn a still into a short video
 
-**API key required:** `IDEOGRAM_API_KEY`
+Any image can become a short video clip. Open the image and click **Animate**. The video composer opens with your image set as the starting frame and its prompt carried over. Describe the motion you want, then generate.
 
-### Recraft upscale
+For pacing, length, and the rest of the video controls, see [Creating video](/guides/creating-video/).
 
-Offers two distinct upscale modes:
+## Tips
 
-| Mode | Description |
-|------|-------------|
-| **Crisp** | Sharpens edges and increases resolution while preserving the original's character. Good for photos and realistic images. |
-| **Creative** | Applies generative enhancement during upscaling, adding detail that wasn't in the original. Good for illustrations and stylized images. |
-
-**API key required:** `RECRAFT_API_KEY`
-
----
-
-## Remove background
-
-Removes the background from an image and returns a version with transparency. This is useful when preparing images for compositing, overlays, or export to design tools.
-
-Background removal is provided exclusively by **Recraft**. The result is saved to your gallery as a PNG with a transparent background.
-
-The tool works best on images with clear subject/background separation. Complex or highly detailed backgrounds may produce imperfect edges.
-
-**API key required:** `RECRAFT_API_KEY`
-
----
-
-## Vectorize
-
-Converts a raster image to a scalable vector graphic (SVG). The output is an SVG file URL rather than a raster image, making it suitable for print, icons, and design work where infinite scalability matters.
-
-Vectorization is provided exclusively by **Recraft**.
-
-The tool works best on images with flat or limited color areas — logos, icons, illustrations, and graphic design output. It is not suitable for photographs or images with complex gradients.
-
-**API key required:** `RECRAFT_API_KEY`
-
----
-
-## Animate
-
-Any image in your gallery can be sent to the video generation interface for image-to-video conversion. This lets you turn a generated still into a short video clip using one of the supported video models.
-
-To animate an image:
-
-1. Open the image in the gallery by clicking on it.
-2. Click the **Animate** button in the detail panel.
-3. You are redirected to the generation page with the image pre-loaded as the input and the original prompt pre-filled.
-4. Select a video model and adjust parameters, then generate.
-
-The following video models support image-to-video input: Veo 3, Veo 3.1, Veo 3 Fast, Runway Gen-4 Turbo, Runway Gen-4.5, Kling 2.1, Kling 2.1 Pro, Hailuo 2.3, Hailuo 2.3 Fast, Ray 2, and Ray Flash 2.
-
----
-
-## Feature and provider summary
-
-| Feature | Provider | API key |
-|---------|----------|---------|
-| Image-to-image editing | xAI, Ideogram, Recraft, OpenAI | `XAI_API_KEY` / `IDEOGRAM_API_KEY` / `RECRAFT_API_KEY` / `OPENAI_API_KEY` |
-| Upscale (resemblance + detail) | Ideogram | `IDEOGRAM_API_KEY` |
-| Upscale (crisp / creative) | Recraft | `RECRAFT_API_KEY` |
-| Remove background | Recraft | `RECRAFT_API_KEY` |
-| Vectorize to SVG | Recraft | `RECRAFT_API_KEY` |
-| Animate (image-to-video) | All video models | Varies by model |
-
-For a full list of API keys and how to configure them, see the [Configuration](/configuration) guide.
+- **Change one thing at a time.** Smaller, specific edits land more reliably than a long list of changes in one prompt.
+- **Say what to keep.** "Keep the logo and the product, change only the background" helps the model preserve what matters.
+- **Generate a few variations.** Set **Images** to 2–4 and pick the best result.
+- **Chain edits.** Use **Edit** on a result to feed it back as the new source and refine from there.

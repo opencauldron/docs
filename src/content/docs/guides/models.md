@@ -1,206 +1,71 @@
 ---
-title: Working with Models
-description: All supported image and video generation models, their strengths, costs, and capabilities.
+title: Choosing a model
+description: Let Auto pick the right model, or choose your own — photos, text, illustration, fast drafts, edits, or video
 ---
 
-OpenCauldron supports 30 models across 10 providers through a unified interface. Each model has different strengths — choose the right one for each job.
+A model is the engine that turns your prompt into an image or video. Different models are good at different things. You don't have to learn them all — by default the studio picks one for you. This page covers the default, then a plain-language guide for when you want to choose yourself.
 
-## Selecting a model
+## Start with Auto
 
-Models are organized as cards in the generation interface. Some models have **variants** — shown as a segmented control on the card — that share the same provider but differ in speed, quality, or cost.
+When you open the composer, the model is set to **Auto**. Auto reads your task and picks the right model:
 
-Each model card shows:
-- Cost per generation (per image or per second of video)
-- Average generation time
-- Supported features (audio, camera control, etc.)
+- A plain prompt with no reference image — a strong all-rounder for new images.
+- A prompt plus a reference image — a model that works from your reference.
+- An edit to an existing image — a model built to change one thing and leave the rest alone.
 
-## Image models
+Auto is marked **Suggested** and shows "Picks the best model for your prompt." For most work, leave it on Auto and write a clear prompt. See [Writing better prompts](/guides/prompts/).
 
-### Google (Imagen / Gemini)
+## Choose a model yourself
 
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Imagen 4** | $0.04/img | ~8s | Photorealistic, high-quality output |
-| **Imagen 4 Ultra** | $0.08/img | ~12s | Maximum quality, 2K resolution |
-| **Imagen 4 Fast** | $0.02/img | ~4s | Rapid iteration with good quality |
-| **Gemini Flash** | $0.002/img | ~3s | Fast and cheap, great for testing |
-| **Gemini Flash Lite** | $0.001/img | ~2s | Cheapest option, rapid prototyping |
+To pick a specific model, click the model name in the composer to open **Browse image models** (or **Browse video models** for video). You get a scrollable list with filters across the top:
 
-Key capabilities: negative prompt, seed, resolution (1K/2K or up to 4K on Gemini), person generation controls, watermark toggle, provider prompt enhance, output format.
+- **Provider** — filter by maker (Google, Black Forest Labs, Ideogram, Recraft, xAI, and more).
+- **Features** — Reference support, LoRA support, or Fast.
+- **Best for** — a goal, such as Photoreal, Illustration & art, Text & logos, Portraits, Editing & references, Brand & marketing, Fast drafts, or Video & motion.
+- **Search** — type a model name.
 
-Gemini Flash models support more aspect ratios (10 options) than Imagen 4 (5 options).
+Each row shows the model, its typical render time, and a few tags (References, Fast, LoRA). Pick a model to pin it; close the browser to stay on Auto. Pinning a model with more than one version shows a small set of version chips so you can switch between, for example, the standard, faster, and highest-quality version.
 
-**API key:** `GEMINI_API_KEY`
+To go back to Auto after pinning, click **Auto** at the top of the model area.
 
-### Black Forest Labs (Flux)
+## Which image model should I use?
 
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Flux 1.1 Pro** | $0.04/img | ~6s | General purpose, high quality |
-| **Flux Dev** | $0.025/img | ~8s | Iteration with guidance/steps control |
-| **Flux Kontext Pro** | $0.04/img | ~8s | Image editing, character consistency, text rendering |
-| **Flux 2 Klein** | $0.015/img | ~2s | Budget drafts, sub-second inference |
+You rarely need to choose, but if you want a specific look, here's a starting point. The version names below match what you see in the browser.
 
-Key capabilities: seed, output format, prompt upsampling. Flux Dev adds guidance and steps sliders for fine control over the diffusion process.
+| Your goal | Try | Why |
+|---|---|---|
+| A reliable all-rounder | Flux 2 Pro | Handles plain prompts, reference images, and edits in one model |
+| Crisp photographic results | Imagen 4 / Imagen 4 Ultra | Photoreal skin, lighting, and detail; Ultra adds higher resolution |
+| Readable text in the image | Ideogram 3 | Renders clean, legible text — posters with copy, logos, social cards |
+| Stylized illustration or design | Recraft V3 / V4 | Vector and brand-safe styles; V4 takes longer style instructions |
+| Bold, creative looks | Grok Imagine | Loose, expressive styles for editorial and mood work |
+| Precise instruction-following | Filter **Best for** to **Editing & references** | Sharp at multi-step instructions and high-fidelity image inputs |
+| A fast draft | Flux 2 Klein, Imagen 4 Fast, or any model tagged **Fast** | Quick, low-cost passes for iterating on an idea |
+| Keep a subject consistent across edits | Flux Kontext | Built for character and subject consistency across a series |
+| Use several reference images | Flux 2 Pro | Composes from multiple references in one shot |
+| A transparent background | Filter **Best for** to **Editing & references** | Output an isolated subject on a transparent background |
 
-**API key:** `BFL_API_KEY`
+Need transparent or print-ready output, or want to control resolution and aspect ratio? See [Generation settings](/guides/parameters/).
 
-### Ideogram
+## Which video model should I use?
 
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Ideogram 3** | $0.06/img | ~10s | Text rendering in images, wide style range |
+Video models take longer than image models and are priced by the second. Auto starts you on a strong general video model. To choose yourself:
 
-Key capabilities: 14 artistic styles, negative prompt, seed, rendering speed (Turbo/Default/Quality), batch generation (up to 8). Supports the most aspect ratios (11 options) of any image model.
+| Your goal | Try | Why |
+|---|---|---|
+| Video with sound | Veo 3 | Generates matching audio along with the clip |
+| Longer or higher-resolution clips | Veo 3.1 | Adds 4K and extends clips well past the standard length |
+| Animate an existing still | Gen-4 Turbo | Built for image-to-video — bring a hero still to life |
+| A cinematic short | Gen-4.5 | Flagship quality from text and image |
+| Realistic human or character motion | Kling 2.1 | Strong motion and physics for movement-heavy clips |
+| Best value | Hailuo 2.3 | Strong motion at a low per-second cost (add audio separately) |
+| Camera moves like a push-in or orbit | Ray 2 | Named camera controls and longer clips |
+| A quick draft | Veo 3 Fast, Hailuo 2.3 Fast, or Ray Flash 2 | Faster, cheaper passes for testing a shot idea |
 
-**API key:** `IDEOGRAM_API_KEY`
+## A note on cost and speed
 
-### Recraft
+Each model row shows its typical render time, and pinned image and video models show an estimated cost before you generate. Faster, lower-cost models are good for drafts; higher-quality models are worth the wait for final work. Auto already balances this for the task at hand.
 
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Recraft V3** | $0.04/img | ~8s | Design and illustration |
-| **Recraft 20B** | $0.02/img | ~5s | Budget design work |
-| **Recraft V4** | $0.04/img | ~8s | Improved quality, 10K char prompts |
-| **Recraft V4 Pro** | $0.08/img | ~10s | Premium, 4MP print-ready output |
+If your studio admin has enabled mature content, you'll see an optional toggle.
 
-Key capabilities: 12 styles (realistic, vector, icon, digital illustration, and sub-styles), negative prompt, CFG scale, batch generation (up to 6).
-
-**API key:** `RECRAFT_API_KEY`
-
-### xAI (Grok)
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Grok Imagine** | $0.02/img | ~5s | Fast, creative generation |
-| **Grok Imagine Pro** | $0.07/img | ~8s | Highest quality, up to 2K |
-
-Key capabilities: resolution (1K/2K), batch generation (up to 10). Note: does not support negative prompts.
-
-**API key:** `XAI_API_KEY`
-
-### OpenAI
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **gpt-image-2** | $0.042/img | ~12s | Latest model — sharper instruction-following, high-fidelity image inputs |
-| **gpt-image-1.5** | $0.042/img | ~12s | Previous flagship — choose this if you need transparent backgrounds (gpt-image-2 doesn't support them yet) |
-| **gpt-image-1** | $0.042/img | ~12s | Original GA model, stable production choice |
-| **gpt-image-1-mini** | $0.021/img | ~8s | Cost-optimized, ~½ the price for similar tasks |
-
-Key capabilities: batch generation (up to 10), quality control (Standard / High), aspect ratios (1:1, 2:3, 3:2). OpenAI models do not support negative prompts or seed.
-
-Pricing varies by quality level and resolution. The costs shown above are for medium quality at 1:1. See the [API Keys guide](/guides/api-keys) for the full price breakdown.
-
-**API key:** `OPENAI_API_KEY`
-
----
-
-## Video models
-
-### Google (Veo)
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Veo 3** | $0.15/s | ~120s | Native audio, high quality |
-| **Veo 3.1** | $0.15/s | ~120s | 4K support, video extension up to 148s |
-| **Veo 3 Fast** | $0.08/s | ~60s | Same quality, lower latency |
-
-Key capabilities: native audio generation, image-to-video, resolution (720p/1080p/4K), negative prompt, seed, person generation controls. Durations: 5–8s.
-
-**API key:** `GEMINI_API_KEY`
-
-### Runway
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Gen-4 Turbo** | $0.05/s | ~30s | Cinematic video, fast turnaround |
-| **Gen-4.5** | $0.10/s | ~45s | Flagship text + image to video |
-
-Key capabilities: image-to-video, seed, resolution (720p/1080p). Durations: 5s or 10s.
-
-**API key:** `RUNWAY_API_KEY`
-
-### Kling (via fal.ai)
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Kling 2.1** | $0.075/s | ~90s | Top-tier motion quality |
-| **Kling 2.1 Pro** | $0.15/s | ~90s | Higher quality, motion brush |
-
-Key capabilities: negative prompt, CFG scale, image-to-video, resolution (720p/1080p). Durations: 5s or 10s.
-
-**API key:** `FAL_KEY`
-
-### Hailuo (MiniMax)
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Hailuo 2.3** | $0.045/s | ~60s | Best cost/quality ratio, native audio |
-| **Hailuo 2.3 Fast** | $0.03/s | ~30s | Faster iteration, cheaper |
-
-Key capabilities: native audio, image-to-video, prompt optimizer, resolution (720p/1080p). Durations: 6s or 10s.
-
-**API key:** `MINIMAX_API_KEY`
-
-### Luma (Ray)
-
-| Variant | Cost | Speed | Best for |
-|---------|------|-------|----------|
-| **Ray 2** | $0.07/s | ~60s | Camera controls, extendable to 60s |
-| **Ray Flash 2** | $0.025/s | ~20s | 3x faster, up to 15s duration |
-
-Key capabilities: camera motion controls (pan, zoom, orbit), loop video, image-to-video, resolution (540p–4K), most aspect ratio options of any video model (7 options). Durations: 5–10s.
-
-**API key:** `LUMA_API_KEY`
-
----
-
-## Cost comparison
-
-### Image models (per image)
-
-| Model | Cost |
-|-------|------|
-| Gemini Flash Lite | $0.001 |
-| Gemini Flash | $0.002 |
-| Flux 2 Klein | $0.015 |
-| Recraft 20B | $0.02 |
-| Grok Imagine | $0.02 |
-| Imagen 4 Fast | $0.02 |
-| gpt-image-1-mini | $0.021 |
-| Flux Dev | $0.025 |
-| Flux 1.1 Pro | $0.04 |
-| Flux Kontext Pro | $0.04 |
-| Imagen 4 | $0.04 |
-| Recraft V3 / V4 | $0.04 |
-| gpt-image-2 / 1.5 / 1 | $0.042 |
-| Ideogram 3 | $0.06 |
-| Grok Imagine Pro | $0.07 |
-| Imagen 4 Ultra | $0.08 |
-| Recraft V4 Pro | $0.08 |
-
-> **Note:** OpenAI costs shown at medium quality, 1:1 size. High quality and larger sizes cost more — see the [API Keys guide](/guides/api-keys#openai--openai_api_key) for the full price table.
-
-### Video models (per second)
-
-| Model | Cost |
-|-------|------|
-| Ray Flash 2 | $0.025 |
-| Hailuo 2.3 Fast | $0.03 |
-| Hailuo 2.3 | $0.045 |
-| Runway Gen-4 Turbo | $0.05 |
-| Ray 2 | $0.07 |
-| Kling 2.1 | $0.075 |
-| Veo 3 Fast | $0.08 |
-| Runway Gen-4.5 | $0.10 |
-| Kling 2.1 Pro | $0.15 |
-| Veo 3 / 3.1 | $0.15 |
-
----
-
-## Configuring providers
-
-Each provider requires its own API key set as an environment variable. Only models with configured keys appear in the interface. See the [Configuration](/configuration) guide for details on setting environment variables.
-
-For details on what each parameter does, see the [Generation Parameters](/guides/parameters) reference.
+For how to write prompts that get the most from any model, see [Writing better prompts](/guides/prompts/). To start generating, see [Creating images](/guides/creating-images/).

@@ -1,123 +1,86 @@
 ---
 title: Brands
-description: Set up a brand kit, manage brand members and roles, and control who can generate and approve within each brand
+description: How brands organize one client or project — assets, Kit style rules, members, and campaigns in one space
 ---
 
-A brand is the main organizational unit within your workspace. Each brand has its own gallery of assets, a set of brand kit settings that shape every generation, and a member list with role-based access control. Assets, [campaigns](/guides/campaigns/), brews, and the [review pipeline](/guides/review/) are all scoped to a brand.
+A brand is your space for one client, division, or project. Everything you create lives inside a brand: its assets, its style rules, the people who work on it, and its campaigns. Switch brands and the whole studio re-scopes to that work.
 
-Workspace owners and admins can see all brands. Other members see only the brands they have been explicitly added to.
+Each brand holds four things:
 
-## Creating a brand
+- **Assets** — the images and video created or uploaded for this brand, organized in the [Library](/guides/library/).
+- **Kit** — the style rules every generation follows: brand color, logo, prompt prefix and suffix, banned terms, video on or off, and self-approval.
+- **Members** — the teammates on this brand, each with a role that sets what they can do.
+- **Campaigns** — optional groupings of assets for a launch or push. See [Campaigns](/guides/campaigns/).
 
-Only workspace owners and admins can create brands.
+## The Brands index
 
-Navigate to **Brands** in the sidebar and click **New Brand**. Enter a name — names must be unique within your workspace. The brand color defaults to `#6366f1`; you can change it in the brand kit after creation.
+Open **Brands** to see every brand you belong to. Two views share one toolbar:
 
-The member who creates a brand is automatically added as a `brand_manager`.
+- **Gallery** — brand cards with the logo, your role, asset count, and recent activity.
+- **List** — a sortable table with brand color, team, your role, assets, and campaigns.
 
-## Brand kit
+Type in the search box to filter brands by name. Click **Add Brand** to create one: enter a **Name** and pick a **Color**, then **Create**. You land on the new brand's **Kit** tab to finish setting it up.
 
-The **Kit** tab in a brand page contains all brand kit settings. Only `brand_manager` role holders (and workspace admins/owners) can edit the kit. All other members see a read-only view.
+## Working inside a brand
 
-### Color
+Open a brand to see its tabs:
 
-The brand color is a hex value (`#RRGGBB`). It appears as a visual label throughout the UI — on brand cards, asset tags, and the member list row highlight. It does not affect generation parameters.
+- **Gallery** — the brand's assets.
+- **Brews** — saved recipes for this brand. See [Brews](/guides/brews/).
+- **Campaigns** — the brand's campaigns.
+- **Kit** — the style rules below.
+- **Members** — the team and their roles.
+- **Review** — the approval queue. This tab shows only for managers. See [Review](/guides/review/).
 
-### Logo
+## The brand picker
 
-Upload a logo (PNG, JPG, or WebP, square recommended, max 2 MB) to display in place of the default color swatch. Click **Upload** to add a logo or **Replace** to swap it. Click **Remove** to revert to the color swatch. Personal brands always use the owner's avatar instead.
+The brand picker sits in the top bar. It sets which brand you're working in across the whole studio — the Library, the gallery, what you create, and more all follow your choice.
 
-### Prompt prefix and suffix
+Pick **All brands** to see everything you have access to at once, or pick a single brand to focus on it. Your Personal brand sits in its own group at the top.
 
-`promptPrefix` and `promptSuffix` are plain-text strings prepended and appended to every prompt submitted under this brand. Use them to enforce consistent styling without requiring every creator to remember to include it.
+## The Kit
 
-- **Prompt prefix** — inserted at the start of the prompt (e.g., `studio shot,`)
-- **Prompt suffix** — appended at the end (e.g., `, clean, well-lit`)
+The **Kit** tab holds the style rules for a brand. Managers and studio admins can edit it; everyone else sees a read-only view. Make your changes, then click **Save changes**.
 
-Both fields accept up to 500 characters. Leave either blank to disable it.
+| Setting | What it does |
+|---|---|
+| **Color** | A hex color (`#RRGGBB`) used as the brand's label across the studio. It marks brand cards, tags, and member rows. It does not change what you generate. |
+| **Logo** | A square image shown in place of the color mark. Click **Upload** to add one, **Replace** to swap it, or **Remove** to go back to the color. PNG or WebP works best, up to 2 MB. |
+| **Prompt prefix** | Text added to the start of every prompt for this brand — for example, `studio shot,`. |
+| **Prompt suffix** | Text added to the end of every prompt — for example, `, clean, well-lit`. |
+| **Banned terms** | Words or phrases blocked from prompts for this brand. Type a term and click **Add** (or press Enter). Click the × on a term to remove it. |
+| **Default LoRA id** | An optional fine-tuned style add-on applied to generations for this brand. Leave it blank for none. See [LoRAs](/guides/loras/). |
+| **Enable video generation for this brand** | Controls whether the team can create video for this brand. On by default. |
+| **Allow brand managers to self-approve their own assets** | Lets managers approve their own work instead of needing a second person. Off by default. |
 
-### Banned terms
+The prompt prefix and suffix keep everything on-brand without asking each person to remember the wording. If your studio admin has enabled mature content, you'll see an optional toggle here too.
 
-`bannedTerms` is a list of words or phrases blocked from generation prompts for this brand. Enter a term in the input field and press **Add** (or press Enter). Click the `×` on any existing term to remove it. Up to 64 terms are supported.
+### Deleting a brand
 
-### Default LoRA
+Managers and studio admins see a **Danger Zone** at the bottom of the **Kit** tab. Click **Delete brand** to start. Before it's removed, you choose whether to move the brand's assets and brews to another brand or delete them along with it. Deleting a brand also removes its members, campaigns, collections, and review history.
 
-Set a default [LoRA](/guides/loras/) ID to pre-select a fine-tuned model add-on for every generation under this brand. Enter the LoRA ID in the **Default LoRA id** field. Leave blank to use no brand-level default.
+## Members and roles
 
-### Video generation
+Each brand has its own team, separate from your studio's full member list. The same person can hold different roles on different brands.
 
-The **Enable video generation for this brand** toggle controls whether creators can generate video assets under this brand. The toggle defaults to on. Disabling it blocks video submissions for this brand regardless of individual workspace permissions.
+| Role | What they can do |
+|---|---|
+| **Brand manager** | Edit the Kit, invite and remove members, create and edit campaigns, and approve or reject assets in review |
+| **Creator** | Create assets, upload, comment, and create campaigns |
+| **Viewer** | Read-only — see the brand's assets but not change them |
 
-### Self-approval
+Studio Owners and Admins get manager-level access on every brand. A brand always keeps at least one manager — the last one can't be removed or demoted until someone else is promoted.
 
-By default, `brand_manager` members cannot approve their own submitted assets. Turn on **Allow brand managers to self-approve their own assets** to lift this restriction for the brand. This setting has no effect on approvals of assets submitted by other members.
+To manage the team, open the **Members** tab (managers and studio admins only):
 
-Click **Save changes** to apply any kit edits.
+1. Enter a teammate's email in **Invite by email**.
+2. Pick a role.
+3. Click **Invite**.
 
----
+Use the role dropdown next to any member to change their role, or the remove button to take them off the brand. Removing someone from a brand doesn't remove them from your studio. For studio-wide membership, see [Members & roles](/settings/members/).
 
-## Brand member roles
+## Your Personal brand
 
-Each brand has its own member list, separate from workspace membership. A workspace member can hold different roles across different brands.
+Everyone has a Personal brand — a private scratch space for trying ideas. Only you can see what's in it, and work there skips review entirely. It's a single-person space, so it has no members to manage and no logo to set.
 
-| Role | Schema value | What they can do |
-|---|---|---|
-| Brand manager | `brand_manager` | Invite and remove members, edit brand kit, approve and reject assets in review |
-| Creator | `creator` | Generate assets, save to library, submit assets for review |
-| Viewer | `viewer` | Read-only access — can see brand assets but cannot generate or submit |
-
-Workspace owners and admins inherit `brand_manager`-level access on every brand regardless of whether they have a `brand_members` row.
-
-A brand always has at least one `brand_manager`. The last `brand_manager` cannot be demoted or removed until another member is promoted first.
-
-For details on how roles interact with the approval workflow, see [Review](/guides/review/).
-
-## Managing members
-
-Navigate to a brand and open the **Members** tab. Only `brand_manager` holders (and workspace admins/owners) can make changes here.
-
-### Adding a member
-
-Enter a teammate's email address in the **Invite by email** field, select a role from the dropdown, and click **Invite**. If the email belongs to an existing workspace member they are added immediately. If not, they are added to the workspace as a `member` and then added to the brand at the selected role.
-
-### Changing a role
-
-In the member list, use the role dropdown next to any member (other than yourself) to change their role. The change takes effect immediately.
-
-### Removing a member
-
-Click the trash icon next to a member and confirm in the dialog. Removing a member revokes their access to this brand. Their workspace membership is not affected.
-
-Personal brands are single-user and cannot have members added or removed.
-
----
-
-## Deleting a brand
-
-Open the **Kit** tab for the brand. `brand_manager` holders and workspace admins/owners see a **Danger Zone** section at the bottom of the page. Click **Delete brand** to open the deletion dialog.
-
-Before the delete is confirmed, you choose what to do with the brand's existing assets and brews:
-
-- **Move them to another brand** — assets and brews are reassigned to a brand you select. Choose this when you want to preserve the content under a different brand.
-- **Delete them along with the brand** — all assets and brews are permanently removed. This cannot be undone.
-
-Type the brand name exactly to unlock the **Delete brand** button.
-
-Deleting a brand also removes its members, campaigns, collections, and review history. A workspace must keep at least one non-personal brand; the last non-personal brand cannot be deleted.
-
-Personal brands are tied to workspace membership and cannot be deleted from this page.
-
----
-
-## Workspace vs. brand permissions
-
-OpenCauldron has two permission scopes:
-
-| Scope | Roles | Controls |
-|---|---|---|
-| Workspace | `owner`, `admin`, `member` | Who can join the workspace, create brands, see all brands |
-| Brand | `brand_manager`, `creator`, `viewer` | Who can generate, submit, approve, and manage kit within a specific brand |
-
-Workspace `owner` and `admin` roles inherit `brand_manager` access on every brand. Workspace `member` role holders access only the brands they are explicitly added to, at the role they were assigned.
-
-For workspace-level setup and inviting teammates, see [Getting Started](/getting-started/).
+Use a shared brand when work needs to be on-brand, reviewed, or seen by the team. Use Personal when you're experimenting.

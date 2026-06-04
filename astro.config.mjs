@@ -8,6 +8,8 @@ export default defineConfig({
   redirects: {
     '/': '/introduction/',
     '/guides/teams': '/getting-started/',
+    '/guides/prompting': '/guides/prompts/',
+    '/guides/prompting/flux': '/guides/prompts/',
   },
   integrations: [
     starlight({
@@ -28,52 +30,83 @@ export default defineConfig({
       customCss: ['./src/styles/starlight.css'],
       sidebar: [
         {
-          label: 'Introduction',
+          label: 'Get started',
           items: [
             { slug: 'introduction' },
+            { slug: 'sign-up' },
+            { slug: 'getting-started' },
+            { slug: 'concepts' },
           ],
         },
         {
-          label: 'Using OpenCauldron',
+          label: 'Brands & your team',
           items: [
-            { slug: 'getting-started' },
             { slug: 'guides/brands' },
+            { slug: 'settings/members' },
             { slug: 'guides/campaigns' },
-            { slug: 'guides/activity' },
+          ],
+        },
+        {
+          label: 'Your asset library',
+          items: [
             { slug: 'guides/library' },
+            { slug: 'guides/uploading' },
+            { slug: 'guides/finding-assets' },
+            { slug: 'guides/gallery' },
+          ],
+        },
+        {
+          label: 'Creating',
+          items: [
+            { slug: 'guides/creating-images' },
+            { slug: 'guides/image-editing' },
+            { slug: 'guides/creating-video' },
+            { slug: 'guides/models' },
+            { slug: 'guides/references' },
+            { slug: 'guides/brews' },
+            { slug: 'guides/loras' },
+            { slug: 'guides/prompts' },
+            { slug: 'guides/parameters' },
+          ],
+        },
+        {
+          label: 'Reviewing & collaborating',
+          items: [
             { slug: 'guides/review' },
             { slug: 'guides/threads' },
-            { slug: 'guides/gallery' },
+            { slug: 'guides/activity' },
+          ],
+        },
+        {
+          label: 'You & your progress',
+          items: [
+            { slug: 'guides/profile' },
             { slug: 'guides/xp-and-feats' },
             { slug: 'guides/usage-and-limits' },
+          ],
+        },
+        {
+          label: 'Managing your studio',
+          items: [
+            { slug: 'settings/studio' },
             { slug: 'guides/admin' },
           ],
         },
         {
-          label: 'Generating',
+          label: 'Enterprise',
+          collapsed: true,
           items: [
-            { slug: 'guides/models' },
-            { slug: 'guides/parameters' },
-            { slug: 'guides/prompts' },
-            { slug: 'guides/image-editing' },
-            { slug: 'guides/loras' },
-            { slug: 'guides/brews' },
-            { slug: 'guides/references' },
+            { slug: 'enterprise' },
           ],
         },
         {
-          label: 'Prompting Guides',
+          label: 'Open source & self-hosting',
+          collapsed: true,
           items: [
-            { slug: 'guides/prompting' },
-            { slug: 'guides/prompting/flux' },
-          ],
-        },
-        {
-          label: 'Self-hosting',
-          items: [
+            { slug: 'self-hosting' },
             { slug: 'installation' },
-            { slug: 'setup-wizard' },
             { slug: 'configuration' },
+            { slug: 'setup-wizard' },
             { slug: 'guides/api-keys' },
             { slug: 'guides/storage' },
             { slug: 'guides/database' },
@@ -82,21 +115,24 @@ export default defineConfig({
         },
         {
           label: 'Contributing',
+          collapsed: true,
           items: [
             { slug: 'contributing' },
             { slug: 'contributing/development-setup' },
-            { slug: 'contributing/contributing-to-docs' },
             { slug: 'guides/adding-providers' },
+            { slug: 'contributing/contributing-to-docs' },
             { slug: 'contributing/code-style' },
             { slug: 'contributing/issues-and-requests' },
           ],
         },
         {
           label: 'Reference',
+          collapsed: true,
           autogenerate: { directory: 'reference' },
         },
         {
           label: 'Releases',
+          collapsed: true,
           items: [
             { slug: 'changelog' },
           ],

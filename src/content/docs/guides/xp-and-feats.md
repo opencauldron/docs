@@ -1,161 +1,123 @@
 ---
-title: XP, Levels, and Feats
-description: How the experience point system works, what each level unlocks, and how to earn all 11 feats.
+title: XP, levels & feats
+description: Earn XP as you create and collaborate, climb through levels that open up new tools, and collect feats along the way
 ---
 
-Every generation you complete earns XP. Earn enough and you level up, unlock new capabilities, and collect feats along the way. This page covers everything the system tracks and what it takes to progress.
+OpenCauldron tracks your activity as you create. Every generation earns XP, XP raises your level, and milestones earn you feats. It is a light layer on top of your work — nothing here gates day-to-day creating, with one exception (video, covered below). You can see all of it on [your profile](/guides/profile/).
 
 ## Earning XP
 
-XP is awarded automatically when a generation completes successfully. The amount depends on the model you used and whether you generated an image or a video.
+XP is added automatically when a generation finishes. You never claim it.
 
-### Image generation rewards
+How much you earn depends on what you made:
 
-| XP | Models |
-|----|--------|
-| 10 XP | Imagen 4, Ideogram 3, Grok Imagine Pro, Flux 1.1 Pro, Recraft V3 |
-| 5 XP | Imagen Flash, Imagen Flash Lite, Grok Imagine, Flux Dev, Recraft 20B |
-| 5 XP | All other image models (default) |
+| What you made | XP |
+|---|---|
+| An image with a top-tier model (such as Flux 2 Pro, Imagen, Ideogram, Recraft) | 10 XP |
+| An image with a faster, lighter model | 5 XP |
+| A video up to 5 seconds | 25 XP |
+| A video longer than 5 seconds | 50 XP |
 
-Higher-tier models award more XP — using the best tools for the job pays off.
+If you use the **Auto** model picker, OpenCauldron chooses a model for you and you earn the XP for whatever it picks. See [Models](/guides/models/) for how model selection works.
 
-### Video generation rewards
-
-| Duration | XP |
-|----------|----|
-| Up to 5 seconds | 25 XP |
-| Over 5 seconds | 50 XP |
-
-Video generations award substantially more XP than images, reflecting the additional compute involved.
-
-### Feat rewards
-
-Unlocking a feat grants a one-time XP bonus on top of your generation XP. Each feat's reward is listed in the [Feats](#feats) section below.
-
----
+Feats also grant XP — see [Feats](#feats) below.
 
 ## Levels
 
-There are 8 levels. Your level is determined by your total lifetime XP.
+Your total XP sets your level. There are eight levels, each with its own title:
 
-| Level | Title | XP required |
-|-------|-------|-------------|
-| 1 | Apprentice | 0 XP |
-| 2 | Herbalist | 50 XP |
-| 3 | Alchemist | 150 XP |
-| 4 | Enchanter | 400 XP |
-| 5 | Warlock | 800 XP |
-| 6 | Archmage | 1,500 XP |
-| 7 | Mythweaver | 3,000 XP |
-| 8 | Elder | 6,000 XP |
+| Level | Title | XP to reach |
+|---|---|---|
+| 1 | Apprentice | 0 |
+| 2 | Herbalist | 50 |
+| 3 | Alchemist | 150 |
+| 4 | Enchanter | 400 |
+| 5 | Warlock | 800 |
+| 6 | Archmage | 1,500 |
+| 7 | Mythweaver | 3,000 |
+| 8 | Elder | 6,000 |
 
-Level 8 is the maximum. Your profile shows a circular progress ring indicating how far you are toward the next threshold.
+Level 8 (Elder) is the top. Your profile shows a ring around your level number with how much XP is left to the next one, or **Max level** once you reach Elder.
 
-### Video access unlocks at Level 3 (Alchemist)
+### Video opens up at level 3
 
-> **Video generation is locked until you reach Level 3.** Once you hit 150 XP and become an Alchemist, video models appear in the interface automatically — no action required. This is the most significant unlock in the progression system.
+Video generation opens up when you reach level 3, **Alchemist** (150 XP). Until then, you create images. Once you reach level 3, video tools appear automatically — there is nothing to switch on. Your profile shows a **Video Access** marker next to your name once it is available.
 
-To reach Level 3 quickly: generate 15 images with a 10 XP model, or a combination of images and feats. Earning the First Brew feat (+10 XP) and the Ranger feat (+25 XP) alongside regular generation XP gets you there fast.
-
----
+This is the only capability tied to a level. Everything else — brands, campaigns, the library, review — is available from day one.
 
 ## Feats
 
-Feats are permanent achievements that appear on your profile. They are awarded automatically when you meet the unlock condition — you never need to claim them manually. Most feats also grant bonus XP.
+Feats are badges for reaching a milestone. Like XP, they are awarded automatically the moment you meet the condition; there is nothing to claim. Most feats also grant a one-time XP bonus.
 
-### Milestone feats
+Your profile shows all feats in a grid. Ones you have earned are highlighted and show when you earned them; the rest stay dimmed with a lock until you reach them.
 
-| Feat | Condition | XP reward |
-|------|-----------|-----------|
-| **First Brew** | Complete your first generation | +10 XP |
-| **Centaur** | Complete 100 generations | +50 XP |
-| **Hydra** | Complete 1,000 generations | +100 XP |
+### Creating
 
-### Streak feats
+| Feat | How to earn it | XP |
+|---|---|---|
+| **First Brew** | Make your first creation | +10 XP |
+| **Centaur** | Make 100 creations | +50 XP |
+| **Hydra** | Make 1,000 creations | +100 XP |
+| **Ranger** | Use 5 or more different image models | +25 XP |
 
-| Feat | Condition | XP reward |
-|------|-----------|-----------|
-| **Kindling** | 7-day generation streak | +25 XP |
-| **Inferno** | 30-day generation streak | +100 XP |
+### Streaks
 
-Streaks count calendar days. You need at least one completed generation on each consecutive day. Missing a day resets the streak to zero, so consistency matters more than volume.
+| Feat | How to earn it | XP |
+|---|---|---|
+| **Kindling** | Keep a 7-day creation streak | +25 XP |
+| **Inferno** | Keep a 30-day creation streak | +100 XP |
 
-### Model feat
+A streak counts the run of consecutive days on which you made at least one creation. Make something every day to keep it going; miss a full day and it resets. Your current streak shows next to your name on your profile while it is active.
 
-| Feat | Condition | XP reward |
-|------|-----------|-----------|
-| **Ranger** | Generate with 5 or more different image models | +25 XP |
+### Video
 
-Only image models count toward Ranger — video models are excluded.
+| Feat | How to earn it | XP |
+|---|---|---|
+| **Illusionist** | Make your first video | +20 XP |
+| **Conjurer** | Make 50 videos | +50 XP |
 
-### Quality feat
+Both need video, which opens up at level 3.
 
-| Feat | Condition | XP reward |
-|------|-----------|-----------|
-| **Sigil** | Tag 50 or more assets with brands | +25 XP |
+### Brand work
 
-Tagging assets with [brands](/guides/brands) is the fastest path to this one if you're already organizing your library.
+| Feat | How to earn it | XP |
+|---|---|---|
+| **Sigil** | Tag 50 or more assets to a brand | +25 XP |
 
-### Video feats
+If you are already organizing work into [brands](/guides/brands/), this one arrives on its own.
 
-| Feat | Condition | XP reward |
-|------|-----------|-----------|
-| **Illusionist** | Complete your first video generation | +20 XP |
-| **Conjurer** | Complete 50 video generations | +50 XP |
+### Granted feats
 
-Both of these require video access, which itself requires Level 3. Illusionist is a natural first step after you unlock video.
+A few feats are given rather than earned through activity. They carry no XP and mark a role or history:
 
-### Special feats
-
-These feats are granted rather than earned through activity. They carry no XP reward but display prominently on your profile.
-
-| Feat | Description |
-|------|-------------|
-| **Early Adopter** | Joined in the first month of the instance |
-| **Admin** | Team administrator |
-| **Founder** | Instance creator and owner |
-
----
-
-## Streaks
-
-Your streak is the number of consecutive calendar days on which you completed at least one generation. The streak counter appears on your profile and in the app header when it's active.
-
-A few rules to keep in mind:
-
-- The streak starts at 1 on your first day generating.
-- Each new calendar day you generate extends it by 1.
-- If you skip a day entirely, the streak resets to 0. Generating twice in one day does not make up for a missed day.
-- The streak is checked against the date your generations were created, not the time zone of the server — the check uses the generation's timestamp date.
-
-Reach 7 consecutive days to earn **Kindling**. Keep going to 30 for **Inferno**.
-
----
+| Feat | What it means |
+|---|---|
+| **Early Adopter** | Joined in the first month |
+| **Admin** | A studio administrator |
+| **Founder** | The studio's creator and owner |
 
 ## Your profile
 
-Your profile page at `/profile/[your-id]` displays everything the system tracks about you:
+Everything above shows on your profile, alongside your stats:
 
-- **XP ring** — A circular progress indicator showing your level number and how far you are to the next threshold.
-- **Level title** — Your current rank (Apprentice through Elder) shown alongside your XP total.
-- **Streak** — Your current consecutive-day streak, shown in the header area when active.
-- **Favorite model** — Automatically determined from your generation history — whichever model you've used most.
-- **Total generations** — Your all-time completed generation count.
-- **Feats** — All 11 feats displayed in a grid. Feats you've earned are highlighted; locked feats appear dimmed with a lock icon. Each card shows the feat's XP reward and, if earned, when you earned it.
-- **Recent creations** — A thumbnail grid of your most recent generated images and videos.
+- Your level ring, title, and total XP
+- **Generations** — your all-time count of creations
+- **Favorite** — the model you use most
+- **Member since** and your current streak
+- Your feats and a grid of your **Recent Creations**
 
-Your profile is public — anyone with the URL can view it.
-
----
+Level-ups and feats also post to your studio's [Activity feed](/guides/activity/), so teammates see when you climb a level or earn a feat. See [Your profile](/guides/profile/) for the full page.
 
 ## Leaderboard
 
-The leaderboard at `/leaderboard` shows the top 10 users across three categories:
+If your studio has the **Leaderboard** turned on, it ranks the top creators across three boards:
 
-| Category | Metric | Window |
-|----------|--------|--------|
-| **Top Generators** | Completed generation count | This calendar month |
+| Board | What it ranks | Window |
+|---|---|---|
+| **Top Generators** | Number of creations made | This month |
 | **Most Feats** | Total feats earned | All time |
-| **Highest XP** | Total accumulated XP | All time |
+| **Highest XP** | Total XP | All time |
 
-Each entry links to that user's profile. The Top Generators board resets at the start of each month — the other two are cumulative.
+Each name links to that person's profile. **Top Generators** starts fresh at the beginning of each month; the other two are all-time.
+
+XP and feats are about momentum, not gatekeeping — they sit alongside the limits that govern how much you can create. For those, see [Usage & limits](/guides/usage-and-limits/).

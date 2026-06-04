@@ -1,89 +1,81 @@
 ---
 title: Brews
-description: Save and reuse generation recipes — model, LoRAs, parameters, and optional prompt — as named brews.
+description: Save a look as a reusable recipe — model, settings, and prompt — then re-run it or share it with your team
 ---
 
-A brew is a saved generation recipe. It captures the model, all active LoRAs and their weights, generation parameters (aspect ratio, seed, output format, style, etc.), and optionally the prompt. Loading a brew on the Generate page restores the full setup in one click so you can reproduce or iterate on a previous result without rebuilding the configuration by hand.
+A brew is a saved recipe for a result you like. It captures the model, the settings (aspect ratio, style, and the rest), any styles or LoRAs you stacked, and — if you choose — the prompt. Load a brew and the composer rebuilds the whole setup in one click, so you reproduce a look without rebuilding it by hand.
 
----
+Open **Brews** in the sidebar. The page has two tabs:
 
-## Saving a brew from the Generate page
+- **My Brews** — recipes you saved or cloned.
+- **Explore** — brews shared with your brand or published for everyone in your studio.
 
-After a successful generation, a **Save as Brew** button appears below the result. Click it to open the Save dialog:
+## Save a brew
 
-1. Enter a **name** for the brew (required).
-2. Optionally add a **description** to remind yourself what the brew is for.
-3. Use the **Include prompt text** toggle to control whether the prompt is stored:
-   - **On** — the prompt is saved with the brew and pre-filled when you load it.
-   - **Off** — only the model and parameters are saved; you write a fresh prompt each time.
+You save a brew from a result you already created.
+
+When you finish creating an image, click **Save as Brew** below the result. You can also save from a result in [Gallery](/guides/gallery/) — open the image and choose the save-as-brew option. Either way, the same dialog opens, pre-filled with the model and settings from that result.
+
+In the dialog:
+
+1. Enter a **Name** (required) — for example, "Anime Portrait Setup".
+2. Add a **Description** (optional) to remind yourself what the brew is for.
+3. Set the **Include prompt text** toggle:
+   - **On** — the prompt is saved and pre-filled when you load the brew.
+   - **Off** — only the model and settings are saved. The dialog shows "Config only — no prompt", and you write a fresh prompt each time.
 4. Click **Save Brew**.
 
-The brew is saved immediately and appears on the /brews page.
+The brew appears under **My Brews**.
 
----
+## Use a brew
 
-## Saving a brew from the Gallery
+On the **My Brews** tab, each card shows a preview image, the brew name, the model, the prompt (if saved), and how many times the brew has been used.
 
-You can save a brew from any asset already in your gallery without returning to the Generate page.
+Click **Use** on a card to load the brew into the composer. It restores:
 
-1. Open the gallery and click any asset to open the lightbox.
-2. Click the **Brew** button (flask icon) in the lightbox footer.
-3. The Save as Brew dialog opens, pre-filled with the model and parameters from that generation.
-4. Enter a name, optional description, and choose whether to include the prompt.
-5. Click **Save Brew**.
+- The model (or stays on **Auto** if that model is not available to you)
+- The prompt, if the brew was saved with one
+- All settings — aspect ratio, style, and the rest
+- Any styles or LoRAs and their weights — see [Styles & LoRAs](/guides/loras/)
+- Any reference image that was active when the brew was saved
 
-This is the fastest way to capture a recipe from an older generation you want to reproduce.
+A confirmation appears once the brew loads. From there, create as-is, or change one thing and create a variation. See [Creating images](/guides/creating-images/) for the full composer.
 
----
+## Edit or delete a brew
 
-## Loading a brew on the Generate page
+Each card on **My Brews** has two more controls:
 
-The **Brew** button sits next to the model selector at the top of the Generate page. Click it to open a popover listing all your saved brews.
+| Control | What it does |
+|---|---|
+| Edit (pencil icon) | Opens a dialog to change the **Name** and **Description** only |
+| Delete (trash icon) | Removes the brew after you confirm |
 
-Each entry in the list shows:
-- A preview thumbnail (if the brew has one)
-- The brew name and model
-- The number of LoRAs in the recipe, if any
+Editing changes the name and description, not the saved model, settings, or prompt. To change the recipe itself, use the brew, adjust the composer, and save a new brew.
 
-Click any brew to load it. The page immediately:
-- Switches to the brew's model (and switches between image and video mode if needed)
-- Restores all parameters (aspect ratio, seed, style, etc.)
-- Restores the LoRA selection and weights
-- Restores the reference image, if one was active when the brew was saved
-- Pre-fills the prompt, if the brew was saved with one
+## Share a brew
 
-A confirmation toast appears when the brew loads successfully.
+Click the share control on a brew card to open the **Share Brew** dialog and choose who can see and use it.
 
----
+| Visibility | Who can see it |
+|---|---|
+| **Private** | Only you |
+| **Brand** | Everyone on this brand can use it |
+| **Public** | Listed on the **Explore** tab for everyone in your studio |
 
-## The /brews page
+When you set a brew to **Brand** or **Public**, the dialog gives you a share link you can copy. Two limits apply:
 
-Navigate to **Brews** in the sidebar to see all your saved brews in a grid. Each card shows:
+- A brew needs a preview image before you can publish it. If a brew has none, use it to create an image first, then share.
+- Video brews can't be published yet.
 
-- A preview image (taken from the generation used to save the brew)
-- The brew name and model
-- The optional description
-- The saved prompt (if any), shown in italics
-- How many LoRAs the recipe includes
-- How many times the brew has been used
+## Explore and clone
 
-### Actions
+The **Explore** tab lists brews shared across your studio. Search by name, filter by model or creator, and sort by **Recent** or **Most Used**. Click a brew to open its detail page, where you can see the prompt, settings, and any styles or LoRAs it uses.
 
-Each brew card has three action buttons:
-
-| Button | Action |
-|--------|--------|
-| **Use** | Navigates to the Generate page and loads the brew |
-| **Edit** (pencil icon) | Opens a dialog to update the name and description |
-| **Delete** (trash icon) | Permanently removes the brew after a confirmation prompt |
-
-Editing a brew only changes the name and description — it does not change the stored model, parameters, or prompt.
-
----
+To make a shared brew your own, open it and click **Clone to My Brews**. The copy lands under **My Brews**, where you can rename it, share it, or use it like any brew you saved yourself. Cloned brews keep an attribution line showing whose recipe they came from.
 
 ## Tips
 
-- **Iterate from a brew** — load a brew, change a single parameter (like seed or aspect ratio), generate, and save the variation as a new brew under a different name.
-- **Template brews** — save a brew without a prompt to create a reusable style template. Each time you load it you write a new subject while keeping the same model and LoRA stack.
-- **LoRA stacks** — brews preserve LoRA selection and individual weight values, making them the easiest way to rebuild a complex multi-LoRA setup.
-- **Reference + brew** — if you are producing a series of variations from the same reference image, save the brew with that reference loaded. When you share the brew or reload it later, the reference is restored automatically.
+- **Build a style template** — save a brew with the prompt toggled off. Each time you load it, you write a new subject while keeping the same model, settings, and style stack.
+- **Iterate fast** — load a brew, change one setting, create, and save the variation as a new brew under a different name.
+- **Reuse a complex stack** — a brew keeps every style or LoRA and its weight, so it's the quickest way to rebuild a multi-style setup.
+- **Keep a reference series consistent** — save the brew with your reference image loaded, and the reference comes back every time you load or share it.
