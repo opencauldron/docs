@@ -3,7 +3,7 @@ title: Getting started
 description: Your first ten minutes — find your way around Home, finish the Getting Started board, and make your first piece
 ---
 
-You're signed in and inside your Studio — the top-level account your team works in. This walks you through the first ten minutes: getting your bearings on Home, working through the Getting Started board, making your first image, and finding it in your Library.
+You're signed in and inside your Studio — the shared workspace your team works in. This walks you through the first ten minutes: getting your bearings on Home, working through the Getting Started board, making your first image, and finding it in your Library.
 
 ## You're in — Home
 

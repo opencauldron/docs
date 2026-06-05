@@ -26,12 +26,12 @@ The first time you sign in, OpenCauldron asks for a few details so it can set up
 | Field | What to enter |
 |---|---|
 | **What should we call you?** | Your display name — how teammates see you in comments, threads, and activity |
-| **Name your studio** | The name for your Studio, your team's top-level account (you can rename it later in Studio Settings) |
+| **Name your studio** | The name for your Studio, your team's shared workspace (you can rename it later in Studio Settings) |
 | **What best describes you?** | Your role: Agency owner, Brand marketer, Freelancer, Hobbyist, or Other |
 | **How much AI media have you made?** | Your experience level: Brand new, Dabbled, Weekly, or Power user |
 | **What brings you here?** | Optional — a sentence about what you want to do |
 
-A Studio is your team's top-level account. Everything you create, every brand, and every teammate you invite lives inside it.
+A Studio is your team's shared workspace. Everything you create, every brand, and every teammate you invite lives inside it.
 
 Tick the box to agree to the **Terms of Service** and **Privacy Policy**, then click **Create studio**. You land on your **Getting started** board.
 

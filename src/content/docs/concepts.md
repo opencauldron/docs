@@ -8,7 +8,7 @@ OpenCauldron has a few core pieces. Once you know how they nest, the rest of the
 ## The shape at a glance
 
 ```
-Studio (your team's account)
+Studio (your team's shared workspace)
 │
 ├─ Brand — one per client, division, or project
 │   ├─ Kit ......... the brand's style rules
@@ -26,7 +26,7 @@ Read top to bottom: your **Studio** contains **Brands**; each brand has a **Kit*
 
 ## Studio
 
-Your **Studio** is your team's home — the top-level account that everything else lives inside. Teammates are invited into the studio and given a studio role: Owner, Admin, or Member. To invite people and set studio roles, see [Members](/settings/members/).
+Your **Studio** is your team's home — the shared workspace that everything else lives inside. Teammates are invited into the studio and given a studio role: Owner, Admin, or Member. To invite people and set studio roles, see [Members](/settings/members/).
 
 ## Brands
 

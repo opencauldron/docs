@@ -3,7 +3,7 @@ title: Studio settings
 description: Set your studio name and logo, and control whether brands can opt into mature content
 ---
 
-Your **Studio** is your team's top-level account. Studio settings cover the basics everyone sees: the studio name, its logo, and the studio-wide control over mature content.
+Your **Studio** is your team's shared workspace. Studio settings cover the basics everyone sees: the studio name, its logo, and the studio-wide control over mature content.
 
 Open these under **Settings → Studio**. The page is owner and admin only. If you're a studio Member, you'll see a note asking you to contact a studio Owner or Admin to make changes.
 

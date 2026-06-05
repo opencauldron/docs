@@ -3,7 +3,7 @@ title: Introduction
 description: A collaborative AI media studio for teams — create on-brand images and video, organize assets, and route work for approval
 ---
 
-OpenCauldron is a collaborative AI media studio for teams and agencies. You create on-brand images and video, organize every brand asset in one place, and route work through brand approval — all from a single account your whole team shares.
+OpenCauldron is a collaborative AI media studio for teams and agencies. You create on-brand images and video, organize every brand asset in one place, and route work through brand approval — together, in one shared workspace called a **Studio**.
 
 ## What you do here
 
@@ -25,7 +25,7 @@ OpenCauldron is built for teams that produce a lot of on-brand visual work:
 
 ## How the pieces fit together
 
-Your team's account is a **Studio**. Inside it you set up one or more **Brands** — each with its own kit, members, and campaigns. Every image, video, and upload is an **asset**, stored and organized in the [Library](/guides/library/). When a piece is ready, it moves through [Review](/guides/review/) for a brand Manager to approve. Roles control who does what: studio Owner, Admin, and Member at the top level; brand Manager, Creator, and Viewer within each brand.
+Your team works in a shared workspace called a **Studio**. Inside it you set up one or more **Brands** — each with its own kit, members, and campaigns. Every image, video, and upload is an **asset**, stored and organized in the [Library](/guides/library/). When a piece is ready, it moves through [Review](/guides/review/) for a brand Manager to approve. Roles control who does what: studio Owner, Admin, and Member at the top level; brand Manager, Creator, and Viewer within each brand.
 
 For a full tour of these terms and how they relate, see [Concepts](/concepts/).
 
@@ -39,5 +39,5 @@ For teams that want OpenCauldron without managing anything themselves, it's also
 
 You're already signed in to the hosted studio. From here:
 
-1. Read [Sign up and sign in](/sign-up/) if you need to add teammates or switch accounts.
+1. Read [Sign up and sign in](/sign-up/) if you need to add teammates or switch studios.
 2. Follow [Getting started](/getting-started/) to set up your first brand and make your first piece.

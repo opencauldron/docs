@@ -21,6 +21,6 @@ If you're not sure, start with **Hosted**. You can move to a managed or self-hos
 
 The self-hosted path is for a technical teammate, not for day-to-day users. The setup steps — installing the community edition, connecting your own sign-in and storage, choosing which AI models your team can use, and taking it live — live in the open-source project's own setup guide, kept current alongside the code.
 
-A self-hosted copy works the same way as the hosted studio. Your Studio account holds your brands, assets, and members. Brand Managers, Creators, and Viewers keep the same roles. You connect your own sign-in and storage, and you turn on the AI models you want your team to have.
+A self-hosted copy works the same way as the hosted studio. Your Studio holds your brands, assets, and members. Brand Managers, Creators, and Viewers keep the same roles. You connect your own sign-in and storage, and you turn on the AI models you want your team to have.
 
 The studio works the same way whichever path you choose, so you can move between Hosted, Enterprise, and self-hosted later without relearning it.
