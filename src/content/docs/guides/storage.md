@@ -57,6 +57,35 @@ To set up R2:
 1. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) > **R2 Object Storage** and create a bucket.
 2. Under **Manage R2 API Tokens**, create a token with read and write permissions on the bucket. Copy the Account ID, Access Key ID, and Secret Access Key.
 3. To enable public access, connect a custom domain to the bucket under the bucket's **Settings > Custom Domains** tab. Use that domain as `R2_PUBLIC_URL`.
+4. **Add a CORS policy to the bucket** (required for folder import — see below).
+
+### CORS — required for folder import
+
+[Folder import](/guides/importing-folders/) uploads files **directly from your browser to R2** with presigned `PUT` requests. The browser sends a CORS preflight first, so the bucket must allow your app's origin and the `PUT` method — otherwise every upload fails with *"None of the files could be uploaded."* (Regular uploads stream through the server and are unaffected, so you can miss this until you try a folder import.)
+
+Apply a policy with Wrangler — list **every origin** your app is served from:
+
+```sh
+wrangler r2 bucket cors set <your-bucket> --file r2-cors.json
+```
+
+```json
+{
+  "rules": [
+    {
+      "allowed": {
+        "origins": ["https://your-studio-domain.com"],
+        "methods": ["GET", "PUT", "HEAD"],
+        "headers": ["*"]
+      },
+      "exposeHeaders": ["ETag"],
+      "maxAgeSeconds": 3600
+    }
+  ]
+}
+```
+
+Add `http://localhost:9999` to `origins` for local development, and your production/preview domains for deployed environments. Check the current policy with `wrangler r2 bucket cors list <your-bucket>`.
 
 ---
 
