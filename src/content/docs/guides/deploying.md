@@ -1,6 +1,6 @@
 ---
 title: Deploying
-description: Deploy OpenCauldron to production using Docker Compose, a standalone Docker container, or Vercel.
+description: Deploy Cauldron to production using Docker Compose, a standalone Docker container, or Vercel.
 ---
 
 This guide covers three production deployment paths. For local development setup, see [Installation](/installation/).
@@ -33,7 +33,7 @@ Update your Google OAuth credentials to include your production domain:
 
 ## Auth middleware
 
-Every route in OpenCauldron requires authentication except three:
+Every route in Cauldron requires authentication except three:
 
 - `/api/auth/*` — NextAuth sign-in and callback endpoints
 - `/api/uploads/*` — Local file serving for the local storage backend
@@ -204,7 +204,7 @@ Both are required. Read on for why.
 
 ### Why Neon is required
 
-OpenCauldron auto-detects the database driver at startup. If `DATABASE_URL` contains `neon.tech` or `neon.db`, it uses the `@neondatabase/serverless` HTTP driver, which is compatible with Vercel's edge and serverless runtime. Standard `pg` connections use long-lived TCP connections that don't work well in serverless environments. Use a Neon connection string for Vercel deployments.
+Cauldron auto-detects the database driver at startup. If `DATABASE_URL` contains `neon.tech` or `neon.db`, it uses the `@neondatabase/serverless` HTTP driver, which is compatible with Vercel's edge and serverless runtime. Standard `pg` connections use long-lived TCP connections that don't work well in serverless environments. Use a Neon connection string for Vercel deployments.
 
 ### Why R2 is required
 

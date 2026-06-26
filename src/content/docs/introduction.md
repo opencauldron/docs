@@ -3,7 +3,7 @@ title: Introduction
 description: A collaborative AI media studio for teams — create on-brand images and video, organize assets, and route work for approval
 ---
 
-OpenCauldron is a collaborative AI media studio for teams and agencies. You create on-brand images and video, organize every brand asset in one place, and route work through brand approval — together, in one shared workspace called a **Studio**.
+Cauldron is a collaborative AI media studio for teams and agencies. You create on-brand images and video, organize every brand asset in one place, and route work through brand approval — together, in one shared workspace called a **Studio**.
 
 ## What you do here
 
@@ -17,7 +17,7 @@ Work doesn't sit in silos. Leave notes and @-mention teammates right next to any
 
 ## Who it's for
 
-OpenCauldron is built for teams that produce a lot of on-brand visual work:
+Cauldron is built for teams that produce a lot of on-brand visual work:
 
 - **Agencies** managing creative across multiple clients and brands
 - **Brand and marketing teams** producing campaign images and video at volume
@@ -31,9 +31,9 @@ For a full tour of these terms and how they relate, see [Concepts](/concepts/).
 
 ## Open core and Enterprise
 
-OpenCauldron is open source. You can read the code, contribute, and run your own copy — see [Open source and self-hosting](/self-hosting/).
+Cauldron is open source. You can read the code, contribute, and run your own copy — see [Open source and self-hosting](/self-hosting/).
 
-For teams that want OpenCauldron without managing anything themselves, it's also available as a fully managed private instance. See [Enterprise](/enterprise/).
+For teams that want Cauldron without managing anything themselves, it's also available as a fully managed private instance. See [Enterprise](/enterprise/).
 
 ## Get started
 

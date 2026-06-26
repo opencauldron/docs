@@ -1,9 +1,9 @@
 ---
 title: Configuration
-description: Configure database, authentication, storage, and AI provider keys for your OpenCauldron deployment.
+description: Configure database, authentication, storage, and AI provider keys for your Cauldron deployment.
 ---
 
-OpenCauldron is configured through environment variables. Copy `.env.example` to `.env` and fill in the values for your deployment.
+Cauldron is configured through environment variables. Copy `.env.example` to `.env` and fill in the values for your deployment.
 
 ```bash
 cp .env.example .env
@@ -17,7 +17,7 @@ These must be set before the app will start.
 
 ### Database
 
-OpenCauldron uses PostgreSQL via Drizzle ORM. Set `DATABASE_URL` to a valid PostgreSQL connection string.
+Cauldron uses PostgreSQL via Drizzle ORM. Set `DATABASE_URL` to a valid PostgreSQL connection string.
 
 ```bash
 DATABASE_URL="postgresql://cauldron:cauldron@localhost:5432/cauldron"
@@ -49,7 +49,7 @@ The Docker self-host path runs migrations automatically on container start — y
 
 ### Authentication
 
-OpenCauldron uses NextAuth.js with Google OAuth as the only sign-in provider.
+Cauldron uses NextAuth.js with Google OAuth as the only sign-in provider.
 
 ```bash
 NEXTAUTH_URL="http://localhost:3000"

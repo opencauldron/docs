@@ -1,9 +1,9 @@
 ---
-title: How OpenCauldron fits together
+title: How Cauldron fits together
 description: A plain-language map of how your studio, brands, library, and review pipeline relate to each other
 ---
 
-OpenCauldron has a few core pieces. Once you know how they nest, the rest of the product follows. This page is the map. Each term links to its full guide.
+Cauldron has a few core pieces. Once you know how they nest, the rest of the product follows. This page is the map. Each term links to its full guide.
 
 ## The shape at a glance
 
@@ -61,6 +61,6 @@ The **Assistant** is an in-app AI helper that knows your Library and your brands
 
 ## Where to go next
 
-- New to OpenCauldron? Start with [Getting Started](/getting-started/).
+- New to Cauldron? Start with [Getting Started](/getting-started/).
 - Setting up your first client? See [Brands](/guides/brands/).
 - Looking for past work? See [Finding assets](/guides/finding-assets/).

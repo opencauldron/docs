@@ -1,9 +1,9 @@
 ---
 title: Storage
-description: Configure where OpenCauldron stores uploaded and generated files — local filesystem for development, Cloudflare R2 for production.
+description: Configure where Cauldron stores uploaded and generated files — local filesystem for development, Cloudflare R2 for production.
 ---
 
-OpenCauldron needs a place to store reference images you upload and the media files it generates. Two backends are available: a local filesystem backend for development and a Cloudflare R2 backend for production. The backend is selected at startup via a single environment variable.
+Cauldron needs a place to store reference images you upload and the media files it generates. Two backends are available: a local filesystem backend for development and a Cloudflare R2 backend for production. The backend is selected at startup via a single environment variable.
 
 ---
 
@@ -27,7 +27,7 @@ If `STORAGE_PROVIDER` is not set, the app defaults to `r2`.
 
 The local backend writes files to an `uploads/` directory at the project root and serves them through the built-in `/api/uploads/` route. No credentials are required.
 
-This is the right choice when you are running OpenCauldron locally and only generating images. It is not suitable for production and it will not work for image-to-video generation (see below).
+This is the right choice when you are running Cauldron locally and only generating images. It is not suitable for production and it will not work for image-to-video generation (see below).
 
 **Why local storage breaks image-to-video**
 

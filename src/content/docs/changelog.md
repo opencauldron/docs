@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Release history and notable changes for OpenCauldron.
+description: Release history and notable changes for Cauldron.
 ---
 
 ## 2026-05-02

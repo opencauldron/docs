@@ -1,9 +1,9 @@
 ---
 title: Database
-description: How OpenCauldron connects to PostgreSQL via Drizzle ORM, the full schema, migration workflow, and compatible providers.
+description: How Cauldron connects to PostgreSQL via Drizzle ORM, the full schema, migration workflow, and compatible providers.
 ---
 
-OpenCauldron uses PostgreSQL as its only supported database, accessed through [Drizzle ORM](https://orm.drizzle.team). Any standard PostgreSQL-compatible database works — you bring your own and set `DATABASE_URL`.
+Cauldron uses PostgreSQL as its only supported database, accessed through [Drizzle ORM](https://orm.drizzle.team). Any standard PostgreSQL-compatible database works — you bring your own and set `DATABASE_URL`.
 
 ## Prerequisites
 

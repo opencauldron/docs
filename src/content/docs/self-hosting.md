@@ -1,9 +1,9 @@
 ---
 title: Open source & self-hosting
-description: OpenCauldron is open source — choose the hosted studio, a managed private instance, or run it yourself
+description: Cauldron is open source — choose the hosted studio, a managed private instance, or run it yourself
 ---
 
-OpenCauldron is open source. The community edition is the same studio you already use to create images and video, organize brand assets, and run them through review. You're free to run your own copy if you want full control over where it lives.
+Cauldron is open source. The community edition is the same studio you already use to create images and video, organize brand assets, and run them through review. You're free to run your own copy if you want full control over where it lives.
 
 Most teams don't need to. The hosted studio at [studio.opencauldron.ai](https://studio.opencauldron.ai) is set up, kept current, and ready to use. Running your own copy is a technical project. Someone on your team installs it, sets it up, and maintains it.
 

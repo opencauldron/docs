@@ -1,9 +1,9 @@
 ---
 title: Adding a Provider
-description: Step-by-step guide to implementing and registering a new AI model provider in OpenCauldron.
+description: Step-by-step guide to implementing and registering a new AI model provider in Cauldron.
 ---
 
-OpenCauldron's provider system is a thin abstraction over AI APIs. Each model is a TypeScript object that implements the `GenerationProvider` interface. Adding a new provider means creating that object, registering it, and wiring up its API key.
+Cauldron's provider system is a thin abstraction over AI APIs. Each model is a TypeScript object that implements the `GenerationProvider` interface. Adding a new provider means creating that object, registering it, and wiring up its API key.
 
 This guide covers everything from the interface contract through the variant system that drives model cards in the UI.
 

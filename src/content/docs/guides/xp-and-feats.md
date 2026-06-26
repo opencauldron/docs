@@ -3,7 +3,7 @@ title: XP, levels & feats
 description: Earn XP as you create and collaborate, climb through levels that open up new tools, and collect feats along the way
 ---
 
-OpenCauldron tracks your activity as you create. Every generation earns XP, XP raises your level, and milestones earn you feats. It is a light layer on top of your work — nothing here gates day-to-day creating, with one exception (video, covered below). You can see all of it on [your profile](/guides/profile/).
+Cauldron tracks your activity as you create. Every generation earns XP, XP raises your level, and milestones earn you feats. It is a light layer on top of your work — nothing here gates day-to-day creating, with one exception (video, covered below). You can see all of it on [your profile](/guides/profile/).
 
 ## Earning XP
 
@@ -18,7 +18,7 @@ How much you earn depends on what you made:
 | A video up to 5 seconds | 25 XP |
 | A video longer than 5 seconds | 50 XP |
 
-If you use the **Auto** model picker, OpenCauldron chooses a model for you and you earn the XP for whatever it picks. See [Models](/guides/models/) for how model selection works.
+If you use the **Auto** model picker, Cauldron chooses a model for you and you earn the XP for whatever it picks. See [Models](/guides/models/) for how model selection works.
 
 Feats also grant XP — see [Feats](#feats) below.
 

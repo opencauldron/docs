@@ -3,7 +3,7 @@ title: Threads & comments
 description: Discuss the work right next to it — leave notes, @-mention teammates, react, and attach media to any asset
 ---
 
-Every asset in OpenCauldron has a **Thread** — a conversation pinned to that asset. Use it to leave feedback, ask a question, loop in a teammate, or drop a reference, all next to the work it's about.
+Every asset in Cauldron has a **Thread** — a conversation pinned to that asset. Use it to leave feedback, ask a question, loop in a teammate, or drop a reference, all next to the work it's about.
 
 The thread is the same conversation no matter where you open it. A message posted from one place shows up everywhere the asset appears, with no refresh needed.
 

@@ -1,9 +1,9 @@
 ---
 title: API Keys
-description: Get API keys for every supported AI provider and configure them in OpenCauldron.
+description: Get API keys for every supported AI provider and configure them in Cauldron.
 ---
 
-OpenCauldron connects directly to AI provider APIs using keys you supply. You only need keys for the providers you want to use — models without a configured key are automatically hidden from the interface.
+Cauldron connects directly to AI provider APIs using keys you supply. You only need keys for the providers you want to use — models without a configured key are automatically hidden from the interface.
 
 ## Quick start
 
@@ -255,7 +255,7 @@ This key is optional. Without it, the AI prompt enhance button is unavailable, b
 
 ## How model visibility works
 
-OpenCauldron checks for each provider's environment variable at startup. If a key is missing or empty, every model from that provider is hidden from the interface. No error is shown — the models simply do not appear.
+Cauldron checks for each provider's environment variable at startup. If a key is missing or empty, every model from that provider is hidden from the interface. No error is shown — the models simply do not appear.
 
 This means you can safely deploy with only the keys you have. Add more keys later and the corresponding models appear automatically on the next restart.
 
@@ -296,7 +296,7 @@ services:
 
 **Limit key permissions where possible.** Some providers (Runway, fal.ai) let you create keys scoped to specific operations. Use the most restrictive scope that works.
 
-**Monitor usage.** Each provider's console shows API usage and spend. OpenCauldron also tracks per-user costs in its own database — check the usage dashboard regularly to catch unexpected charges.
+**Monitor usage.** Each provider's console shows API usage and spend. Cauldron also tracks per-user costs in its own database — check the usage dashboard regularly to catch unexpected charges.
 
 ---
 

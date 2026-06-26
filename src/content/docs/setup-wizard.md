@@ -6,7 +6,7 @@ description: Bootstrap your own fork of OpenCauldron with pnpm setup.
 OpenCauldron ships with an interactive setup wizard for **forkers** — developers who want to take the codebase, customize it, and ship their own version. The wizard prompts for database, storage, and AI provider settings, then writes a configured `.env.local` for you.
 
 :::caution
-The wizard is **not** the right path if you just want to run OpenCauldron for your team. For that, use the [Docker self-host install](/installation/#self-host-with-docker) — it's faster, doesn't require Node, and ships pre-built multi-arch images.
+The wizard is **not** the right path if you just want to run Cauldron for your team. For that, use the [Docker self-host install](/installation/#self-host-with-docker) — it's faster, doesn't require Node, and ships pre-built multi-arch images.
 
 Use the wizard when you want to *modify* OpenCauldron and run your own version.
 :::

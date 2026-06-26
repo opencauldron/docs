@@ -1,17 +1,17 @@
 ---
 title: Installation
-description: Get OpenCauldron running with Docker, develop on it as a contributor, or scaffold your own fork.
+description: Get Cauldron running with Docker, develop on it as a contributor, or scaffold your own fork.
 ---
 
 :::note
 Most teams use the **hosted studio** at [studio.opencauldron.ai](/sign-up/) or a fully managed [Enterprise](/enterprise/) instance — no setup to run. This section is for technical teams who want to run their own copy. Not sure which path fits? Start with [Open source & self-hosting](/self-hosting/).
 :::
 
-There are three ways to run OpenCauldron yourself, depending on what you're trying to do.
+There are three ways to run Cauldron yourself, depending on what you're trying to do.
 
 | You want to… | Use |
 |---|---|
-| Run your own copy of OpenCauldron | **Docker self-host** (below) — the simplest self-hosted path |
+| Run your own copy of Cauldron | **Docker self-host** (below) — the simplest self-hosted path |
 | Contribute to OpenCauldron itself | [Contributor setup](#contributor-setup) |
 | Build a custom studio on top of OpenCauldron | [Scaffold your own fork](#scaffold-your-own-fork) |
 
@@ -19,7 +19,7 @@ There are three ways to run OpenCauldron yourself, depending on what you're tryi
 
 ## Self-host with Docker
 
-The recommended path for anyone running OpenCauldron as-is. No clone, no Node, no package manager — just Docker.
+The recommended path for anyone running Cauldron as-is. No clone, no Node, no package manager — just Docker.
 
 ### Prerequisites
 
@@ -58,7 +58,7 @@ Migrations run automatically on container start. Your data, uploads, and the per
 
 The default `docker-compose.yml` ships:
 
-- The OpenCauldron app (pulled from `ghcr.io/opencauldron/opencauldron:latest`, multi-arch)
+- The Cauldron app (pulled from `ghcr.io/opencauldron/opencauldron:latest`, multi-arch)
 - A Postgres 16 + pgvector container
 - Named volumes for the database, uploaded media, and the auth secret
 
@@ -106,7 +106,7 @@ pnpm install
 pnpm setup
 ```
 
-This is **not** the right path for running OpenCauldron as-is. Use Docker for that. The wizard is for developers who want to take the codebase, modify it, and ship their own version.
+This is **not** the right path for running Cauldron as-is. Use Docker for that. The wizard is for developers who want to take the codebase, modify it, and ship their own version.
 
 The wizard walks you through database, storage, and AI provider setup, then writes a configured `.env.local`. It does not clone, install, or detach git history — those are your call. To start from a clean slate after cloning: `rm -rf .git && git init`.
 

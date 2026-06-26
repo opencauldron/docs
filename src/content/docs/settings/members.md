@@ -3,7 +3,7 @@ title: Members & roles
 description: Invite your team, set studio roles, and give each brand the right managers, creators, and viewers
 ---
 
-OpenCauldron has two layers of access. Your **Studio** is the team's shared workspace — everyone who can sign in belongs to it. Inside the studio, each [brand](/guides/brands/) has its own members and its own roles. Adding someone to the studio lets them sign in; adding them to a brand decides what they can do with that brand's work.
+Cauldron has two layers of access. Your **Studio** is the team's shared workspace — everyone who can sign in belongs to it. Inside the studio, each [brand](/guides/brands/) has its own members and its own roles. Adding someone to the studio lets them sign in; adding them to a brand decides what they can do with that brand's work.
 
 Keep both layers in mind: a studio Admin still needs to be a brand Manager to approve work on a given brand, and a studio Member can have a different role on every brand they join.
 
