@@ -1,12 +1,12 @@
 ---
 title: Sign up & sign in
-description: Get into OpenCauldron, name your Studio, and set up your profile so you land ready to create
+description: Get into Cauldron, name your Studio, and set up your profile so you land ready to create
 ---
 
-OpenCauldron lives at **studio.opencauldron.ai**. You sign in with your Google account, answer a few quick questions the first time, and land on your **Getting started** board.
+Cauldron lives at **studio.opencauldron.ai**. You sign in with your Google account, answer a few quick questions the first time, and land on your **Getting started** board.
 
 :::note
-OpenCauldron Cloud is in **invite-only beta**. If you don't have access yet, request an invite at [opencauldron.ai](https://opencauldron.ai). Once you've been invited, sign in with Google below.
+Cauldron Cloud is in **invite-only beta**. If you don't have access yet, request an invite at [opencauldron.ai](https://opencauldron.ai). Once you've been invited, sign in with Google below.
 :::
 
 ## Sign in with Google
@@ -21,7 +21,7 @@ While the beta is invite-only, sign in with the Google account your invite was s
 
 ## First-time setup
 
-The first time you sign in, OpenCauldron asks for a few details so it can set up your account. This takes under a minute.
+The first time you sign in, Cauldron asks for a few details so it can set up your account. This takes under a minute.
 
 | Field | What to enter |
 |---|---|
@@ -46,7 +46,7 @@ After setup, the **Getting started** board walks you through your first steps: c
 From there:
 
 - [Getting started](/getting-started/) walks through your first brand and first creation.
-- [How OpenCauldron fits together](/concepts/) explains Studios, brands, the Library, and review in one place.
+- [How Cauldron fits together](/concepts/) explains Studios, brands, the Library, and review in one place.
 
 ## Signing in later
 

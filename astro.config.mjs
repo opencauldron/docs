@@ -13,7 +13,7 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: 'OpenCauldron',
+      title: 'Cauldron',
       logo: {
         src: './public/favicon.svg',
       },
