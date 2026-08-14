@@ -7,17 +7,17 @@ Enterprise gives your organization a private Cauldron Studio, run for you by the
 
 ## What it is
 
-A private copy of Cauldron, set up and run for your team. The Cauldron team gets it ready, keeps it current, and supports it. Your work, your brands, and your assets stay in your own Studio, separate from every other team.
+A private, dedicated Cauldron Studio, set up and run for your team. The Cauldron team gets it ready, keeps it current, and supports it. Your work, your brands, and your assets stay in your own Studio, separate from every other team.
 
 It's the same product you already know. The difference is who runs it: your organization gets a dedicated Studio, and the Cauldron team handles the rest.
 
-## Why choose it over self-hosting
+## Why choose it
 
-You can run Cauldron yourself — see [Open source and self-hosting](/self-hosting/). Enterprise is for teams that want the product without running it themselves.
+Every Cauldron Studio is run for you. Enterprise adds separation and control on top: your own Studio, your own domain, and your own sign-in.
 
-- **Nothing to run.** No setup, no upgrades, no maintenance on your side. The Cauldron team handles all of it.
+- **Nothing to run.** No setup, no upgrades, no maintenance on your side — the same as the standard studio.
 - **Managed updates.** New features and fixes reach your Studio for you, without interrupting your team's work.
-- **Separate data.** Your Studio, brands, and assets stay in a copy dedicated to your organization.
+- **Separate data.** Your Studio, brands, and assets stay in an environment dedicated to your organization.
 - **Grows with your team.** As your team and volume grow, your Studio grows with them. You don't tune or size anything.
 
 ## What's included
@@ -39,21 +39,21 @@ Optional, depending on your needs:
 
 These options aren't part of every plan. Raise them with the Cauldron team so they can scope what fits.
 
-## Hosted, Enterprise, and self-hosting
+## Standard and Enterprise
 
-Three ways to use Cauldron. Pick the one that matches how much you want to run yourself.
+Two ways to use Cauldron. Both are run for you.
 
-| | Hosted | Enterprise | Self-hosting |
-|---|---|---|---|
-| Where it lives | studio.opencauldron.ai, shared | Private Studio, managed for you | Your own setup, run by you |
-| Who runs it | Cauldron team | Cauldron team | You |
-| Data separation | Shared Studio | Dedicated to your organization | Fully your own |
-| Updates | Automatic | Managed for you | You apply them |
-| Your own domain | No | Yes | Yes |
-| Single sign-on | No | Yes | You set it up |
-| Best for | Getting started and most teams | Teams that need a separate Studio and single sign-on without the upkeep | Teams that want full control and run their own |
+| | Standard | Enterprise |
+|---|---|---|
+| Where it lives | studio.opencauldron.ai | A private Studio for your organization |
+| Who runs it | Cauldron team | Cauldron team |
+| Data separation | Your Studio, on the shared service | Dedicated to your organization |
+| Updates | Automatic | Managed for you |
+| Your own domain | No | Yes |
+| Single sign-on | No | Yes |
+| Best for | Getting started and most teams | Organizations that need a separate Studio and single sign-on |
 
-For the self-hosting path, see [Open source and self-hosting](/self-hosting/). For a tour of the product itself, see [Introduction](/introduction/).
+For a tour of the product itself, see [Introduction](/introduction/). To start on the standard studio today, see [Sign up and sign in](/sign-up/).
 
 ## Get in touch
 

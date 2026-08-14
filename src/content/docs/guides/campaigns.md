@@ -62,7 +62,7 @@ The public page is a read-only grid. It shows:
 - The brand name, the campaign name, and each asset's creator.
 - A download button on each asset.
 
-It never shows prompts, model details, parameters, tags, comments, or review status. Drafts, in-review, rejected, and archived assets stay hidden. If nothing is approved yet, the page stays live and shows an empty state rather than breaking — so you can share the link before the work is signed off.
+It never shows prompts, model details, parameters, tags, comments, or review status. Drafts, in-review, changes-requested, and archived assets stay hidden. If nothing is approved yet, the page stays live and shows an empty state rather than breaking — so you can share the link before the work is signed off.
 
 ### Rotating or turning off the link
 

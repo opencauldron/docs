@@ -26,7 +26,7 @@ Read top to bottom: your **Studio** contains **Brands**; each brand has a **Kit*
 
 ## Studio
 
-Your **Studio** is your team's home — the shared workspace that everything else lives inside. Teammates are invited into the studio and given a studio role: Owner, Admin, or Member. To invite people and set studio roles, see [Members](/settings/members/).
+Your **Studio** is your team's home — the shared workspace that everything else lives inside. Teammates are invited into the studio and given a studio role: Owner, Admin, or Member. What someone can do inside a particular brand is set separately by their brand role. To invite people and set studio roles, see [Members](/settings/members/).
 
 ## Brands
 
@@ -51,13 +51,17 @@ The same Library serves both kinds of work. Uploaded brand assets and AI generat
 
 ## Review
 
-**Review** is how team work becomes final. An asset moves through three states: **Draft** (you're still working), **In review** (submitted to the brand's Managers), and **Approved** (signed off). A brand Manager approves or rejects each submission. See [Review](/guides/review/).
+**Review** is how team work becomes final. An asset moves through three states: **Draft** (you're still working), **In review** (submitted for a decision), and **Approved** (signed off). A brand Manager either approves a submission or sends it back marked **Changes requested**. See [Review](/guides/review/).
 
 Work on your Personal brand stays as a draft and skips review — only assets on a team brand can be submitted.
 
-## Assistant (beta)
+## Assistant
 
-The **Assistant** is an in-app AI helper that knows your Library and your brands, so you can ask for what you want in plain language. It's in active development, so expect it to grow and change.
+The **Assistant** is an in-app AI helper that knows your Library and your brands, so you can ask for what you want in plain language — find an asset, generate an image, or edit one you point it at.
+
+## Tools
+
+**Tools** are one-click operations on a single image, with no prompt to write: upscale it, remove its background, or reframe it for another aspect ratio. Results save back into your Library beside the original.
 
 ## Where to go next
 

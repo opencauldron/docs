@@ -73,6 +73,22 @@ Select the X next to a style to remove it from the generation.
 
 Some styles respond to specific keywords, shown as **Trigger Words** badges under the style's name in the **Active LoRAs** list. Include these in your prompt — without them, the style's effect can be weak or missing. The badges are there so you know which words to add as you write.
 
+## Styles on a workflow
+
+A **Workflow** is a tuned generation pipeline your studio has enabled — text-to-image, image edit, multi-reference edit, and others. Each one has its own page, and each ships with a style stack already assembled for it.
+
+On a workflow's page, that stack is yours to shape before you generate:
+
+- Reorder the styles to change which one takes priority.
+- Drag a strength slider to dial one up or down.
+- Remove one you don't want.
+- Click **Add LoRA** to open the catalog and add any style compatible with that workflow.
+- Click **Reset** to put the workflow's shipped stack back.
+
+Sampler, steps, guidance, and the rest sit under a collapsed **Advanced settings** section that starts from the workflow's tuned defaults and shows how many settings you've changed, with its own **Reset to defaults**.
+
+Workflows are enabled per studio from a central registry, so your studio only sees the ones an owner or admin has added on the **Workflows** page. A new studio starts with none — ask your administrator to add them. Studio operators can also change a workflow's default style stack and default settings centrally, and new sessions pick those changes up right away.
+
 ## Set a default style for a brand
 
 A brand can carry a default style so its work stays consistent. A brand Manager sets this in the brand kit, and it applies to generations made under that brand. For how brand kits work, see [Brands](/guides/brands/).

@@ -1,9 +1,9 @@
 ---
 title: Your profile
-description: Edit your name and avatar, set your preferences, and see your level, badges, and recent creations
+description: Edit your name and avatar, pick your studio's look, set your preferences, and see your level, badges, and recent creations
 ---
 
-Your profile is your account page in the studio. It shows who you are to your team, tracks your progress, and holds a few personal preferences. Open it from your avatar menu, or go to **Profile** in the sidebar — you land on your own profile, with an **Edit profile** button only you can see.
+Your profile is your account page in the studio. It shows who you are to your team, tracks your progress, and holds a few personal preferences. Open the account menu at the bottom of the sidebar and choose **Account settings** — you land on your own profile, with an **Edit profile** button only you can see.
 
 Teammates can open your profile too. They see your name, level, badges, and recent work, but not your preferences.
 
@@ -18,12 +18,15 @@ Click **Save changes**. Your new name and avatar update everywhere right away, i
 
 ## Preferences
 
-The **Preferences** section is yours alone. Each toggle saves on its own.
+The **Preferences** section is yours alone. Each control saves on its own.
 
 | Preference | What it does |
 |---|---|
 | **Notify me when generations finish** | When on, a notification lands in the bell (top-right) every time one of your generations finishes or fails. The Queue pill next to **+ Create** already tracks in-flight work; this adds a record you can come back to |
 | **Show my stats when I sign in** | When on, your home page opens with a short snapshot of your progress — XP, level, and what you've made this week — above the rest. Turn it off to skip straight to your widgets |
+| **Slack account** | Link your Slack account so studio updates @-mention you instead of just naming you, and so you can act on reviews from Slack. **Disconnect** any time from the same row. This only appears if your studio has Slack set up. See [Review](/guides/review/) |
+| **Interface scale** | Sizes the whole interface up or down. Per-device — it doesn't follow you to another machine |
+| **Appearance** | A **Light / Dark / System** mode toggle plus a color-scheme picker: **Default**, **Alchemy**, **Dracula**, **Starry Night**, **Kelvin**, **Blueprint**, and **Arc**. Every scheme has a light and a dark version. Your pick applies instantly, sticks on this device, and doesn't change anyone else's view |
 
 If your studio admin has enabled mature content, you'll see an optional toggle.
 

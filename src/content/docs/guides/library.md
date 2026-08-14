@@ -16,7 +16,7 @@ The Library has two working areas:
 - **The left rail** is for navigating. It holds quick buckets, a nested collections tree, and an upload button.
 - **The toolbar** above the grid is for refining. It holds search and filters that narrow down whatever the rail is showing.
 
-Between them sits the asset grid. Assets show newest first and the grid loads more as you scroll.
+Between them sits the asset grid. Assets show newest first, grouped under date headings, and the grid loads more as you scroll.
 
 ## Navigating with the rail
 
@@ -43,7 +43,9 @@ Which brand a collection belongs to follows the active brand in the top bar. Swi
 
 ### Uploading
 
-The **Upload to library** button is pinned to the bottom of the rail, so adding assets is always one click away. You can also drag files anywhere onto the page to upload them. For supported file types, batch uploads, and how to file assets as you go, see [Uploading and organizing](/guides/uploading/).
+The **Upload to library** button is pinned to the bottom of the rail, so adding assets is always one click away. You can also drag files anywhere onto the page to upload them.
+
+Bringing in a whole folder is a separate flow: use **Import a folder** in the toolbar, or drag a folder onto the page. That opens a full-screen import that groups the shots into collections for you and hands them back for review. For supported file types, batch uploads, and the full import walkthrough, see [Uploading and organizing](/guides/uploading/).
 
 ## Refining with the toolbar
 
@@ -61,13 +63,24 @@ Type in the search box to find assets by name, prompt, or tag. Results lead with
 | **Tag** | Toolbar | Show assets with the tags you pick. Toggle **Any (OR)** to match any tag, or **All (AND)** to require every tag |
 | **Source** | **More** | Filter by how the asset arrived — **Uploaded**, **Generated**, or **Imported** |
 | **Rating** | **More** | Show assets with a chosen star rating (1 to 5) |
-| **Status** | **More** | Filter by review status — **Draft**, **In review**, **Approved**, **Rejected**, or **Archived** |
+| **Status** | **More** | Filter by review status — **Draft**, **In review**, **Approved**, **Changes requested**, or **Archived** |
 
 The **More** button opens the extra filters and shows a count when any are active. When filters are on, a line below the toolbar summarizes what you're filtering by and how many results match. Click **Clear all** to reset.
 
 The brand you're viewing is set by the brand switcher in the top bar, not the toolbar — so it stays consistent across the whole app. See [Brands](/guides/brands/) for how brands work.
 
 For search tips and ways to track down a specific asset, see [Finding assets](/guides/finding-assets/).
+
+## Browsing by date
+
+The grid groups itself by date automatically — newest first under **Today**, **Yesterday**, **Earlier this week**, and then month headings — so the latest shoot sits at the top with nothing to search for. A **Jump to** rail under the toolbar lists the periods currently loaded, with a count on each; click one to scroll straight to it.
+
+Two controls sit alongside it:
+
+- **Uploaded / Captured** — order by when files were added, or by when the photos were actually taken. Anything without capture information falls back to its upload date, and the toolbar tells you how many assets that applies to rather than quietly mixing them in.
+- **Timeline** — opens an upload-volume chart. Drag across it to narrow the grid to a date range, or use the **All time**, **Last 7 days**, **Last 30 days**, and **This month** presets. The active range shows as a dismissible chip next to the button, and combines with your other filters.
+
+A date range lives in the page link, so a teammate who opens your link sees the same slice.
 
 ## Reading an asset card
 
@@ -110,6 +123,6 @@ Select multiple cards to act on them together. With a selection active, a bar ap
 
 ## Moving assets through review
 
-The Library is where assets are organized; approval happens through the review pipeline. Assets begin as **Draft** and move to **In review**, then to **Approved** or **Rejected**. You can filter by any of these states with the toolbar's **Status** filter to see where things stand.
+The Library is where assets are organized; approval happens through the review pipeline. Assets begin as **Draft** and move to **In review**, then to **Approved** or **Changes requested**. You can filter by any of these states with the toolbar's **Status** filter to see where things stand.
 
 For who can approve, how to submit, and what each status means, see [Review](/guides/review/).

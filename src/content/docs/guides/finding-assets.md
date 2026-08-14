@@ -53,12 +53,16 @@ Filters cut a long result list down to what you need. Combine them with search, 
 - **Tags** — match one or more tags. Switch the match mode between **Any (OR)** (assets with any selected tag) and **All (AND)** (assets with every selected tag).
 - **Collection** — show only assets in a collection.
 
-Open **Filters** for the rest:
+Open **More** for the rest (on a narrow screen the whole filter set collapses into one **Filters** button):
 
 | Filter | Options |
 |---|---|
 | **Source** | **Uploaded**, **Generated**, **Imported** |
-| **Status** | **Draft**, **In review**, **Approved**, **Rejected**, **Archived** |
+| **Status** | **Draft**, **In review**, **Approved**, **Changes requested**, **Archived** |
 | **Rating** | One to five stars; pick more than one to match any of them |
+
+## Narrow by date
+
+When you know roughly *when* something landed, the Library's date controls are faster than search. **Timeline** opens an upload-volume chart you can drag across to pick a range (with **Last 7 days**, **Last 30 days**, and **This month** presets), and the **Jump to** rail skips straight to a period. Date range combines with everything above, and it travels in the page link so you can share the exact slice. See [The Library](/guides/library/) for the full tour.
 
 For how to add tags, collections, and ratings so assets are findable later, see [Uploading & organizing](/guides/uploading/).

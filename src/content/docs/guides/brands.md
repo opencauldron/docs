@@ -30,7 +30,7 @@ Open a brand to see its tabs:
 - **Campaigns** — the brand's campaigns.
 - **Kit** — the style rules below.
 - **Members** — the team and their roles.
-- **Review** — the approval queue. This tab shows only for managers. See [Review](/guides/review/).
+- **Review** — the approval queue. This tab shows only for brand managers. See [Review](/guides/review/).
 
 ## The brand picker
 
@@ -44,6 +44,7 @@ The **Kit** tab holds the style rules for a brand. Managers and studio admins ca
 
 | Setting | What it does |
 |---|---|
+| **Name** | The brand's name. Rename it whenever you like — the new name shows up everywhere, and the brand's link stays the same so existing bookmarks keep working. Two brands can't share a name; if you pick one that's taken, you'll be told so. |
 | **Color** | A hex color (`#RRGGBB`) used as the brand's label across the studio. It marks brand cards, tags, and member rows. It does not change what you generate. |
 | **Logo** | A square image shown in place of the color mark. Click **Upload** to add one, **Replace** to swap it, or **Remove** to go back to the color. PNG or WebP works best, up to 2 MB. |
 | **Prompt prefix** | Text added to the start of every prompt for this brand — for example, `studio shot,`. |
@@ -52,6 +53,7 @@ The **Kit** tab holds the style rules for a brand. Managers and studio admins ca
 | **Default LoRA id** | An optional fine-tuned style add-on applied to generations for this brand. Leave it blank for none. See [LoRAs](/guides/loras/). |
 | **Enable video generation for this brand** | Controls whether the team can create video for this brand. On by default. |
 | **Allow brand managers to self-approve their own assets** | Lets managers approve their own work instead of needing a second person. Off by default. |
+| **Slack channel for review updates** | A Slack channel ID for this brand's review notifications — ideal for a per-client channel. Leave it blank to use the studio default. See [Review](/guides/review/). |
 
 The prompt prefix and suffix keep everything on-brand without asking each person to remember the wording. If your studio admin has enabled mature content, you'll see an optional toggle here too.
 
@@ -65,9 +67,9 @@ Each brand has its own team, separate from your studio's full member list. The s
 
 | Role | What they can do |
 |---|---|
-| **Brand manager** | Edit the Kit, invite and remove members, create and edit campaigns, and approve or reject assets in review |
+| **Brand manager** | Edit the Kit, invite and remove members, create and edit campaigns, and decide on assets in review |
 | **Creator** | Create assets, upload, comment, and create campaigns |
-| **Viewer** | Read-only — see the brand's assets but not change them |
+| **Viewer** | Read-only — see the brand's assets but not change them. The right role for a client or outside reviewer |
 
 Studio Owners and Admins get manager-level access on every brand. A brand always keeps at least one manager — the last one can't be removed or demoted until someone else is promoted.
 

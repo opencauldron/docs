@@ -35,14 +35,15 @@ You rarely need to choose, but if you want a specific look, here's a starting po
 | Your goal | Try | Why |
 |---|---|---|
 | A reliable all-rounder | Flux 2 Pro | Handles plain prompts, reference images, and edits in one model |
-| Crisp photographic results | Imagen 4 / Imagen 4 Ultra | Photoreal skin, lighting, and detail; Ultra adds higher resolution |
-| Readable text in the image | Ideogram 3 | Renders clean, legible text — posters with copy, logos, social cards |
+| Print-ready or large-format work | Gemini Pro | Studio-grade 4K output and the strongest reasoning of the Gemini tiers |
+| Readable text in the image | Ideogram | Renders clean, legible text — posters with copy, logos, social cards |
+| Text plus editing in one model | Gemini Flash | Strong text rendering, conversational edits, and multi-reference consistency |
 | Stylized illustration or design | Recraft V3 / V4 | Vector and brand-safe styles; V4 takes longer style instructions |
 | Bold, creative looks | Grok Imagine | Loose, expressive styles for editorial and mood work |
 | Precise instruction-following | Filter **Best for** to **Editing & references** | Sharp at multi-step instructions and high-fidelity image inputs |
-| A fast draft | Flux 2 Klein, Imagen 4 Fast, or any model tagged **Fast** | Quick, low-cost passes for iterating on an idea |
+| A fast draft | Flux Klein, Gemini Lite, or any model tagged **Fast** | Quick, low-cost passes for iterating on an idea |
 | Keep a subject consistent across edits | Flux Kontext | Built for character and subject consistency across a series |
-| Use several reference images | Flux 2 Pro | Composes from multiple references in one shot |
+| Use several reference images | Flux 2 Pro, or Gemini Lite for the highest count | Composes from multiple references in one shot |
 | A transparent background | Filter **Best for** to **Editing & references** | Output an isolated subject on a transparent background |
 
 Need transparent or print-ready output, or want to control resolution and aspect ratio? See [Generation settings](/guides/parameters/).

@@ -1,6 +1,6 @@
 ---
 title: Editing images
-description: Start from an existing image and describe the change you want — swap a background, restyle, upscale, or animate
+description: Start from an existing image and describe the change you want — swap a background, restyle, combine references, or animate
 ---
 
 Editing starts from an image you already have and a plain-English description of the change you want. You don't pick a tool or a model — you say what to change ("add soft shadows", "make it look like an oil painting", "swap the background to a beach at sunset") and the studio handles the rest.
@@ -60,22 +60,28 @@ To learn more about guiding a generation with images, see [References](/guides/r
 
 ## Other ways to transform an image
 
-When you open a finished image, a **Tools** panel gives you quick transforms that don't need a prompt:
+Not every change needs a prompt. When you open an image, its detail panel has a **Tools** row of one-click transforms:
 
 | Tool | What it does |
 |---|---|
-| **Upscale** | Increases resolution and sharpens detail, so the image holds up at larger sizes. |
-| **Remove BG** | Cuts out the subject and returns it on a transparent background — ready to drop onto other layouts. |
-| **Vectorize** | Converts a flat graphic (logo, icon, illustration) into a scalable file for print and design work. |
-| **Edit** | Loads the image back into the source slot so you can describe another change. |
+| **Upscale** | Adds resolution and detail, so the image holds up at larger sizes. |
+| **Remove BG** | Cuts the subject out onto a transparent background — ready to drop onto other layouts. |
+| **Reframe** | Crops images into social formats in a batch. |
+| **Vectorize** | Not available yet — the button is shown, marked **Soon**. |
+
+Each one opens with the image you were looking at already loaded, runs on one click, and saves the result to your library beside the original. Buttons that would produce nothing useful are disabled with the reason in the tooltip — an image you've already upscaled, for instance.
+
+One rule is worth knowing before you need it: **upscale first, then remove the background.** Upscaling fills a transparent background with white, so running it on a cutout would destroy the cutout.
+
+For the full walkthrough, see [Tools](/guides/tools/).
 
 You can also **Download** the result or **Regenerate** to try the same prompt again.
 
-Background removal works best when the subject stands clearly apart from the background. Vectorize works best on flat, limited-color graphics, not photographs.
+Background removal works best when the subject stands clearly apart from the background.
 
 ## Turn a still into a short video
 
-Any image can become a short video clip. Open the image and click **Animate**. The video composer opens with your image set as the starting frame and its prompt carried over. Describe the motion you want, then generate.
+Any image can become a short video clip. Open it in the [Gallery](/guides/gallery/) and click **Animate**. The video composer opens with your image set as the starting frame and its prompt carried over. Describe the motion you want, then generate.
 
 For pacing, length, and the rest of the video controls, see [Creating video](/guides/creating-video/).
 

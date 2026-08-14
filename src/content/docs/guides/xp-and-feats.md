@@ -13,7 +13,7 @@ How much you earn depends on what you made:
 
 | What you made | XP |
 |---|---|
-| An image with a top-tier model (such as Flux 2 Pro, Imagen, Ideogram, Recraft) | 10 XP |
+| An image with a top-tier model (such as Flux 2 Pro, Gemini Flash, Gemini Pro, Ideogram, Recraft V3) | 10 XP |
 | An image with a faster, lighter model | 5 XP |
 | A video up to 5 seconds | 25 XP |
 | A video longer than 5 seconds | 50 XP |

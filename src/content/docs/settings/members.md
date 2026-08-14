@@ -23,6 +23,8 @@ You set a studio role when you invite someone, and you can change it later from 
 
 Only an Owner can assign the Owner role. Admins can invite and manage Members and other Admins.
 
+A person's studio role says what they can do across the studio. What they can do *inside a given brand* is set separately by their brand role — Manager, Creator, or Viewer. Someone who only needs to look at and sign off on work, like a client, is added to that brand as a **Viewer**. See [Brands](/guides/brands/).
+
 ### Video generation permission
 
 Each studio member has a separate **Video** switch. Image generation is on for everyone; video is off by default and you turn it on per person. You can set it when you invite someone, or flip it later in the **Members** list. Image and video models are picked for you by **Auto** unless you choose one yourself — see [Models](/guides/models/).
@@ -46,6 +48,12 @@ Invitations that haven't been accepted yet appear in the **Pending invitations**
 - **Resend email** — send the invitation again and refresh its expiry.
 - **Revoke** — cancel the invitation so the link no longer works.
 
+### Removing someone from the studio
+
+Open the **⋯** menu next to a member in the list and choose **Remove from studio**, then confirm. They lose access to the studio and to every brand in it. Their generations and uploads stay exactly where they are, and you can invite them back at any time.
+
+Two guardrails keep a studio from ending up with nobody in charge: you can't remove yourself, and only an Owner can remove another Owner.
+
 ## Brand members
 
 Brand membership controls what someone can do on a specific brand: generate, manage the brand kit, or only look. You manage it from a brand's **Members** page, reached from the [brand](/guides/brands/) itself. Brand managers and studio admins can make changes here; everyone else sees a read-only view.
@@ -56,7 +64,7 @@ Brand membership controls what someone can do on a specific brand: generate, man
 |---|---|
 | Brand manager | Invite and remove members, edit the brand kit, and approve assets |
 | Creator | Generate, save to the gallery, and propose assets for review |
-| Viewer | Read-only access to this brand |
+| Viewer | Read-only access to this brand — the right role for a client or an outside reviewer |
 
 Brand managers handle approvals — see [Review](/guides/review/) for how work moves from proposed to approved.
 
@@ -75,7 +83,9 @@ Personal brands aren't shared, so they have no member management. Create a team 
 
 ## Two layers, together
 
-- **Studio role** decides whether someone can sign in and how much of the studio they can administer.
+- **Studio role** decides whether someone can sign in, whether they can create at all, and how much of the studio they can administer.
 - **Brand role** decides what they can do on each brand they belong to.
 
-A typical setup: invite a teammate to the studio as a **Member**, then add them to the brands they'll work on as a **Creator**, and promote a lead on each brand to **Brand manager** so they can approve work. For studio-wide settings beyond members, see [Studio settings](/settings/studio/).
+The two are independent axes, not one ladder. Someone can be a studio Member with wide creative access on one brand and read-only on another.
+
+A typical setup: invite a teammate to the studio as a **Member**, then add them to the brands they'll work on as a **Creator**, and promote a lead on each brand to **Brand manager** so they can approve work. Add a client to just their own brand as a **Viewer**, so they can see and comment on the work without touching anything else. For studio-wide settings beyond members, see [Studio settings](/settings/studio/).
