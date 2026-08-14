@@ -3,18 +3,6 @@ title: Changelog
 description: Release history and notable changes for Cauldron.
 ---
 
-## 2026-08-13
-
-### Free guests for client review
-
-- Invite clients and stakeholders as **Guests** on Settings → Members. Guests browse the brands you pick and comment on work, but can't generate anything — and they're free, so they never count toward your seats.
-- New **Approver** role on a brand: approve or request changes, and nothing else. Pair it with a Guest and your client signs off on their own campaigns.
-- Approvers see the review queue and the pending badge the same as brand managers, but can't touch the brand kit or the roster.
-- Existing members can be switched to Guest and back at any time. Their past work stays put, and their brand assignments are remembered.
-- Guests only ever see the brands you add them to — never the rest of your studio.
-
----
-
 ## 2026-08-12
 
 ### Upscale and Remove background
