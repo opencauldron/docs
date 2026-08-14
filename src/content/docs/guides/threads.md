@@ -13,7 +13,7 @@ A **Thread** tab sits next to the **Info** tab anywhere you open an asset:
 
 - **[The Library](/guides/library/)** — open an asset to bring up its detail panel, then click the **Thread** tab
 - **[Gallery](/guides/gallery/)** — open an asset in the viewer, then click the **Thread** tab
-- **[Review](/guides/review/)** — open an asset in the review queue; the **Thread** tab sits beside the approve and reject controls
+- **[Review](/guides/review/)** — open an asset in the review queue; the **Thread** tab sits beside the **Approve** and **Request changes** controls
 
 ## Send a message
 
@@ -77,7 +77,13 @@ Studio Owners and Admins can delete any member's message.
 
 ## A note on the Review viewer
 
-In [Review](/guides/review/), single-key shortcuts (`j` / `k` to walk the queue, `a` to approve, `r` to reject, `n` to focus the note) pause while you're typing in a thread. With the **Thread** tab open, those keys type as plain text instead of moving through the queue, so you can write a comment without skipping to the next asset.
+In [Review](/guides/review/), single-key shortcuts (`j` / `k` to walk the queue, `a` to approve, `r` to request changes, `n` to focus the note) pause while you're typing in a thread. With the **Thread** tab open, those keys type as plain text instead of moving through the queue, so you can write a comment without skipping to the next asset.
+
+## Threads and Slack
+
+If your studio has Slack connected and an asset has been submitted for review, its thread and the Slack thread under the review message are the same conversation. A comment you leave here mirrors into Slack under your name and avatar; a reply someone writes in Slack lands back here, attributed to them — including people on Slack Connect who have no studio account, who show as "Name · via Slack". Reactions, edits, and deletes follow in both directions, and a Slack reply rings the submitter's notification bell like any other reply.
+
+See [Review](/guides/review/) for approving and requesting changes from Slack.
 
 ## Who can see a thread
 

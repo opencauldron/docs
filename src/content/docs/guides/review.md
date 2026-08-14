@@ -1,20 +1,20 @@
 ---
 title: The review process
-description: How work moves from draft to approved on a team brand — submit, walk the queue, approve or reject with notes
+description: How work moves from draft to approved on a team brand — submit, walk the queue, approve or request changes with notes
 ---
 
-Review is how your team keeps brand work on-brand. Work on a team brand starts as a private draft. When it's ready, someone submits it. A brand Manager opens the queue, steps through the pending items, and approves or rejects each one. Approved work is locked as final; rejected work goes back for another pass.
+Review is how your team keeps brand work on-brand. Work on a team brand starts as a private draft. When it's ready, someone submits it. A brand Manager opens the queue, steps through the pending items, and either approves each one or sends it back. Approved work is locked as final; work sent back goes to the Creator for another pass.
 
-The status words you'll see are plain: **Draft**, **In review**, **Approved**, **Rejected**, and **Archived**.
+The status words you'll see are plain: **Draft**, **In review**, **Approved**, **Changes requested**, and **Archived**.
 
 ## The flow at a glance
 
 1. A Creator makes an image or video on a team brand. It starts as **Draft** — visible to the team but not yet final.
 2. The Creator submits it for review. The status becomes **In review** and the brand's Managers are notified.
-3. A Manager opens the **Review queue**, steps through the pending work, and either approves or rejects each item.
-4. **Approved** work is final and locked. **Rejected** work returns to the Creator, who can revise and resubmit.
+3. A Manager opens the **Review queue**, steps through the pending work, and either approves an item or requests changes on it.
+4. **Approved** work is final and locked. Work marked **Changes requested** returns to the Creator, who can revise and resubmit.
 
-Roles decide who does what: Creators submit, Managers approve or reject. See [Members & roles](/settings/members/) for what each brand role can do, and [Brands](/guides/brands/) for how brands are set up.
+Roles decide who does what: Creators submit, Managers and Approvers decide. See [Members & roles](/settings/members/) for what each brand role can do, and [Brands](/guides/brands/) for how brands are set up.
 
 ## Submitting work for review
 
@@ -45,12 +45,12 @@ On the right are two tabs:
 - **Info** — the details of the item: the model used, any campaigns it's tagged with, the prompt, and a **Note (optional)** field for feedback.
 - **Thread** — the item's conversation. Leave a note, ask the Creator a question, or read earlier feedback before you decide. See [Threads & comments](/guides/threads/) for how mentions and replies work.
 
-### Approve or reject
+### Approve or request changes
 
 At the bottom of the **Info** tab:
 
 - **Approve** marks the item **Approved** and final.
-- **Reject** sends it back to the Creator. Add feedback in the **Note (optional)** field first — the Creator sees your note.
+- **Request changes** sends it back to the Creator. Add feedback in the **Note (optional)** field first — the Creator sees your note.
 
 The viewer keeps you moving: after each decision it advances to the next item that still needs one, so you can clear a queue without leaving your seat.
 
@@ -63,7 +63,7 @@ The viewer is built for fast, hands-on-keyboard review. While the **Info** tab i
 | `j` | Next item |
 | `k` | Previous item |
 | `a` | Approve |
-| `r` | Reject |
+| `r` | Request changes |
 | `n` | Jump to the note field |
 | `Esc` | Close the viewer |
 
@@ -76,14 +76,14 @@ Shortcuts pause while the **Thread** tab is open, so typing a comment never trig
 | **Draft** | Created on a team brand, not yet submitted. Visible to the team, not final. |
 | **In review** | Submitted and waiting on a Manager's decision. |
 | **Approved** | Accepted and locked as final. |
-| **Rejected** | Sent back to the Creator to revise and resubmit. |
+| **Changes requested** | Sent back to the Creator to revise and resubmit. |
 | **Archived** | Set aside out of the active flow. |
 
 ## After a decision
 
 **Approved work is final and locked.** You can't edit an approved item in place. To change it, open it and choose **Edit / Fork** — this makes a fresh draft copy you can rework and submit for review on its own. The original approved version stays untouched as a record.
 
-**Rejected work goes back to the Creator.** They'll see your note, make changes, and submit the revised version for review again. There's no limit on revisions.
+**Work sent back goes to the Creator.** They'll see your note, make changes, and submit the revised version for review again. There's no limit on revisions.
 
 ## Self-approval
 
@@ -96,7 +96,13 @@ A brand can turn on self-approval. With it on, a Manager's own work is approved 
 Review keeps your team in the loop:
 
 - Submitting work notifies the brand's Managers.
-- Approving or rejecting notifies the Creator, with your note attached.
+- Approving or requesting changes notifies the Creator, with your note attached.
 - @-mentioning someone in a [Thread](/guides/threads/) notifies them directly.
 
-Every submission, approval, and rejection also shows up in the [Activity feed](/guides/activity/), so anyone on the brand can follow how work is moving. If items belong to a [Campaign](/guides/campaigns/), you'll see that tag right in the viewer while you review.
+Every submission and decision also shows up in the [Activity feed](/guides/activity/), so anyone on the brand can follow how work is moving. If items belong to a [Campaign](/guides/campaigns/), you'll see that tag right in the viewer while you review.
+
+## Reviewing from Slack
+
+If your studio has Slack connected, submitted work also posts to a Slack channel with the asset attached. The message carries **Approve** and **Request changes** buttons, so a reviewer can decide without opening the studio — **Request changes** opens a dialog for the feedback note, which is required there. After a decision the Slack message updates in place with who decided and when.
+
+Comments sync both ways: a thread comment on the asset mirrors into the Slack thread under its review message, and a reply in Slack lands back on the asset in the studio, attributed to whoever wrote it. Connect your own Slack account from your profile settings first, so decisions and comments map to your studio account.

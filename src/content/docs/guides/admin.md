@@ -7,7 +7,7 @@ The **Admin** area is for studio Owners and Admins. It covers two jobs: curating
 
 This is separate from people management. To invite teammates, change studio roles, or manage who belongs to a brand, use [Members & roles](/settings/members/). To rename your studio or set studio-wide defaults, use [Studio settings](/settings/studio/).
 
-Open **Admin** from the sidebar. The landing page shows three sections:
+Open the account menu at the bottom of the sidebar and choose **Admin**. The landing page shows three sections:
 
 | Section | What it does |
 |---|---|

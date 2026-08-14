@@ -7,24 +7,62 @@ The Library is where your brand's files live — shoots, logos, kits, exports, a
 
 ## Uploading files
 
-You have two ways to bring files in:
+There are two flows, and which one you get depends on whether you bring loose files or a folder.
+
+- **Loose files** open the **Upload to Library** dialog and upload straight into the Library.
+- **A folder** opens the full-screen **Import a folder** flow, which organizes the drop for you before anything is final.
+
+### Uploading loose files
 
 - Open the Library and click **Upload to library** in the left rail (or **Upload** above the grid). The **Upload to Library** dialog opens.
 - Drag files straight from your computer onto the grid. A drop overlay appears anywhere over the grid, so you don't have to aim for a small target.
 
-Inside the dialog you can drag files in, or use **Choose files** for a multi-file picker and **Choose folder** to pick a whole directory. Images and video are accepted (PNG, JPG, WebP, GIF, MP4, MOV, WebM) up to 50 MB each. Hidden system files are skipped automatically.
+Inside the dialog you can drag files in or use **Choose files** for a multi-file picker. Images and video are accepted (PNG, JPG, WebP, GIF, MP4, MOV, WebM) up to 50 MB each. Hidden system files are skipped automatically.
 
 Pick a brand from the brand selector before you upload — files land in the brand that's active when you drop them. With no brand selected, uploads go to your Personal brand.
 
-### Uploading a folder
-
-Drop a folder — or pick one with **Choose folder** — and its structure comes with it. Each subfolder becomes a matching **Collection**, nested the same way the folders were nested. A drop of `Shoot/Day1/Hero` recreates `Shoot`, then `Day1` inside it, then `Hero`, and files land in the Collection that matches their folder. Files sitting at the top level (not in a subfolder) go to the Collection you have selected in the rail, or to the brand's root if none is selected.
-
-Drop the same folder again later and the existing Collections are reused — you won't get duplicates. New files slot into the Collections that are already there.
-
-### Progress and retry
-
 Every file shows its own row with a live progress bar. The dialog keeps a running summary across the whole batch, so overall status stays visible even with hundreds of files queued. If a file fails, its row shows the reason and a retry control — retry that one file without re-adding the rest. Let in-progress uploads finish before you close the dialog; it warns you if you try to close mid-batch.
+
+## Importing a folder
+
+Bring in a whole folder with the **Import a folder** button in the Library toolbar, with **Choose folder** in the upload dialog, or by dragging a folder onto the page. Any of the three opens the same full-screen import flow.
+
+**Your folder structure is not recreated.** The import doesn't rebuild your subfolders as nested Collections. Instead it reads what's actually in the pictures and groups similar shots into Collections for you — folder names are used as a hint that nudges the grouping, not as a structure to copy. You review and adjust every group before anything is final.
+
+The flow has three steps, with a rail on the left keeping the destination, progress, and what draft versus approved means in view the whole way through.
+
+### 1. Destination
+
+The first step shows the actual files you dropped and asks where they go:
+
+- **Brand** — the access boundary. Everyone on that brand's team sees these files, and only them. This is the one choice you can't soften later.
+- **Campaign** — optionally file the import under a [campaign](/guides/campaigns/). Personal space has no team, so it has no campaigns.
+- **Tags** — applied to every file as it lands. Type your own (press Enter to add) or pick from the suggested chips. The AI adds its own tags on top, and you can edit both in the review step.
+
+A collapsible walkthrough spells out what happens next, and every choice carries a plain-language explainer.
+
+### 2. Progress
+
+Files upload straight from your browser to storage, then get thumbnails, previews, and AI subject tags, then get grouped. A big live count, a stage-by-stage timeline, and your own file tiles lighting up one by one show where the import is.
+
+The work runs on our servers, not in your tab — **you can minimize the window or close it entirely** and the import keeps going. Minimized imports stack as cards in the corner with live progress and a **Review** button when they're ready, and you can run several at once. If you close the window mid-review, a banner in the Library (and a notification in the bell) brings the exact review screen back.
+
+If something waits, disconnects, or fails, you get a straight answer rather than a bar stuck at 0%. A failed import leaves your originals untouched — re-dropping the same folder retries safely, and files that already uploaded aren't uploaded again.
+
+### 3. Review
+
+Review runs one Collection at a time: pick a group on the left, see its photos and tags on the right, and choose **Approve now** or **Leave as draft** for it.
+
+- **Approve now** — usable across the whole studio the moment you confirm.
+- **Leave as draft** — stays in the Library, hidden from the studio's tools, until you approve it there.
+
+Anything you leave off stays a draft in the Library. Nothing is thrown away.
+
+While you're here you can rename a Collection and edit both your tags and the AI's. A Collection whose title came straight from a machine-named folder gets one-click rename suggestions, so you don't end up with a Collection called `631d0320-original`.
+
+Files the grouper wasn't confident about aren't guessed at — they're set aside, imported and safe as drafts, and deliberately can't be bulk-approved from here. Find them in the Library with the **Status** filter set to **Draft** and approve them one at a time.
+
+Imports into your Personal space skip approval entirely — the files are already yours. You just tidy the name and tags.
 
 ## Organizing with Collections
 
@@ -77,7 +115,7 @@ A bar floats at the bottom of the screen showing how many assets are selected. F
 - **Download (zip)** — download every selected file as a single ZIP.
 - **Delete** — remove the selection.
 
-The bar also carries review actions (**Submit**, **Approve**, **Reject**, **Archive**); a control is dimmed when nothing in your selection qualifies. Bulk actions run up to 200 assets at a time — larger selections are handled in batches.
+The bar also carries review actions (**Submit**, **Approve**, **Request changes**, **Archive**); a control is dimmed when nothing in your selection qualifies. Bulk actions run up to 200 assets at a time — larger selections are handled in batches.
 
 ## Curating a large shoot
 

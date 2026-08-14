@@ -29,15 +29,13 @@ Your team works in a shared workspace called a **Studio**. Inside it you set up 
 
 For a full tour of these terms and how they relate, see [Concepts](/concepts/).
 
-## Open core and Enterprise
+## Nothing to install
 
-Cauldron is open source. You can read the code, contribute, and run your own copy — see [Open source and self-hosting](/self-hosting/).
+Cauldron runs at **studio.opencauldron.ai**. There's no software to install and nothing to maintain — you sign in, invite your team, and start creating. New features arrive on their own.
 
-For teams that want Cauldron without managing anything themselves, it's also available as a fully managed private instance. See [Enterprise](/enterprise/).
+Organizations that need a private Studio of their own, with single sign-on and a custom domain, can have one run for them. See [Enterprise](/enterprise/).
 
 ## Get started
 
-You're already signed in to the hosted studio. From here:
-
-1. Read [Sign up and sign in](/sign-up/) if you need to add teammates or switch studios.
-2. Follow [Getting started](/getting-started/) to set up your first brand and make your first piece.
+1. [Sign up and sign in](/sign-up/) — get into Cauldron and name your Studio.
+2. [Getting started](/getting-started/) — set up your first brand and make your first piece.

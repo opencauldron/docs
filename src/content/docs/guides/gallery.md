@@ -31,7 +31,7 @@ Each card shows:
 - A thumbnail of the image or video
 - The prompt on hover
 - The model that made it (on hover, for generated media)
-- A status indicator — **Draft**, **In review**, **Approved**, **Rejected**, or **Archived**
+- A status indicator — **Draft**, **In review**, **Approved**, **Changes requested**, or **Archived**
 - A brand tag, when one is assigned
 - The avatar of the teammate who created it
 
@@ -44,8 +44,8 @@ The filter bar sits above the grid. Filters apply right away — no reload.
 | Control | What it does |
 |---|---|
 | **All Media** | Limit to **Images** or **Videos** |
-| **All Statuses** | Limit to one review state — **Draft**, **In review**, **Approved**, **Rejected**, or **Archived** |
-| **All Models** | Match a specific model (for example **Imagen 4**, **Flux 2 Pro**, or **Veo 3**) |
+| **All Statuses** | Limit to one review state — **Draft**, **In review**, **Approved**, **Changes requested**, or **Archived** |
+| **All Models** | Match a specific model (for example **Gemini Flash**, **Flux 2 Pro**, or **Veo 3**) |
 | Search box | Type to match text in the original prompt |
 | Date range | A **from** and **to** date; the **to** date includes the whole day |
 

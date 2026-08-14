@@ -3,10 +3,10 @@ title: Sign up & sign in
 description: Get into Cauldron, name your Studio, and set up your profile so you land ready to create
 ---
 
-Cauldron lives at **studio.opencauldron.ai**. You sign in with your Google account, answer a few quick questions the first time, and land on your **Getting started** board.
+Cauldron lives at **studio.opencauldron.ai** — there's nothing to download or install. You sign in with your Google account, answer a few quick questions the first time, and land on your **Getting started** board.
 
 :::note
-Cauldron Cloud is in **invite-only beta**. If you don't have access yet, request an invite at [opencauldron.ai](https://opencauldron.ai). Once you've been invited, sign in with Google below.
+Cauldron is in **invite-only beta**. If you don't have access yet, request an invite at [opencauldron.ai](https://opencauldron.ai). Once you've been invited, sign in with Google below.
 :::
 
 ## Sign in with Google
