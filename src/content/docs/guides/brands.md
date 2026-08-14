@@ -30,7 +30,7 @@ Open a brand to see its tabs:
 - **Campaigns** — the brand's campaigns.
 - **Kit** — the style rules below.
 - **Members** — the team and their roles.
-- **Review** — the approval queue. This tab shows only for managers and approvers. See [Review](/guides/review/).
+- **Review** — the approval queue. This tab shows only for brand managers. See [Review](/guides/review/).
 
 ## The brand picker
 
@@ -69,8 +69,7 @@ Each brand has its own team, separate from your studio's full member list. The s
 |---|---|
 | **Brand manager** | Edit the Kit, invite and remove members, create and edit campaigns, and decide on assets in review |
 | **Creator** | Create assets, upload, comment, and create campaigns |
-| **Approver** | Approve work or request changes on it — and nothing else. The right role for a client |
-| **Viewer** | Read-only — see the brand's assets but not change them |
+| **Viewer** | Read-only — see the brand's assets but not change them. The right role for a client or outside reviewer |
 
 Studio Owners and Admins get manager-level access on every brand. A brand always keeps at least one manager — the last one can't be removed or demoted until someone else is promoted.
 

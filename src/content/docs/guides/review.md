@@ -14,7 +14,7 @@ The status words you'll see are plain: **Draft**, **In review**, **Approved**, *
 3. A Manager opens the **Review queue**, steps through the pending work, and either approves an item or requests changes on it.
 4. **Approved** work is final and locked. Work marked **Changes requested** returns to the Creator, who can revise and resubmit.
 
-Roles decide who does what: Creators submit, Managers and Approvers decide. See [Members & roles](/settings/members/) for what each brand role can do, and [Brands](/guides/brands/) for how brands are set up.
+Roles decide who does what: Creators submit, brand Managers decide. See [Members & roles](/settings/members/) for what each brand role can do, and [Brands](/guides/brands/) for how brands are set up.
 
 ## Submitting work for review
 
