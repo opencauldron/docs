@@ -28,6 +28,7 @@ npx astro preview  # serve the built site
 
 ## Conventions
 
-- The `Reference` sidebar section is `autogenerate`d from `src/content/docs/reference/` — new files there appear automatically.
-- Edit links point to `github.com/opencauldron/docs` (a separate public repo), not the monorepo path. Keep that in mind when authoring "edit this page" flows.
+- **Cauldron is a hosted product, not open source.** Do not add self-hosting, installation, environment-variable, or contributing content, and do not restore the GitHub social link or the "edit this page" affordance — both advertise a public repo to contribute to. The product is **Cauldron** in prose; "OpenCauldron" belongs only in real domains (`studio.opencauldron.ai`), and in the changelog's historical rename entries.
+- There is no `Reference` sidebar section. It was `autogenerate`d from `src/content/docs/reference/`, which held an environment-variable page for an instance customers don't run; both are gone.
+- The site redirects removed pages rather than 404ing them — see the `redirects` map in `astro.config.mjs`. If you delete a page that was ever public, add a redirect.
 - The site redirects `/` → `/introduction/`. Don't put content at the root.
