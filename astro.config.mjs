@@ -85,6 +85,7 @@ export default defineConfig({
             { slug: 'guides/references' },
             { slug: 'guides/brews' },
             { slug: 'guides/loras' },
+            { slug: 'guides/workflows' },
             { slug: 'guides/prompts' },
             { slug: 'guides/parameters' },
           ],
@@ -116,6 +117,7 @@ export default defineConfig({
           label: 'Managing your studio',
           items: [
             { slug: 'settings/studio' },
+            { slug: 'settings/billing' },
             { slug: 'guides/admin' },
           ],
         },
